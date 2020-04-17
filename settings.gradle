@@ -1,0 +1,2 @@
+rootProject.name='TurismoMalagaApp'
+include ':app'
