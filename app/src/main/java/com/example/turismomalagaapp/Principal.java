@@ -12,4 +12,5 @@ public class Principal extends AppCompatActivity {
         setContentView(R.layout.activity_main);
     }
     // Ramon Vidal LLamas
+    //prueba 2.0
 }
