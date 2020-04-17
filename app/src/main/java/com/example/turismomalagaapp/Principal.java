@@ -12,6 +12,5 @@ public class Principal extends AppCompatActivity {
         setContentView(R.layout.activity_main);
     }
 
-    // Turismo malaga
-    //prueba 3.0
+    // Turismo david
 }
