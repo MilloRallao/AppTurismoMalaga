@@ -11,6 +11,6 @@ public class Principal extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
     }
-    // Ramon Vidal LLamas
+    // Turismo malaga
     //prueba 3.0
 }
