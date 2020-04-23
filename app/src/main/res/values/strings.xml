@@ -9,7 +9,6 @@
     <string name="action_settings">Settings</string>
 
 
-
     <string name="home_second">Home Second</string>
 
     <!-- TODO: Remove or change this placeholder text -->
@@ -17,4 +16,6 @@
 
     <!-- menu lateral -->
     <string name="ml_event">Eventos</string>
+
+    <string name="ml_gastronomia">Gastronomia</string>
 </resources>
