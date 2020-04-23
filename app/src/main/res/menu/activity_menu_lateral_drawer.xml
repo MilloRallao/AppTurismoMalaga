@@ -4,9 +4,12 @@
     tools:showIn="navigation_view">
 
     <group android:checkableBehavior="single">
+        <!-- para añadir iconoc android:icon-->
         <item
             android:id="@+id/nav_event"
             android:title="@string/ml_event"/>
-        <!-- para añadir iconoc android:icon-->
+        <item
+            android:id="@+id/nav_ocio"
+            android:title="@string/ml_ocio"/>
     </group>
 </menu>
