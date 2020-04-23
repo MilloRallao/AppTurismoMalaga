@@ -18,6 +18,9 @@
             android:id="@+id/nav_ocio"
             android:title="@string/ml_ocio"/>
         <item
+            android:id="@+id/nav_compras"
+            android:title="Compras"/>
+        <item
             android:id="@+id/nav_pInfo"
             android:title="@string/ml_pInfo"/>
     </group>
