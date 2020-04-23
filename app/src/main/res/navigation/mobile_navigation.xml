@@ -30,4 +30,10 @@
         android:name="com.example.turismomalagaapp.ui.cultura.CulturaFragment"
         android:label="@string/ml_cultura"
         tools:layout="@layout/fragment_cultura"/>
+
+    <fragment
+        android:id="@+id/nav_pInfo"
+        android:name="com.example.turismomalagaapp.ui.puntosInformacion.PuntosInfoFragment"
+        android:label="@string/ml_pInfo"
+        tools:layout="@layout/fragment_puntos_info"/>
 </navigation>
