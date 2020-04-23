@@ -42,4 +42,11 @@
         android:name="com.example.turismomalagaapp.ui.compras.ComprasFragment"
         android:label="@string/ml_compras"
         tools:layout="@layout/fragment_compras"/>
+
+    <fragment
+        android:id="@+id/nav_cSol"
+        android:name="com.example.turismomalagaapp.ui.costaSol.CostaSolFragment"
+        android:label="@string/ml_cSol"
+        tools:layout="@layout/fragment_costa_sol"/>
+
 </navigation>
