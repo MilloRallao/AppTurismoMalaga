@@ -5,6 +5,7 @@
     android:id="@+id/mobile_navigation"
     app:startDestination="@+id/nav_event">
 
+
     <fragment
         android:id="@+id/nav_event"
         android:name="com.example.turismomalagaapp.ui.event.EventFragment"
@@ -16,4 +17,11 @@
         android:name="com.example.turismomalagaapp.ui.ocio.OcioFragment"
         android:label="@string/ml_ocio"
         tools:layout="@layout/fragment_ocio"/>
+
+    <fragment
+        android:id="@+id/nav_gastronomia"
+        android:name="com.example.turismomalagaapp.ui.gastronomia.GastronomiaFragment"
+        android:label="Gastronomia"
+        tools:layout="@layout/fragment_gastronomia"/>
+
 </navigation>
