@@ -10,6 +10,7 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.snackbar.Snackbar;
 import com.google.android.material.navigation.NavigationView;
 
+import androidx.fragment.app.FragmentTransaction;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 import androidx.navigation.ui.AppBarConfiguration;
@@ -34,8 +35,13 @@ public class MenuLateralActivity extends AppCompatActivity {
         map.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent i = new Intent(getApplication(), MapFragment.class);
-                startActivity(i);
+                MapFragment mapFragment = new MapFragment();
+                FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
+                transaction.replace(R.id.mapView, mapFragment);
+                Toolbar toolbar = findViewById(R.id.toolbar);
+                toolbar.setTitle("Mapa");
+                transaction.addToBackStack(null);
+                transaction.commit();
             }
         });
         DrawerLayout drawer = findViewById(R.id.drawer_layout);
