@@ -5,7 +5,7 @@
     android:id="@+id/mobile_navigation"
     app:startDestination="@+id/nav_event">
 
-
+    <!-- Fragment del menu lateral -->
     <fragment
         android:id="@+id/nav_event"
         android:name="com.example.turismomalagaapp.ui.event.EventFragment"
@@ -48,5 +48,23 @@
         android:name="com.example.turismomalagaapp.ui.costaSol.CostaSolFragment"
         android:label="@string/ml_cSol"
         tools:layout="@layout/fragment_costa_sol"/>
+
+    <!-- fragment del submenu -->
+    <fragment
+        android:id="@+id/action_ajustes"
+        android:name="com.example.turismomalagaapp.ui.Submenu.AjustesFragment"
+        android:label="@string/action_ajustes"
+        tools:layout="@layout/fragment_ajustes"/>
+
+    <fragment
+        android:id="@+id/action_valorar"
+        android:name="com.example.turismomalagaapp.ui.Submenu.ValorarFragment"
+        android:label="@string/action_valorar"
+        tools:layout="@layout/fragment_valorar"/>
+    <fragment
+        android:id="@+id/action_contacto"
+        android:name="com.example.turismomalagaapp.ui.Submenu.ContactoFragment"
+        android:label="@string/action_contacto"
+        tools:layout="@layout/fragment_contacto"/>
 
 </navigation>

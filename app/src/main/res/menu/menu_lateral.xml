@@ -2,8 +2,15 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
     <item
-        android:id="@+id/action_settings"
-        android:orderInCategory="100"
-        android:title="@string/action_settings"
-        app:showAsAction="never" />
+        android:id="@+id/action_ajustes"
+        android:title="@string/action_ajustes"
+        app:showAsAction="collapseActionView" />
+    <item
+        android:id="@+id/action_contacto"
+        android:title="@string/action_contacto"
+        app:showAsAction="withText"/>
+    <item
+        android:id="@+id/action_valorar"
+        android:title="@string/action_valorar"
+        app:showAsAction="never"/>
 </menu>
