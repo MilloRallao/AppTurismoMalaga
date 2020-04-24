@@ -30,6 +30,6 @@
         android:layout_margin="@dimen/fab_margin"
         app:fabSize="auto"
         app:maxImageSize="32dp"
-        app:srcCompat="@android:drawable/ic_dialog_email" />
+        app:srcCompat="@drawable/ic_map" />
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>
