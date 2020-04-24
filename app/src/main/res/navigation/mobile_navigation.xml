@@ -59,6 +59,7 @@
     <fragment
         android:id="@+id/nav_map"
         android:name="com.example.turismomalagaapp.ui.map.MapFragment"
+        android:label="@string/title_activity_maps"
         tools:layout="@layout/fragment_map"/>
 
     <!-- fragment del submenu -->

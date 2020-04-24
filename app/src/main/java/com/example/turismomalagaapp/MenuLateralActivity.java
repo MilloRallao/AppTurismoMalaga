@@ -1,39 +1,25 @@
 package com.example.turismomalagaapp;
 
-import android.content.Intent;
+
 import android.os.Bundle;
 import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.View;
-import android.widget.Toast;
-
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.drawerlayout.widget.DrawerLayout;
-import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 import com.example.turismomalagaapp.ui.map.MapFragment;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
-import com.google.android.material.snackbar.Snackbar;
 import com.google.android.material.navigation.NavigationView;
-
-import androidx.fragment.app.FragmentTransaction;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 import androidx.navigation.ui.AppBarConfiguration;
 import androidx.navigation.ui.NavigationUI;
-
 import com.example.turismomalagaapp.ui.Submenu.AjustesFragment;
 import com.example.turismomalagaapp.ui.Submenu.ContactoFragment;
 import com.example.turismomalagaapp.ui.Submenu.ValorarFragment;
-import com.google.android.material.floatingactionbutton.FloatingActionButton;
-import com.google.android.material.navigation.NavigationView;
-import com.google.android.material.snackbar.Snackbar;
 
-import java.util.Map;
 
 public class MenuLateralActivity extends AppCompatActivity {
 
@@ -45,13 +31,13 @@ public class MenuLateralActivity extends AppCompatActivity {
         setContentView(R.layout.activity_menu_lateral);
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-        final FloatingActionButton map = findViewById(R.id.map);
+        FloatingActionButton map = findViewById(R.id.map);
         map.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 MapFragment mapFragment = new MapFragment();
                 FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
-                transaction.replace(R.id.mapView, mapFragment);
+                transaction.replace(R.id.nav_host_fragment, mapFragment);
                 Toolbar toolbar = findViewById(R.id.toolbar);
                 toolbar.setTitle("Mapa");
                 transaction.addToBackStack(null);
