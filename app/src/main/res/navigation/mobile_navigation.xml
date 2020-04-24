@@ -3,9 +3,16 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/mobile_navigation"
-    app:startDestination="@+id/nav_event">
+    app:startDestination="@+id/principal">
 
     <!-- Fragment del menu lateral -->
+
+    <fragment
+        android:id="@+id/principal"
+        android:name="com.example.turismomalagaapp.ui.principal.PrincipalFragment"
+        android:label="@string/app_name"
+        tools:layout="@layout/fragment_principal"/>
+
     <fragment
         android:id="@+id/nav_event"
         android:name="com.example.turismomalagaapp.ui.event.EventFragment"
@@ -48,6 +55,11 @@
         android:name="com.example.turismomalagaapp.ui.costaSol.CostaSolFragment"
         android:label="@string/ml_cSol"
         tools:layout="@layout/fragment_costa_sol"/>
+
+    <fragment
+        android:id="@+id/nav_map"
+        android:name="com.example.turismomalagaapp.ui.map.MapFragment"
+        tools:layout="@layout/fragment_map"/>
 
     <!-- fragment del submenu -->
     <fragment
