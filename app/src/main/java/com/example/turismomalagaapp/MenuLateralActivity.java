@@ -1,9 +1,11 @@
 package com.example.turismomalagaapp;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.view.Menu;
 
+import com.example.turismomalagaapp.ui.map.MapFragment;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.snackbar.Snackbar;
 import com.google.android.material.navigation.NavigationView;
@@ -16,6 +18,8 @@ import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
+import java.util.Map;
+
 public class MenuLateralActivity extends AppCompatActivity {
 
     private AppBarConfiguration mAppBarConfiguration;
@@ -26,12 +30,12 @@ public class MenuLateralActivity extends AppCompatActivity {
         setContentView(R.layout.activity_menu_lateral);
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-        FloatingActionButton map = findViewById(R.id.map);
+        final FloatingActionButton map = findViewById(R.id.map);
         map.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
+                Intent i = new Intent(getApplication(), MapFragment.class);
+                startActivity(i);
             }
         });
         DrawerLayout drawer = findViewById(R.id.drawer_layout);
