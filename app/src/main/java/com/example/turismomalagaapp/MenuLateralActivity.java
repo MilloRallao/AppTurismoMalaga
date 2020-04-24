@@ -40,11 +40,10 @@ public class MenuLateralActivity extends AppCompatActivity {
         });
         DrawerLayout drawer = findViewById(R.id.drawer_layout);
         NavigationView navigationView = findViewById(R.id.nav_view);
-        // Passing each menu ID as a set of Ids because each
-        // menu should be considered as top level destinations.
+        // Passing each menu ID as a set of Ids because each menu should be considered as top level destinations.
         mAppBarConfiguration = new AppBarConfiguration.Builder(
                 R.id.nav_event, R.id.nav_ocio, R.id.nav_gastronomia,
-                R.id.nav_cultura,R.id.nav_pInfo, R.id.nav_compras,R.id.nav_cSol)
+                R.id.nav_cultura,R.id.nav_pInfo, R.id.nav_compras,R.id.nav_cSol, R.id.principal)
                 .setDrawerLayout(drawer)
                 .build();
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment);
