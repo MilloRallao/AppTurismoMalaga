@@ -4,11 +4,11 @@
     <item
         android:id="@+id/action_ajustes"
         android:title="@string/action_ajustes"
-        app:showAsAction="collapseActionView" />
+        app:showAsAction="never" />
     <item
         android:id="@+id/action_contacto"
         android:title="@string/action_contacto"
-        app:showAsAction="withText"/>
+        app:showAsAction="never"/>
     <item
         android:id="@+id/action_valorar"
         android:title="@string/action_valorar"

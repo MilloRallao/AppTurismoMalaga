@@ -48,8 +48,8 @@ public class MenuLateralActivity extends AppCompatActivity {
         NavigationView navigationView = findViewById(R.id.nav_view);
         // Passing each menu ID as a set of Ids because each menu should be considered as top level destinations.
         mAppBarConfiguration = new AppBarConfiguration.Builder(
-                R.id.nav_event, R.id.nav_ocio, R.id.nav_gastronomia,
-                R.id.nav_cultura,R.id.nav_pInfo, R.id.nav_compras,R.id.nav_cSol, R.id.principal)
+                R.id.nav_event, R.id.nav_ocio, R.id.nav_gastronomia,R.id.nav_cultura,R.id.nav_pInfo, R.id.nav_compras,R.id.nav_cSol, R.id.principal,
+                R.id.action_ajustes,R.id.action_contacto,R.id.action_valorar,R.id.nav_map)
                 .setDrawerLayout(drawer)
                 .build();
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment);
@@ -82,7 +82,7 @@ public class MenuLateralActivity extends AppCompatActivity {
                 AjustesFragment fragment = new AjustesFragment();
                 FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
                 fragmentTransaction.replace(R.id.nav_host_fragment, fragment);
-                toolbar.setTitle("Ajustes");
+                //toolbar.setTitle("Ajustes");
                 fragmentTransaction.addToBackStack(null);
                 fragmentTransaction.commit();
                 return true;
