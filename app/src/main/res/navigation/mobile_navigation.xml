@@ -28,7 +28,7 @@
     <fragment
         android:id="@+id/nav_gastronomia"
         android:name="com.example.turismomalagaapp.ui.gastronomia.GastronomiaFragment"
-        android:label="Gastronomia"
+        android:label="@string/ml_gastronomia"
         tools:layout="@layout/fragment_gastronomia"/>
 
 

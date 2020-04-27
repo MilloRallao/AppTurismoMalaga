@@ -10,7 +10,7 @@ import androidx.appcompat.widget.Toolbar;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.fragment.app.FragmentTransaction;
 import com.example.turismomalagaapp.ui.map.MapFragment;
-import com.google.android.gms.maps.MapView;
+import com.example.turismomalagaapp.ui.principal.PrincipalFragment;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.navigation.NavigationView;
 import androidx.navigation.NavController;
@@ -20,6 +20,8 @@ import androidx.navigation.ui.NavigationUI;
 import com.example.turismomalagaapp.ui.Submenu.AjustesFragment;
 import com.example.turismomalagaapp.ui.Submenu.ContactoFragment;
 import com.example.turismomalagaapp.ui.Submenu.ValorarFragment;
+
+import java.security.Principal;
 
 
 public class MenuLateralActivity extends AppCompatActivity {
@@ -49,8 +51,8 @@ public class MenuLateralActivity extends AppCompatActivity {
         DrawerLayout drawer = findViewById(R.id.drawer_layout);
         NavigationView navigationView = findViewById(R.id.nav_view);
         // Passing each menu ID as a set of Ids because each menu should be considered as top level destinations.
-        mAppBarConfiguration = new AppBarConfiguration.Builder(
-                R.id.nav_event, R.id.nav_ocio, R.id.nav_gastronomia,R.id.nav_cultura,R.id.nav_pInfo, R.id.nav_compras,R.id.nav_cSol, R.id.principal,
+        mAppBarConfiguration = new AppBarConfiguration.Builder(R.id.principal,
+                R.id.nav_event, R.id.nav_ocio, R.id.nav_gastronomia,R.id.nav_cultura,R.id.nav_pInfo, R.id.nav_compras,R.id.nav_cSol,
                 R.id.action_ajustes,R.id.action_contacto,R.id.action_valorar,R.id.nav_map)
                 .setDrawerLayout(drawer)
                 .build();
@@ -76,7 +78,7 @@ public class MenuLateralActivity extends AppCompatActivity {
     }
     // opciones dependiendo del item selecionado del submenu
     @Override
-    public boolean onOptionsItemSelected( MenuItem item) {
+    public boolean onOptionsItemSelected( MenuItem item) { // opciones del submenu --> cambios de fragment
 
         Toolbar toolbar = findViewById(R.id.toolbar);
 
@@ -108,5 +110,15 @@ public class MenuLateralActivity extends AppCompatActivity {
             default:
                 return super.onOptionsItemSelected(item);
         }
+    }
+
+    public void home(View v){// para volver al principal con la casita
+        PrincipalFragment fragment = new PrincipalFragment();
+        FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
+        fragmentTransaction.replace(R.id.nav_host_fragment,fragment);
+        Toolbar toolbar = findViewById(R.id.toolbar);
+        toolbar.setTitle("TurismoMalaga");
+        fragmentTransaction.addToBackStack(null);
+        fragmentTransaction.commit();
     }
 }

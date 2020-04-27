@@ -15,6 +15,9 @@
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
 
+    <!-- Cabezera submenu -->
+    <string name="ml_cabezera">Malaga turistica</string>
+
     <!-- menu lateral -->
     <string name="ml_event">Eventos</string>
     <string name="ml_cultura">Cultura</string>
