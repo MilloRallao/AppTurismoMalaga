@@ -16,7 +16,7 @@ import com.google.android.gms.maps.OnMapReadyCallback;
 
 public class MapFragment extends Fragment implements OnMapReadyCallback {
 
-    GoogleMap googleMap;
+    GoogleMap map;
     MapView mapView;
     View view;
 
@@ -44,7 +44,7 @@ public class MapFragment extends Fragment implements OnMapReadyCallback {
     public void onMapReady(GoogleMap googleMap) {
 
         MapsInitializer.initialize(getContext());
+        map = googleMap;
 
-        googleMap.setMapType(GoogleMap.MAP_TYPE_NORMAL);
     }
 }
