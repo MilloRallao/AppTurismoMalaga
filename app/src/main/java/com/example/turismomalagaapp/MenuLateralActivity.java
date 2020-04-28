@@ -117,4 +117,6 @@ public class MenuLateralActivity extends AppCompatActivity {
         fragmentTransaction.addToBackStack(null);
         fragmentTransaction.commit();
     }
+
+
 }
