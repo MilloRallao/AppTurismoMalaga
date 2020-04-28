@@ -25,12 +25,13 @@ import com.example.turismomalagaapp.ui.Submenu.ValorarFragment;
 public class MenuLateralActivity extends AppCompatActivity {
 
     private AppBarConfiguration mAppBarConfiguration;
+    private Toolbar toolbar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_menu_lateral);
-        Toolbar toolbar = findViewById(R.id.toolbar);
+        toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         FloatingActionButton map = findViewById(R.id.map);
         map.setOnClickListener(new View.OnClickListener() {
@@ -65,7 +66,7 @@ public class MenuLateralActivity extends AppCompatActivity {
                 || super.onSupportNavigateUp();
     }
 
-    // para el funcionaminto del submenu
+    // para el funcionamiento del submenu
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
@@ -75,8 +76,6 @@ public class MenuLateralActivity extends AppCompatActivity {
     // opciones dependiendo del item selecionado del submenu
     @Override
     public boolean onOptionsItemSelected( MenuItem item) { // opciones del submenu --> cambios de fragment
-
-        Toolbar toolbar = findViewById(R.id.toolbar);
 
         switch (item.getItemId()) {
             case R.id.action_ajustes:

@@ -10,12 +10,18 @@ import com.example.turismomalagaapp.R;
 
 public class AjustesFragment extends Fragment {
 
+    View view;
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.fragment_ajustes, container, false);
+        view = inflater.inflate(R.layout.fragment_ajustes, container, false);
+        return view;
 
     }
 
-
-
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        //getActivity().getActionBar().setTitle();
+    }
 }
