@@ -7,28 +7,36 @@
     <group android:checkableBehavior="single">
         <item
             android:id="@+id/principal"
-            android:icon="@drawable/ic_home" />
+            android:icon="@drawable/ic_home"
+            android:title="Inicio" />
         <item
             android:id="@+id/nav_event"
-            android:title="@string/ml_event"/>
+            android:title="@string/ml_event"
+            android:icon="@drawable/ic_event"/>
         <!-- para añadir iconoc android:icon-->
         <item
             android:id="@+id/nav_cultura"
-            android:title="@string/ml_cultura"/>
+            android:title="@string/ml_cultura"
+            android:icon="@drawable/ic_cultura"/>
         <item
             android:id="@+id/nav_gastronomia"
-            android:title="@string/ml_gastronomia"/>
+            android:title="@string/ml_gastronomia"
+            android:icon="@drawable/ic_gastronomia"/>
         <item
             android:id="@+id/nav_ocio"
-            android:title="@string/ml_ocio"/>
+            android:title="@string/ml_ocio"
+            android:icon="@drawable/ic_ocio"/>
         <item
             android:id="@+id/nav_compras"
-            android:title="@string/ml_compras"/>
+            android:title="@string/ml_compras"
+            android:icon="@drawable/ic_shop"/>
         <item
             android:id="@+id/nav_pInfo"
-            android:title="@string/ml_pInfo"/>
+            android:title="@string/ml_pInfo"
+            android:icon="@drawable/ic_info"/>
         <item
             android:id="@+id/nav_cSol"
-            android:title="@string/ml_cSol"/>
+            android:title="@string/ml_cSol"
+            android:icon="@drawable/ic_costa"/>
     </group>
 </menu>
