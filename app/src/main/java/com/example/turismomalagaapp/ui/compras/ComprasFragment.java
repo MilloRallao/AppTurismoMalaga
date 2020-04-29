@@ -14,6 +14,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.example.turismomalagaapp.AdapterCompras;
 import com.example.turismomalagaapp.AdapterEventos;
 import com.example.turismomalagaapp.R;
 
@@ -36,7 +37,7 @@ public class ComprasFragment extends Fragment {
         ((LinearLayoutManager) layoutManager).setOrientation(LinearLayoutManager.VERTICAL);
         rv.setHasFixedSize(true);
         rv.setLayoutManager(layoutManager);
-        rv.setAdapter(new AdapterEventos());
+        rv.setAdapter(new AdapterCompras());
         return view;
     }
 

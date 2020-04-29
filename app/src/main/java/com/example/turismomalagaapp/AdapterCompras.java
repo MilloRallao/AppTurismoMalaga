@@ -9,22 +9,22 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-public class AdapterCompras extends RecyclerView.Adapter<AdapterEventos.MyViewHolder> {
+public class AdapterCompras extends RecyclerView.Adapter<AdapterCompras.MyViewHolder> {
 
-    public AdapterCompras() {
-    }
+   public AdapterCompras(){
+   }
 
-    @NonNull
+   @NonNull
     @Override
-    public AdapterEventos.MyViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+    public AdapterCompras.MyViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.compras_cardview, parent, false);
-        return new AdapterEventos.MyViewHolder(v);
+       return new MyViewHolder(v);
     }
 
     @Override
-    public void onBindViewHolder(AdapterEventos.MyViewHolder holder, final int position) {
-        holder.pepito.setText("Item 1");
-        holder.boton.setText("Boton de compra");
+    public void onBindViewHolder(AdapterCompras.MyViewHolder holder, final int position) {
+        holder.compra.setText("Item 1");
+        holder.boton.setText("Comprar");
     }
 
     @Override
@@ -32,14 +32,13 @@ public class AdapterCompras extends RecyclerView.Adapter<AdapterEventos.MyViewHo
         return 10;
     }
 
-    static class MyViewHolder extends RecyclerView.ViewHolder {
+    static class MyViewHolder extends RecyclerView.ViewHolder{
         TextView compra;
-        Button comprabotton;
-
+        Button boton;
         MyViewHolder(View v) {
             super(v);
             compra = v.findViewById(R.id.textview_compras);
-            comprabotton = v.findViewById(R.id.button_compra);
+            boton = v.findViewById(R.id.button_compra);
         }
     }
 }
