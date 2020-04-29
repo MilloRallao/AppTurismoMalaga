@@ -40,9 +40,9 @@ public class AdapterEventos extends RecyclerView.Adapter<AdapterEventos.MyViewHo
         Button boton;
         MyViewHolder(View v) {
             super(v);
-            pepito = v.findViewById(R.id.textview_compras);
+            pepito = v.findViewById(R.id.textview_lugar);
             juanito = v.findViewById(R.id.textview_juanito);
-            boton = v.findViewById(R.id.button_compra);
+            boton = v.findViewById(R.id.button);
         }
     }
 }

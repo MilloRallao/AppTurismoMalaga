@@ -16,7 +16,7 @@
         android:background="@color/colorAccent">
 
         <TextView
-            android:id="@+id/textview_compras"
+            android:id="@+id/textview_lugar"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="80dp"
@@ -29,7 +29,7 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <Button
-            android:id="@+id/button_compra"
+            android:id="@+id/button"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="160dp"
