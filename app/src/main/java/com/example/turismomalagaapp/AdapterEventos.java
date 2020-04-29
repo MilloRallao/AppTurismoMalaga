@@ -18,12 +18,12 @@ public class AdapterEventos extends RecyclerView.Adapter<AdapterEventos.MyViewHo
     @NonNull
     @Override
     public AdapterEventos.MyViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.event_cardview, parent, false);
+        View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.event_cardview, parent, false); // vista del card_view
         return new MyViewHolder(v);
     }
 
     @Override
-    public void onBindViewHolder(MyViewHolder holder, final int position) {
+    public void onBindViewHolder(MyViewHolder holder, final int position) { // como un oncreatte normal de un activity
         holder.pepito.setText("SOY PEPITO");
         holder.juanito.setText("SOY JUANITO");
         holder.boton.setText("SOY UN BOTON");

@@ -42,7 +42,6 @@ public class MapFragment extends Fragment implements OnMapReadyCallback {
 
         MapsInitializer.initialize(getContext());
         map = googleMap;
-
     }
 
 }

@@ -34,8 +34,8 @@ public class EventFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_event, container, false);
         rv = view.findViewById(R.id.recyclerview_eventos);
-        layoutManager = new LinearLayoutManager(getActivity());
-        ((LinearLayoutManager) layoutManager).setOrientation(LinearLayoutManager.VERTICAL);
+        layoutManager = new LinearLayoutManager(getActivity()); // para manegar los layouts de recyclerview (rv)
+        ((LinearLayoutManager) layoutManager).setOrientation(LinearLayoutManager.VERTICAL); // esto hace la funcion del scrol en el rv
         rv.setHasFixedSize(true);
         rv.setLayoutManager(layoutManager);
         rv.setAdapter(new AdapterEventos());
