@@ -61,7 +61,11 @@ public class MapFragment extends Fragment implements OnMapReadyCallback {
         googleMap.addMarker(loc1);
         googleMap.addMarker(loc2);
         googleMap.addMarker(loc3);
-        googleMap.setMyLocationEnabled(true);
+        if (ContextCompat.checkSelfPermission(getContext(), Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED) {
+            googleMap.setMyLocationEnabled(true);
+        }else {
+            googleMap.setMyLocationEnabled(false);
+        }
         googleMap.setMinZoomPreference(10);
         googleMap.moveCamera(CameraUpdateFactory.newLatLng(sydney2));
     }
