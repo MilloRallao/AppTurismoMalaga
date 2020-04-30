@@ -1,4 +1,4 @@
-package com.example.turismomalagaapp;
+package com.example.turismomalagaapp.ui.principal;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -8,6 +8,8 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
+
+import com.example.turismomalagaapp.R;
 
 public class AdapterPrincipal extends RecyclerView.Adapter<AdapterPrincipal.MyViewHolder> {
 

@@ -1,4 +1,4 @@
-package com.example.turismomalagaapp;
+package com.example.turismomalagaapp.ui.gastronomia;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -9,21 +9,23 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-public class AdapterCultura extends RecyclerView.Adapter<AdapterCultura.MyViewHolder> {
+import com.example.turismomalagaapp.R;
 
-    public AdapterCultura(){
+public class AdapterGastronomia extends RecyclerView.Adapter<AdapterGastronomia.MyViewHolder> {
+
+    public AdapterGastronomia(){
     }
 
     @NonNull
     @Override
-    public AdapterCultura.MyViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.compras_cardview, parent, false);
+    public AdapterGastronomia.MyViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+        View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.gastronomia_cardview, parent, false);
         return new MyViewHolder(v);
     }
 
     @Override
-    public void onBindViewHolder(AdapterCultura.MyViewHolder holder, final int position) {
-        holder.lugar1.setText("Lugar de cultura 1");
+    public void onBindViewHolder(AdapterGastronomia.MyViewHolder holder, final int position) {
+        holder.lugar1.setText("Lugar de gastronomia 1");
         holder.boton.setText("Ir a lugar 1");
     }
 

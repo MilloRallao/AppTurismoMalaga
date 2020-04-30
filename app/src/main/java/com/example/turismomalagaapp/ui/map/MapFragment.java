@@ -50,6 +50,7 @@ public class MapFragment extends Fragment implements OnMapReadyCallback {
 
     @Override
     public void onMapReady(GoogleMap googleMap) {
+
         MapsInitializer.initialize(getContext());
         map = googleMap;
         LatLng sydney1 = new LatLng(-33.852, 151.211);
@@ -65,4 +66,5 @@ public class MapFragment extends Fragment implements OnMapReadyCallback {
         googleMap.setMinZoomPreference(10);
         googleMap.moveCamera(CameraUpdateFactory.newLatLng(sydney2));
     }
+
 }
