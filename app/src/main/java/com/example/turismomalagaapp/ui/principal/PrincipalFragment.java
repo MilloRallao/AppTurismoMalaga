@@ -14,8 +14,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.example.turismomalagaapp.AdapterCompras;
-import com.example.turismomalagaapp.AdapterPrincipal;
 import com.example.turismomalagaapp.R;
 
 public class PrincipalFragment extends Fragment {

@@ -14,8 +14,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.example.turismomalagaapp.AdapterCompras;
-import com.example.turismomalagaapp.AdapterGastronomia;
 import com.example.turismomalagaapp.R;
 
 public class GastronomiaFragment extends Fragment {
