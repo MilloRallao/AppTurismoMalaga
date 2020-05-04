@@ -16,7 +16,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
-import com.example.turismomalagaapp.AdapterPrincipal;
 import com.example.turismomalagaapp.R;
 
 import org.json.JSONException;

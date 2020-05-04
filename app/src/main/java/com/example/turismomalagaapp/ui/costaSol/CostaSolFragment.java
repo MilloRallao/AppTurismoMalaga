@@ -36,7 +36,6 @@ public class CostaSolFragment extends Fragment {
         ((LinearLayoutManager) layoutManager).setOrientation(LinearLayoutManager.VERTICAL);
         rv.setHasFixedSize(true);
         rv.setLayoutManager(layoutManager);
-        rv.setAdapter(new AdapterCostaSol());
         return view;
     }
 
