@@ -14,9 +14,10 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.example.turismomalagaapp.AdapterPrincipal;
+import com.bumptech.glide.Glide;
 import com.example.turismomalagaapp.R;
 
 import org.json.JSONException;
@@ -27,16 +28,16 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
-import java.net.MalformedURLException;
 import java.net.URL;
 
 public class PrincipalFragment extends Fragment {
 
-    Context context;
+    private Context context;
     private RecyclerView rv;
     private RecyclerView.LayoutManager layoutManager;
 
-    private TextView textView;
+    private TextView temperatura;
+    private ImageView icono_tiempo;
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
@@ -46,7 +47,8 @@ public class PrincipalFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_principal, container, false);
-        textView = view.findViewById(R.id.textView);
+        temperatura = view.findViewById(R.id.textView_temperatura_ciudad);
+        icono_tiempo = view.findViewById(R.id.imageView_icono_tiempo);
         rv = view.findViewById(R.id.recyclerview_principal);
         layoutManager = new LinearLayoutManager(getActivity());
         ((LinearLayoutManager) layoutManager).setOrientation(LinearLayoutManager.VERTICAL);
@@ -94,11 +96,7 @@ public class PrincipalFragment extends Fragment {
                 JSONObject data = new JSONObject(buffer.toString());
                 return data;
 
-            } catch (MalformedURLException e) {
-                e.printStackTrace();
-            } catch (IOException e) {
-                e.printStackTrace();
-            } catch (JSONException e) {
+            } catch (IOException | JSONException e) {
                 e.printStackTrace();
             } finally {
                 if (connection != null) {
@@ -119,7 +117,16 @@ public class PrincipalFragment extends Fragment {
         protected void onPostExecute(JSONObject result) {
             super.onPostExecute(result);
             try {
-                textView.setText(String.format("%.1f", result.getJSONObject("main").getDouble("temp") - 273,15)+ " ℃");
+                int id_weather = result.getJSONArray("weather").getJSONObject(0).getInt("id");
+                Log.d("PRUEBA1", "onPostExecute: "+id_weather);
+                String icono_weather = result.getJSONArray("weather").getJSONObject(0).getString("icon");
+                Log.d("PRUEBA2", "onPostExecute: "+icono_weather);
+                if (id_weather == 800) {
+                    icono_tiempo.setImageResource(R.drawable.icono_soleado);
+                }else{
+                    Glide.with(context).load("http://openweathermap.org/img/wn/"+icono_weather+".png").into(icono_tiempo);
+                }
+                temperatura.setText(String.format("%.1f", result.getJSONObject("main").getDouble("temp") - 273,15)+ " ℃");
             } catch (JSONException e) {
                 e.printStackTrace();
             }
