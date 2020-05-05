@@ -31,7 +31,7 @@ public class CostaSolFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_costa_sol, container, false);
-        rv = view.findViewById(R.id.recyclerview_costa_sol);
+        //rv = view.findViewById(R.id.recyclerview_costa_sol);
         layoutManager = new LinearLayoutManager(getActivity());
         ((LinearLayoutManager) layoutManager).setOrientation(LinearLayoutManager.VERTICAL);
         rv.setHasFixedSize(true);

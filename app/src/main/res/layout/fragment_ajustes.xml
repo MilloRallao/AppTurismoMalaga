@@ -1,21 +1,31 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".ui.Submenu.AjustesFragment"
     android:background="@drawable/fondo">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:text="@string/hello_blank_fragment" />
-    <TextView
+    <ImageView
+        android:id="@+id/ajustes_barra"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="Ajustes"
-        android:textSize="50dp"
-        android:gravity="center"/>
+        android:layout_height="49dp"
+        android:background="#FFFF"
+        android:contentDescription="@string/app_name"
+        android:scaleType="fitXY" />
 
-</FrameLayout>
+    <TextView
+        android:id="@+id/text_ajustes"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginStart="183dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="180dp"
+        android:text="Ajustes"
+        android:textStyle="bold"/>
+
+
+
+</RelativeLayout>
