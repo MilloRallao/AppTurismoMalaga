@@ -124,7 +124,7 @@ public class PrincipalFragment extends Fragment {
                 if (id_weather == 800) {
                     icono_tiempo.setImageResource(R.drawable.icono_soleado);
                 }else{
-                    Glide.with(context).load("http://openweathermap.org/img/wn/"+icono_weather+".png").into(icono_tiempo);
+                    Glide.with(context).load("http://openweathermap.org/img/wn/"+icono_weather+"@2x.png").into(icono_tiempo);
                 }
                 temperatura.setText(String.format("%.1f", result.getJSONObject("main").getDouble("temp") - 273,15)+ " ℃");
             } catch (JSONException e) {

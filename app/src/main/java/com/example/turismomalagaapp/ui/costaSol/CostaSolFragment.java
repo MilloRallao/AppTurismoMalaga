@@ -19,10 +19,6 @@ import com.example.turismomalagaapp.R;
 
 public class CostaSolFragment extends Fragment {
 
-    Context context;
-    private RecyclerView rv;
-    private RecyclerView.LayoutManager layoutManager;
-
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -31,18 +27,12 @@ public class CostaSolFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_costa_sol, container, false);
-        //rv = view.findViewById(R.id.recyclerview_costa_sol);
-        layoutManager = new LinearLayoutManager(getActivity());
-        ((LinearLayoutManager) layoutManager).setOrientation(LinearLayoutManager.VERTICAL);
-        rv.setHasFixedSize(true);
-        rv.setLayoutManager(layoutManager);
         return view;
     }
 
     @Override
     public void onAttach(@NonNull Context context) {
         super.onAttach(context);
-        this.context = context;
     }
 
     @Override

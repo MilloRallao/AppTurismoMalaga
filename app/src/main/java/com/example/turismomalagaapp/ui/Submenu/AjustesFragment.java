@@ -50,6 +50,8 @@ public class AjustesFragment extends Fragment {
                 local = new Locale("en");
                 config.locale = local;
                 getResources().updateConfiguration(config, null);
+                Intent i = new Intent(v.getContext(), MenuLateralActivity.class);
+                getContext().startActivity(i);
             }
         });
 
@@ -60,7 +62,6 @@ public class AjustesFragment extends Fragment {
     @Override
     public void onDestroy() {
         super.onDestroy();
-        //getActivity().getActionBar().setTitle();
     }
 
 }

@@ -31,7 +31,7 @@ public class AdapterPrincipal extends RecyclerView.Adapter<AdapterPrincipal.MyVi
 
     @Override
     public int getItemCount() {
-        return 10;
+        return 3;
     }
 
     static class MyViewHolder extends RecyclerView.ViewHolder{
