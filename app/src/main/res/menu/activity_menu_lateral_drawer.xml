@@ -23,6 +23,10 @@
             android:title="@string/ml_gastronomia"
             android:icon="@drawable/ic_gastronomia"/>
         <item
+            android:id="@+id/nav_alojamiento"
+            android:title="@string/ml_alojamiento"
+            android:icon="@drawable/ic_alojamiento"/>
+        <item
             android:id="@+id/nav_ocio"
             android:title="@string/ml_ocio"
             android:icon="@drawable/ic_ocio"/>
