@@ -1,10 +1,18 @@
 package com.example.turismomalagaapp;
 
 
+import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
+import android.os.PersistableBundle;
+import android.util.AttributeSet;
+import android.util.Log;
 import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
+
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.core.view.GravityCompat;
@@ -35,6 +43,7 @@ public class MenuLateralActivity extends AppCompatActivity {
         setContentView(R.layout.activity_menu_lateral);
         toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+
         FloatingActionButton map = findViewById(R.id.map);
         map.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -48,12 +57,13 @@ public class MenuLateralActivity extends AppCompatActivity {
                 transaction.commit();
             }
         });
+
         drawer = findViewById(R.id.drawer_layout);
         NavigationView navigationView = findViewById(R.id.nav_view);
         // Passing each menu ID as a set of Ids because each menu should be considered as top level destinations.
         mAppBarConfiguration = new AppBarConfiguration.Builder(R.id.principal,
                 R.id.nav_event, R.id.nav_ocio, R.id.nav_gastronomia,R.id.nav_cultura,R.id.nav_pInfo, R.id.nav_compras,R.id.nav_cSol,
-                R.id.action_ajustes,R.id.action_contacto,R.id.action_valorar,R.id.nav_map)
+                R.id.action_ajustes,R.id.action_contacto,R.id.action_valorar,R.id.nav_map, R.id.nav_alojamiento)
                 .setDrawerLayout(drawer)
                 .build();
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment);

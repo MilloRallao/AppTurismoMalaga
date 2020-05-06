@@ -24,9 +24,9 @@
     <string name="ml_cultura">Culture</string>
     <string name="ml_ocio">Free time</string>
     <string name="ml_gastronomia">Gastronomy</string>
-    <string name="ml_alojamiento">Hotel</string>
-    <string name="ml_pInfo">Information spot</string>
-    <string name="ml_compras">Purcheses</string>
+    <string name="ml_alojamiento">Lodging</string>
+    <string name="ml_pInfo">Information spots</string>
+    <string name="ml_compras">Shoping</string>
     <string name="ml_cSol">Costa del sol</string>
 
     <!-- Boton flotante -->
@@ -34,8 +34,10 @@
 
     <!-- Submenu -->
     <string name="action_ajustes">Settings</string>
-    <string name="action_valorar">Value</string>
+    <string name="action_valorar">Rating</string>
     <string name="action_contacto">Contact</string>
 
     <string name="idioma">Language</string>
+    <string name="texto_ultimos_eventos">Last Events</string>
+    <string name="texto_boton_ver_hotel">See lodging</string>
 </resources>

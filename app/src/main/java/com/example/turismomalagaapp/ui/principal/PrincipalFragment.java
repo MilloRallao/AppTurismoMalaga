@@ -118,9 +118,7 @@ public class PrincipalFragment extends Fragment {
             super.onPostExecute(result);
             try {
                 int id_weather = result.getJSONArray("weather").getJSONObject(0).getInt("id");
-                Log.d("PRUEBA1", "onPostExecute: "+id_weather);
                 String icono_weather = result.getJSONArray("weather").getJSONObject(0).getString("icon");
-                Log.d("PRUEBA2", "onPostExecute: "+icono_weather);
                 if (id_weather == 800) {
                     icono_tiempo.setImageResource(R.drawable.icono_soleado);
                 }else{

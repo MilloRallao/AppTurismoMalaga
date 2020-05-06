@@ -33,7 +33,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="236dp"
-            android:text="Ir a alojamiento"
+            android:text="@string/texto_boton_ver_hotel"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
@@ -48,24 +48,13 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <ImageView
-            android:id="@+id/estrella3"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="40dp"
-            android:layout_marginEnd="68dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:srcCompat="@drawable/ic_star"
-            tools:visibility="invisible" />
-
-        <ImageView
             android:id="@+id/estrella1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="40dp"
-            android:layout_marginEnd="124dp"
+            android:layout_marginStart="6dp"
+            android:layout_marginTop="37dp"
             android:visibility="invisible"
-            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/textview"
             app:layout_constraintTop_toTopOf="parent"
             app:srcCompat="@drawable/ic_star" />
 
@@ -73,9 +62,20 @@
             android:id="@+id/estrella2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="40dp"
-            android:layout_marginEnd="96dp"
-            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginStart="4dp"
+            android:layout_marginTop="37dp"
+            app:layout_constraintStart_toEndOf="@+id/estrella1"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/ic_star"
+            tools:visibility="invisible" />
+
+        <ImageView
+            android:id="@+id/estrella3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="4dp"
+            android:layout_marginTop="37dp"
+            app:layout_constraintStart_toEndOf="@+id/estrella2"
             app:layout_constraintTop_toTopOf="parent"
             app:srcCompat="@drawable/ic_star"
             tools:visibility="invisible" />
@@ -84,10 +84,10 @@
             android:id="@+id/estrella4"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="40dp"
-            android:layout_marginEnd="40dp"
+            android:layout_marginStart="4dp"
+            android:layout_marginTop="37dp"
             android:visibility="invisible"
-            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/estrella3"
             app:layout_constraintTop_toTopOf="parent"
             app:srcCompat="@drawable/ic_star" />
 
@@ -95,10 +95,10 @@
             android:id="@+id/estrella5"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="40dp"
-            android:layout_marginEnd="12dp"
+            android:layout_marginStart="4dp"
+            android:layout_marginTop="37dp"
             android:visibility="invisible"
-            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/estrella4"
             app:layout_constraintTop_toTopOf="parent"
             app:srcCompat="@drawable/ic_star" />
 

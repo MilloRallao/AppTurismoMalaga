@@ -26,8 +26,6 @@ public class AdapterEventos extends RecyclerView.Adapter<AdapterEventos.MyViewHo
 
     @Override
     public void onBindViewHolder(MyViewHolder holder, final int position) { // como un oncreatte normal de un activity
-        holder.pepito.setText("SOY PEPITO");
-        holder.juanito.setText("SOY JUANITO");
         holder.boton.setText("SOY UN BOTON");
     }
 
@@ -37,13 +35,9 @@ public class AdapterEventos extends RecyclerView.Adapter<AdapterEventos.MyViewHo
     }
 
     static class MyViewHolder extends RecyclerView.ViewHolder{
-        TextView pepito;
-        TextView juanito;
         Button boton;
         MyViewHolder(View v) {
             super(v);
-            pepito = v.findViewById(R.id.textview_lugar);
-            juanito = v.findViewById(R.id.textview_juanito);
             boton = v.findViewById(R.id.button);
         }
     }

@@ -4,19 +4,16 @@ import android.content.Intent;
 import android.content.res.Configuration;
 import android.os.Bundle;
 
-import androidx.appcompat.widget.Toolbar;
 import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentTransaction;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageButton;
 
-
 import com.example.turismomalagaapp.MenuLateralActivity;
 import com.example.turismomalagaapp.R;
-import com.example.turismomalagaapp.ui.map.MapFragment;
 
 import java.util.Locale;
 
@@ -34,27 +31,38 @@ public class AjustesFragment extends Fragment {
         botonEsp = view.findViewById(R.id.imageButton);
         botonIng = view.findViewById(R.id.imageButton2);
 
-
         botonEsp.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                // Establecer lenguaje de los Strings
                 local = new Locale("es");
                 config.locale = local;
                 getResources().updateConfiguration(config, null);
+                getResources().updateConfiguration(config, null);
+                // Cambiar tamaño de bandera
+                botonEsp.setScaleX(1.5f);
+                botonEsp.setScaleY(1.5f);
+                // Actualizar la app
+                Intent i = new Intent(v.getContext(), MenuLateralActivity.class);
+                getContext().startActivity(i);
             }
         });
 
         botonIng.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                // Establecer lenguaje de los Strings
                 local = new Locale("en");
                 config.locale = local;
                 getResources().updateConfiguration(config, null);
+                // Cambiar tamaño de bandera
+                botonIng.setScaleX(1.5f);
+                botonIng.setScaleY(1.5f);
+                // Actualizar la app
                 Intent i = new Intent(v.getContext(), MenuLateralActivity.class);
                 getContext().startActivity(i);
             }
         });
-
 
         return view;
     }

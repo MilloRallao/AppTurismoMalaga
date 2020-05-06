@@ -28,7 +28,6 @@ public class AdapterAlojamiento extends RecyclerView.Adapter<AdapterAlojamiento.
 
     @Override
     public void onBindViewHolder(AdapterAlojamiento.MyViewHolder holder, final int position) {
-        holder.compra.setText("Alojamiento");
         holder.boton.setText("Ir a alojamiento");
         holder.estrella1.setVisibility(View.VISIBLE);
         holder.estrella2.setVisibility(View.VISIBLE);
@@ -43,12 +42,10 @@ public class AdapterAlojamiento extends RecyclerView.Adapter<AdapterAlojamiento.
     }
 
     static class MyViewHolder extends RecyclerView.ViewHolder{
-        TextView compra;
         ImageView imageView, estrella1, estrella2, estrella3, estrella4, estrella5;
         Button boton;
         MyViewHolder(View v) {
             super(v);
-            compra = v.findViewById(R.id.textview_lugar);
             imageView = v.findViewById(R.id.imageView);
             estrella1 = v.findViewById(R.id.estrella1);
             estrella2 = v.findViewById(R.id.estrella2);

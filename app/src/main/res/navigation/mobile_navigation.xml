@@ -39,6 +39,12 @@
         tools:layout="@layout/fragment_cultura"/>
 
     <fragment
+        android:id="@+id/nav_alojamiento"
+        android:name="com.example.turismomalagaapp.ui.alojamientos.AlojamientoFragment"
+        android:label="@string/ml_alojamiento"
+        tools:layout="@layout/fragment_alojamiento"/>
+
+    <fragment
         android:id="@+id/nav_pInfo"
         android:name="com.example.turismomalagaapp.ui.puntosInformacion.PuntosInfoFragment"
         android:label="@string/ml_pInfo"

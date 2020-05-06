@@ -23,7 +23,7 @@
     <string name="ml_cultura">Cultura</string>
     <string name="ml_ocio">Ocio</string>
     <string name="ml_gastronomia">Gastronomia</string>
-    <string name="ml_alojamiento">Alojameinto</string>
+    <string name="ml_alojamiento">Alojamiento</string>
     <string name="ml_pInfo">Puntos de informacion</string>
     <string name="ml_compras">Compras</string>
     <string name="ml_cSol">Costa del sol</string>
@@ -37,4 +37,6 @@
     <string name="action_contacto">Contacto</string>
 
     <string name="idioma">Idioma</string>
+    <string name="texto_ultimos_eventos">Últimos Eventos</string>
+    <string name="texto_boton_ver_hotel">Ver Alojamiento</string>
 </resources>
