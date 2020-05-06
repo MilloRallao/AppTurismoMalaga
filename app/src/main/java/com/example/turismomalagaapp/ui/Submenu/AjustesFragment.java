@@ -54,8 +54,6 @@ public class AjustesFragment extends Fragment {
         });
 
 
-
-
         return view;
     }
 

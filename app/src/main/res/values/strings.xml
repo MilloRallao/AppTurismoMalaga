@@ -34,4 +34,6 @@
     <string name="action_ajustes">Ajustes</string>
     <string name="action_valorar">Valorar</string>
     <string name="action_contacto">Contacto</string>
+
+    <string name="idioma">Idioma</string>
 </resources>
