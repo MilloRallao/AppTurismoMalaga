@@ -4,6 +4,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -27,6 +28,7 @@ public class AdapterCultura extends RecyclerView.Adapter<AdapterCultura.MyViewHo
     public void onBindViewHolder(AdapterCultura.MyViewHolder holder, final int position) {
         holder.lugar1.setText("Lugar de cultura 1");
         holder.boton.setText("Ir a lugar 1");
+        holder.imageView.setVisibility(View.VISIBLE);
     }
 
     @Override
@@ -37,10 +39,12 @@ public class AdapterCultura extends RecyclerView.Adapter<AdapterCultura.MyViewHo
     static class MyViewHolder extends RecyclerView.ViewHolder{
         TextView lugar1;
         Button boton;
+        ImageView imageView;
         MyViewHolder(View v) {
             super(v);
-            lugar1 = v.findViewById(R.id.textview_lugar);
+            lugar1 = v.findViewById(R.id.textview);
             boton = v.findViewById(R.id.button);
+            imageView = v.findViewById(R.id.imageView);
         }
     }
 }

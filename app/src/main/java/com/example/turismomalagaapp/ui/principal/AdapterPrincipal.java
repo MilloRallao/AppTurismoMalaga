@@ -39,7 +39,7 @@ public class AdapterPrincipal extends RecyclerView.Adapter<AdapterPrincipal.MyVi
         Button boton;
         MyViewHolder(View v) {
             super(v);
-            lugar1 = v.findViewById(R.id.textview_lugar);
+            lugar1 = v.findViewById(R.id.textview);
             boton = v.findViewById(R.id.button);
         }
     }

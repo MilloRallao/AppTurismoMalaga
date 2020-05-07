@@ -4,6 +4,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -25,8 +26,9 @@ public class AdapterGastronomia extends RecyclerView.Adapter<AdapterGastronomia.
 
     @Override
     public void onBindViewHolder(AdapterGastronomia.MyViewHolder holder, final int position) {
-        holder.lugar1.setText("Lugar de gastronomia 1");
-        holder.boton.setText("Ir a lugar 1");
+        holder.lugar1.setText("Resturante");
+        holder.boton.setText("Ir a resturante");
+        holder.imageView.setVisibility(View.VISIBLE);
     }
 
     @Override
@@ -37,10 +39,12 @@ public class AdapterGastronomia extends RecyclerView.Adapter<AdapterGastronomia.
     static class MyViewHolder extends RecyclerView.ViewHolder{
         TextView lugar1;
         Button boton;
+        ImageView imageView;
         MyViewHolder(View v) {
             super(v);
-            lugar1 = v.findViewById(R.id.textview_lugar);
+            lugar1 = v.findViewById(R.id.textview);
             boton = v.findViewById(R.id.button);
+            imageView = v.findViewById(R.id.imageView);
         }
     }
 }

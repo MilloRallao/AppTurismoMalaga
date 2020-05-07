@@ -4,6 +4,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -25,8 +26,9 @@ public class AdapterCompras extends RecyclerView.Adapter<AdapterCompras.MyViewHo
 
     @Override
     public void onBindViewHolder(AdapterCompras.MyViewHolder holder, final int position) {
-        holder.compra.setText("Item 1");
-        holder.boton.setText("Comprar");
+        holder.compra.setText("Tienda");
+        holder.boton.setText("Ir tienda");
+        holder.imageView.setVisibility(View.VISIBLE);
     }
 
     @Override
@@ -37,10 +39,12 @@ public class AdapterCompras extends RecyclerView.Adapter<AdapterCompras.MyViewHo
     static class MyViewHolder extends RecyclerView.ViewHolder{
         TextView compra;
         Button boton;
+        ImageView imageView;
         MyViewHolder(View v) {
             super(v);
-            compra = v.findViewById(R.id.textview_lugar);
+            compra = v.findViewById(R.id.textview);
             boton = v.findViewById(R.id.button);
+            imageView = v.findViewById(R.id.imageView);
         }
     }
 }
