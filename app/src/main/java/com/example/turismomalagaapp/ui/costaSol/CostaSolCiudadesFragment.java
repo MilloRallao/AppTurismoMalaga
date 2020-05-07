@@ -15,7 +15,6 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.example.turismomalagaapp.R;
-import com.example.turismomalagaapp.ui.cultura.AdapterCultura;
 
 public class CostaSolCiudadesFragment extends Fragment {
 
@@ -30,13 +29,18 @@ public class CostaSolCiudadesFragment extends Fragment {
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_costa_sol, container, false);
-        rv = view.findViewById(R.id.recyclerview_);
-        layoutManager = new LinearLayoutManager(getActivity());
+        View view = inflater.inflate(R.layout.fragment_costa_sol_ciudades, container, false);
+        rv = view.findViewById(R.id.recyclerview_costa_sol_ciudad);
+        layoutManager = new LinearLayoutManager(getActivity()) {
+            @Override
+            public boolean canScrollVertically() {
+                return false;
+            }
+        };
         ((LinearLayoutManager) layoutManager).setOrientation(LinearLayoutManager.VERTICAL);
         rv.setHasFixedSize(true);
         rv.setLayoutManager(layoutManager);
-        rv.setAdapter(new AdapterCultura());
+        rv.setAdapter(new CostaSolCiudadesAdapter());
         return view;
     }
 
@@ -49,6 +53,5 @@ public class CostaSolCiudadesFragment extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        Log.d("HOLA", "HOLA");
     }
 }

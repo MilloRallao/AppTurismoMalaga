@@ -50,7 +50,12 @@ public class PrincipalFragment extends Fragment {
         temperatura = view.findViewById(R.id.textView_temperatura_ciudad);
         icono_tiempo = view.findViewById(R.id.imageView_icono_tiempo);
         rv = view.findViewById(R.id.recyclerview_principal);
-        layoutManager = new LinearLayoutManager(getActivity());
+        layoutManager = new LinearLayoutManager(getActivity()) {
+            @Override
+            public boolean canScrollVertically() {
+                return false;
+            }
+        };
         ((LinearLayoutManager) layoutManager).setOrientation(LinearLayoutManager.VERTICAL);
         rv.setHasFixedSize(true);
         rv.setLayoutManager(layoutManager);

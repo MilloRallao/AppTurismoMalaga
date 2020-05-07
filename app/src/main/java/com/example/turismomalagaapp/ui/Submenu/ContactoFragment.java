@@ -4,8 +4,6 @@ import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
 
-import android.os.Message;
-import android.se.omapi.Session;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -14,13 +12,20 @@ import java.util.Properties;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.os.AsyncTask;
-import android.view.View;
-import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
 import com.example.turismomalagaapp.R;
+
+import javax.mail.Authenticator;
+import javax.mail.Message;
+import javax.mail.MessagingException;
+import javax.mail.PasswordAuthentication;
+import javax.mail.Session;
+import javax.mail.Transport;
+import javax.mail.internet.InternetAddress;
+import javax.mail.internet.MimeMessage;
 
 
 public class ContactoFragment extends Fragment {
@@ -37,15 +42,14 @@ public class ContactoFragment extends Fragment {
         view = inflater.inflate(R.layout.fragment_contacto, container, false);
         context = getContext();
 
-        Button login = (Button) view.findViewById(R.id.btn_submit);
-        reciep = (EditText) view.findViewById(R.id.et_to);
-        sub = (EditText) view.findViewById(R.id.et_sub);
-        msg = (EditText) view.findViewById(R.id.et_text);
+        Button login = view.findViewById(R.id.btn_submit);
+        reciep = view.findViewById(R.id.et_to);
+        sub = view.findViewById(R.id.et_sub);
+        msg = view.findViewById(R.id.et_text);
 
         login.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
                 rec = reciep.getText().toString();
                 subject = sub.getText().toString();
                 textMessage = msg.getText().toString();
@@ -73,14 +77,9 @@ public class ContactoFragment extends Fragment {
         return view;
     }
 
-
-
-
     class RetreiveFeedTask extends AsyncTask<String, Void, String> {
-
         @Override
         protected String doInBackground(String... params) {
-
             try {
                 Message message = new MimeMessage(session);
                 message.setFrom(new InternetAddress("testfrom354@gmail.com"));
