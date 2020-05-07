@@ -1,18 +1,16 @@
 package com.example.turismomalagaapp.ui.alojamientos;
 
-import android.media.Image;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
-import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.turismomalagaapp.R;
-import com.example.turismomalagaapp.ui.compras.AdapterCompras;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 public class AdapterAlojamiento extends RecyclerView.Adapter<AdapterAlojamiento.MyViewHolder>  {
 
@@ -28,7 +26,6 @@ public class AdapterAlojamiento extends RecyclerView.Adapter<AdapterAlojamiento.
 
     @Override
     public void onBindViewHolder(AdapterAlojamiento.MyViewHolder holder, final int position) {
-        holder.boton.setText("Ir a alojamiento");
         holder.estrella1.setVisibility(View.VISIBLE);
         holder.estrella2.setVisibility(View.VISIBLE);
         holder.estrella3.setVisibility(View.VISIBLE);
@@ -43,16 +40,22 @@ public class AdapterAlojamiento extends RecyclerView.Adapter<AdapterAlojamiento.
 
     static class MyViewHolder extends RecyclerView.ViewHolder{
         ImageView imageView, estrella1, estrella2, estrella3, estrella4, estrella5;
-        Button boton;
+        FloatingActionButton ver_alojamiento;
         MyViewHolder(View v) {
             super(v);
-            imageView = v.findViewById(R.id.imageView);
+            imageView = v.findViewById(R.id.imageView_alojamiento);
             estrella1 = v.findViewById(R.id.estrella1);
             estrella2 = v.findViewById(R.id.estrella2);
             estrella3 = v.findViewById(R.id.estrella3);
             estrella4= v.findViewById(R.id.estrella4);
             estrella5= v.findViewById(R.id.estrella5);
-            boton = v.findViewById(R.id.button);
+            ver_alojamiento = v.findViewById(R.id.floatingActionButton_ver_alojamiento);
+            ver_alojamiento.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+
+                }
+            });
         }
     }
 

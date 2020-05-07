@@ -2,12 +2,13 @@
 <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/cardview_compras"
     android:layout_width="match_parent"
-    android:layout_height="320dp"
+    android:layout_height="200dp"
     app:cardCornerRadius="5dp"
     app:cardElevation="5dp"
-    app:cardUseCompatPadding="true"
-    app:cardPreventCornerOverlap="true">
+    app:cardPreventCornerOverlap="true"
+    app:cardUseCompatPadding="true">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/relativeLayout"
@@ -15,37 +16,50 @@
         android:layout_height="match_parent"
         android:background="@color/colorAccent">
 
+        <ImageView
+            android:id="@+id/imageView_tienda"
+            android:layout_width="150dp"
+            android:layout_height="150dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="16dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
         <TextView
-            android:id="@+id/textview_lugar"
+            android:id="@+id/textview_tienda"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="40dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
             android:text="Tienda"
             android:textAllCaps="true"
             android:textStyle="bold"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.501"
-            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/imageView_tienda"
             app:layout_constraintTop_toTopOf="parent" />
 
-        <Button
-            android:id="@+id/button"
+        <TextView
+            android:id="@+id/textView_descripcion_tienda"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="236dp"
-            android:text="COMPRAR"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:text="Descripción"
+            android:textStyle="bold"
+            app:layout_constraintStart_toEndOf="@+id/imageView_tienda"
+            app:layout_constraintTop_toBottomOf="@+id/textview_tienda" />
 
-        <ImageView
-            android:id="@+id/imageView"
-            android:layout_width="150dp"
-            android:layout_height="150dp"
-            android:layout_marginTop="76dp"
-            android:layout_marginEnd="124dp"
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/floatingActionButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="8dp"
+            android:layout_marginBottom="8dp"
+            android:clickable="true"
+            app:elevation="5dp"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:maxImageSize="32dp"
+            app:srcCompat="@drawable/icono_ver_alojamiento" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

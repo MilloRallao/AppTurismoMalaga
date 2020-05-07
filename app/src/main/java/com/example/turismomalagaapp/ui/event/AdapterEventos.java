@@ -4,7 +4,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -26,7 +25,6 @@ public class AdapterEventos extends RecyclerView.Adapter<AdapterEventos.MyViewHo
 
     @Override
     public void onBindViewHolder(MyViewHolder holder, final int position) { // como un oncreatte normal de un activity
-        holder.boton.setText("SOY UN BOTON");
     }
 
     @Override
@@ -35,10 +33,8 @@ public class AdapterEventos extends RecyclerView.Adapter<AdapterEventos.MyViewHo
     }
 
     static class MyViewHolder extends RecyclerView.ViewHolder{
-        Button boton;
         MyViewHolder(View v) {
             super(v);
-            boton = v.findViewById(R.id.button);
         }
     }
 }

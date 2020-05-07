@@ -25,8 +25,6 @@ public class AdapterOcio extends RecyclerView.Adapter<AdapterOcio.MyViewHolder>{
 
     @Override
     public void onBindViewHolder(AdapterOcio.MyViewHolder holder, final int position) {
-        holder.lugar1.setText("Lugar de ocio 1");
-        holder.boton.setText("Ir a lugar 1");
     }
 
     @Override
@@ -35,12 +33,8 @@ public class AdapterOcio extends RecyclerView.Adapter<AdapterOcio.MyViewHolder>{
     }
 
     static class MyViewHolder extends RecyclerView.ViewHolder{
-        TextView lugar1;
-        Button boton;
         MyViewHolder(View v) {
             super(v);
-            lugar1 = v.findViewById(R.id.textview_lugar);
-            boton = v.findViewById(R.id.button);
         }
     }
 }

@@ -2,70 +2,69 @@
 <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/cardview_alojamiento"
     android:layout_width="match_parent"
-    android:layout_height="320dp"
+    android:layout_height="200dp"
     app:cardCornerRadius="5dp"
     app:cardElevation="5dp"
-    app:cardUseCompatPadding="true"
-    app:cardPreventCornerOverlap="true">
+    app:cardPreventCornerOverlap="true"
+    app:cardUseCompatPadding="true">
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/relativeLayout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@color/colorAccent">
 
+        <ImageView
+            android:id="@+id/imageView_alojamiento"
+            android:layout_width="150dp"
+            android:layout_height="150dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="16dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
         <TextView
-            android:id="@+id/textview"
+            android:id="@+id/textview_nombre_alojamiento"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="40dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="16dp"
             android:text="Alojamiento"
             android:textAllCaps="true"
             android:textStyle="bold"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.501"
-            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/imageView_alojamiento"
             app:layout_constraintTop_toTopOf="parent" />
 
-        <Button
-            android:id="@+id/button"
+        <TextView
+            android:id="@+id/textView_descripcion_alojamiento"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="236dp"
-            android:text="@string/texto_boton_ver_hotel"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <ImageView
-            android:id="@+id/imageView"
-            android:layout_width="150dp"
-            android:layout_height="150dp"
-            android:layout_marginTop="76dp"
-            android:layout_marginEnd="124dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="16dp"
+            android:text="Descripcion"
+            android:textStyle="bold"
+            app:layout_constraintStart_toEndOf="@+id/imageView_alojamiento"
+            app:layout_constraintTop_toBottomOf="@+id/textview_nombre_alojamiento" />
 
         <ImageView
             android:id="@+id/estrella1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="6dp"
-            android:layout_marginTop="37dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginBottom="16dp"
             android:visibility="invisible"
-            app:layout_constraintStart_toEndOf="@+id/textview"
-            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/imageView_alojamiento"
             app:srcCompat="@drawable/ic_star" />
 
         <ImageView
             android:id="@+id/estrella2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="4dp"
-            android:layout_marginTop="37dp"
+            android:layout_marginBottom="16dp"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toEndOf="@+id/estrella1"
-            app:layout_constraintTop_toTopOf="parent"
             app:srcCompat="@drawable/ic_star"
             tools:visibility="invisible" />
 
@@ -73,10 +72,9 @@
             android:id="@+id/estrella3"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="4dp"
-            android:layout_marginTop="37dp"
+            android:layout_marginBottom="16dp"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toEndOf="@+id/estrella2"
-            app:layout_constraintTop_toTopOf="parent"
             app:srcCompat="@drawable/ic_star"
             tools:visibility="invisible" />
 
@@ -84,23 +82,34 @@
             android:id="@+id/estrella4"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="4dp"
-            android:layout_marginTop="37dp"
+            android:layout_marginBottom="16dp"
             android:visibility="invisible"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toEndOf="@+id/estrella3"
-            app:layout_constraintTop_toTopOf="parent"
             app:srcCompat="@drawable/ic_star" />
 
         <ImageView
             android:id="@+id/estrella5"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="4dp"
-            android:layout_marginTop="37dp"
+            android:layout_marginBottom="16dp"
             android:visibility="invisible"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toEndOf="@+id/estrella4"
-            app:layout_constraintTop_toTopOf="parent"
             app:srcCompat="@drawable/ic_star" />
+
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/floatingActionButton_ver_alojamiento"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="8dp"
+            android:layout_marginBottom="8dp"
+            android:clickable="true"
+            app:elevation="5dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:maxImageSize="32dp"
+            app:srcCompat="@drawable/icono_ver_alojamiento" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

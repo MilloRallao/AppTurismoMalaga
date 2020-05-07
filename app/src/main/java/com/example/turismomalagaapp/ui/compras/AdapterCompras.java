@@ -25,8 +25,6 @@ public class AdapterCompras extends RecyclerView.Adapter<AdapterCompras.MyViewHo
 
     @Override
     public void onBindViewHolder(AdapterCompras.MyViewHolder holder, final int position) {
-        holder.compra.setText("Item 1");
-        holder.boton.setText("Comprar");
     }
 
     @Override
@@ -35,12 +33,8 @@ public class AdapterCompras extends RecyclerView.Adapter<AdapterCompras.MyViewHo
     }
 
     static class MyViewHolder extends RecyclerView.ViewHolder{
-        TextView compra;
-        Button boton;
         MyViewHolder(View v) {
             super(v);
-            compra = v.findViewById(R.id.textview_lugar);
-            boton = v.findViewById(R.id.button);
         }
     }
 }
