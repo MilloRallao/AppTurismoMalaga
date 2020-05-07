@@ -40,4 +40,8 @@
     <string name="idioma">Language</string>
     <string name="texto_ultimos_eventos">Last Events</string>
     <string name="texto_boton_ver_hotel">See lodging</string>
+    <string name="texto">Cause</string>
+    <string name="btn">Send message</string>
+    <string name="gmail">Your email adres</string>
+    <string name="mensaje">Message</string>
 </resources>

@@ -28,6 +28,7 @@ public class MenuLateralActivity extends AppCompatActivity {
     private AppBarConfiguration mAppBarConfiguration;
     private Toolbar toolbar;
     private DrawerLayout drawer;
+    private AjustesFragment ajustesFragment;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
