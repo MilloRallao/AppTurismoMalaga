@@ -21,9 +21,9 @@ import java.util.Locale;
 public class AjustesFragment extends Fragment {
 
     View view;
-    Locale local;
-    ImageButton botonEsp, botonIng;
-    private Configuration config = new Configuration();
+    public Locale local;
+    public ImageButton botonEsp, botonIng;
+    public Configuration config = new Configuration();
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {

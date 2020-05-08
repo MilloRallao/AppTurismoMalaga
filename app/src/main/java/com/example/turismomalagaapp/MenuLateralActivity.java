@@ -104,7 +104,11 @@ public class MenuLateralActivity extends AppCompatActivity {
                 ContactoFragment fragment2 = new ContactoFragment();
                 FragmentTransaction fragmentTransaction2 = getSupportFragmentManager().beginTransaction();
                 fragmentTransaction2.replace(R.id.nav_host_fragment, fragment2);
-                toolbar.setTitle("Contacto");
+                if (ajustesFragment.botonEsp.isActivated()){
+                    toolbar.setTitle("Contacto");
+                }else if (ajustesFragment.botonIng.isActivated()){
+                    toolbar.setTitle("Contact");
+                }
                 fragmentTransaction2.addToBackStack(null);
                 fragmentTransaction2.commit();
                 return true;
