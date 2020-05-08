@@ -1,6 +1,9 @@
 package com.example.turismomalagaapp;
 
+import android.content.res.Configuration;
+import android.os.Build;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -30,7 +33,6 @@ public class MenuLateralActivity extends AppCompatActivity {
     private AppBarConfiguration mAppBarConfiguration;
     private Toolbar toolbar;
     private DrawerLayout drawer;
-    Locale local;
 
 
     @Override
@@ -99,7 +101,7 @@ public class MenuLateralActivity extends AppCompatActivity {
                 AjustesFragment fragment = new AjustesFragment();
                 FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
                 fragmentTransaction.replace(R.id.nav_host_fragment, fragment);
-                toolbar.setTitle("Ajustes");
+                toolbar.setTitle(R.string.action_ajustes);
                 fragmentTransaction.addToBackStack(null);
                 fragmentTransaction.commit();
                 return true;
@@ -107,11 +109,7 @@ public class MenuLateralActivity extends AppCompatActivity {
                 ContactoFragment fragment2 = new ContactoFragment();
                 FragmentTransaction fragmentTransaction2 = getSupportFragmentManager().beginTransaction();
                 fragmentTransaction2.replace(R.id.nav_host_fragment, fragment2);
-                if (local == new Locale("es")){
-                    toolbar.setTitle("Contacto");
-                }else if (local== new Locale("en")){
-                    toolbar.setTitle("Contact");
-                }
+                toolbar.setTitle(R.string.action_contacto);
                 fragmentTransaction2.addToBackStack(null);
                 fragmentTransaction2.commit();
                 return true;
@@ -119,7 +117,7 @@ public class MenuLateralActivity extends AppCompatActivity {
                 ValorarFragment fragment3 = new ValorarFragment();
                 FragmentTransaction fragmentTransaction3 = getSupportFragmentManager().beginTransaction();
                 fragmentTransaction3.replace(R.id.nav_host_fragment, fragment3);
-                toolbar.setTitle("Valorar");
+                toolbar.setTitle(R.string.action_valorar);
                 fragmentTransaction3.addToBackStack(null);
                 fragmentTransaction3.commit();
                 return true;
