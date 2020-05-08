@@ -22,13 +22,16 @@ import com.example.turismomalagaapp.ui.Submenu.AjustesFragment;
 import com.example.turismomalagaapp.ui.Submenu.ContactoFragment;
 import com.example.turismomalagaapp.ui.Submenu.ValorarFragment;
 
+import java.util.Locale;
+
 
 public class MenuLateralActivity extends AppCompatActivity {
 
     private AppBarConfiguration mAppBarConfiguration;
     private Toolbar toolbar;
     private DrawerLayout drawer;
-    private AjustesFragment ajustesFragment;
+    Locale local;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -104,9 +107,9 @@ public class MenuLateralActivity extends AppCompatActivity {
                 ContactoFragment fragment2 = new ContactoFragment();
                 FragmentTransaction fragmentTransaction2 = getSupportFragmentManager().beginTransaction();
                 fragmentTransaction2.replace(R.id.nav_host_fragment, fragment2);
-                if (ajustesFragment.botonEsp.isActivated()){
+                if (local == new Locale("es")){
                     toolbar.setTitle("Contacto");
-                }else if (ajustesFragment.botonIng.isActivated()){
+                }else if (local== new Locale("en")){
                     toolbar.setTitle("Contact");
                 }
                 fragmentTransaction2.addToBackStack(null);
