@@ -17,9 +17,15 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.JsonArrayRequest;
+import com.android.volley.toolbox.Volley;
 import com.bumptech.glide.Glide;
 import com.example.turismomalagaapp.R;
 
+import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -29,6 +35,8 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
+import java.util.ArrayList;
+import java.util.List;
 
 public class PrincipalFragment extends Fragment {
 
@@ -38,6 +46,8 @@ public class PrincipalFragment extends Fragment {
 
     private TextView temperatura;
     private ImageView icono_tiempo;
+    String BD_URL = "https://projectfctappmalaga.000webhostapp.com/select_restaurante.php";
+    List<JSONObject> respuesta;
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
@@ -59,8 +69,34 @@ public class PrincipalFragment extends Fragment {
         ((LinearLayoutManager) layoutManager).setOrientation(LinearLayoutManager.VERTICAL);
         rv.setHasFixedSize(true);
         rv.setLayoutManager(layoutManager);
-        rv.setAdapter(new AdapterPrincipal());
+        cargarRespuesta();
         return view;
+    }
+
+
+    public void cargarRespuesta(){
+        respuesta = new ArrayList<>();
+        RequestQueue requestQueue = Volley.newRequestQueue(context);
+        JsonArrayRequest jsonArrayRequest = new JsonArrayRequest(BD_URL, new Response.Listener<JSONArray>() {
+            @Override
+            public void onResponse(JSONArray response) {
+                for (int i = 0; i < response.length(); i++) {
+                    try {
+                        respuesta.add(response.getJSONObject(i));
+                        rv.setAdapter(new AdapterPrincipal(respuesta));
+                        Log.d("PEPEPEPPE", "onResponse: "+respuesta.get(0).get("nombre"));
+                    } catch (JSONException e) {
+                        e.printStackTrace();
+                    }
+                }
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                error.printStackTrace();
+            }
+        });
+        requestQueue.add(jsonArrayRequest);
     }
 
     @Override
