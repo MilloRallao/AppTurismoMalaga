@@ -20,6 +20,7 @@
     <string name="ml_cabezera">Turistic Malaga</string>
 
     <!-- menu lateral -->
+    <string name="ml_inicio">Home</string>
     <string name="ml_event">Events</string>
     <string name="ml_cultura">Culture</string>
     <string name="ml_ocio">Free time</string>

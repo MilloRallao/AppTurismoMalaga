@@ -8,7 +8,7 @@
         <item
             android:id="@+id/principal"
             android:icon="@drawable/ic_home"
-            android:title="Inicio"/>
+            android:title="@string/ml_inicio"/>
         <item
             android:id="@+id/nav_event"
             android:title="@string/ml_event"
