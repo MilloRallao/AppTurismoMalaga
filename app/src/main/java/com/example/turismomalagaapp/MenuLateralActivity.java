@@ -1,9 +1,6 @@
 package com.example.turismomalagaapp;
 
-import android.content.res.Configuration;
-import android.os.Build;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -50,7 +47,7 @@ public class MenuLateralActivity extends AppCompatActivity {
                 FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
                 transaction.replace(R.id.nav_host_fragment, mapFragment);
                 Toolbar toolbar = findViewById(R.id.toolbar);
-                toolbar.setTitle("Mapa");
+                toolbar.setTitle(R.string.ml_map);
                 transaction.addToBackStack(null);
                 transaction.commit();
             }

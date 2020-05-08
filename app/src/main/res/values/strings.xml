@@ -28,6 +28,7 @@
     <string name="ml_pInfo">Puntos de informacion</string>
     <string name="ml_compras">Compras</string>
     <string name="ml_cSol">Costa del sol</string>
+    <string name="ml_map">Mapa</string>
 
     <!-- Boton flotante -->
     <string name="title_activity_maps">Map</string>
