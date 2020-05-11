@@ -46,7 +46,7 @@ public class PrincipalFragment extends Fragment {
 
     private TextView temperatura;
     private ImageView icono_tiempo;
-    String BD_URL = "https://projectfctappmalaga.000webhostapp.com/select_restaurante.php";
+    String BD_URL = "https://projectfctappmalaga.000webhostapp.com/MalagaApp/select_restaurante.php";
     List<JSONObject> respuesta;
 
     @Override
