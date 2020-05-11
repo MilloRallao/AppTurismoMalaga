@@ -16,7 +16,6 @@ import android.view.ViewGroup;
 import com.example.turismomalagaapp.R;
 
 public class CostaSolCiudadesFragment extends Fragment {
-
     Context context;
     private RecyclerView rv;
     private RecyclerView.LayoutManager layoutManager;

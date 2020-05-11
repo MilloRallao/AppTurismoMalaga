@@ -73,7 +73,6 @@ public class PrincipalFragment extends Fragment {
         return view;
     }
 
-
     public void cargarRespuesta(){
         respuesta = new ArrayList<>();
         RequestQueue requestQueue = Volley.newRequestQueue(context);
@@ -83,8 +82,7 @@ public class PrincipalFragment extends Fragment {
                 for (int i = 0; i < response.length(); i++) {
                     try {
                         respuesta.add(response.getJSONObject(i));
-                        rv.setAdapter(new AdapterPrincipal(respuesta));
-                        Log.d("PEPEPEPPE", "onResponse: "+respuesta.get(0).get("nombre"));
+                        rv.setAdapter(new AdapterPrincipal(respuesta, getActivity()));
                     } catch (JSONException e) {
                         e.printStackTrace();
                     }
