@@ -65,7 +65,6 @@ public class AlojamientoFragment extends Fragment {
                     try {
                         respuesta.add(response.getJSONObject(i));
                         rv.setAdapter(new AdapterAlojamiento(respuesta));
-                        Log.d("PEPEPEPPE", "onResponse: "+respuesta.get(0).get("nombre"));
                     } catch (JSONException e) {
                         e.printStackTrace();
                     }

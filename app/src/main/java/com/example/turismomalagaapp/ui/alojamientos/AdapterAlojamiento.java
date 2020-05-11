@@ -73,7 +73,7 @@ public class AdapterAlojamiento extends RecyclerView.Adapter<AdapterAlojamiento.
 
     @Override
     public int getItemCount() {
-        return 10;
+        return respuesta.size();
     }
 
     static class MyViewHolder extends RecyclerView.ViewHolder{

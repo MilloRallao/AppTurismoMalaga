@@ -4,16 +4,26 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.bumptech.glide.Glide;
 import com.example.turismomalagaapp.R;
+
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.util.List;
 
 public class AdapterOcio extends RecyclerView.Adapter<AdapterOcio.MyViewHolder>{
 
-    public AdapterOcio(){
+    List<JSONObject> respuesta;
+
+    public AdapterOcio(List<JSONObject> response){
+        respuesta = response;
     }
 
     @NonNull
@@ -25,16 +35,29 @@ public class AdapterOcio extends RecyclerView.Adapter<AdapterOcio.MyViewHolder>{
 
     @Override
     public void onBindViewHolder(AdapterOcio.MyViewHolder holder, final int position) {
+        try {
+            holder.textview_lugar_ocio.setText(respuesta.get(position).getString("nombre"));
+            holder.textView_descripcion_ocio.setText(respuesta.get(position).getString("descripcion"));
+            Glide.with(holder.itemView).load(respuesta.get(position).getString("url_img")).into(holder.imageView_lugar_ocio);
+        }catch (JSONException e) {
+            e.printStackTrace();
+        }
     }
 
     @Override
     public int getItemCount() {
-        return 10;
+        return respuesta.size();
     }
 
     static class MyViewHolder extends RecyclerView.ViewHolder{
+        private ImageView imageView_lugar_ocio;
+        private TextView textview_lugar_ocio, textView_descripcion_ocio;
         MyViewHolder(View v) {
             super(v);
+            imageView_lugar_ocio = v.findViewById(R.id.imageView_lugar_ocio);
+            textview_lugar_ocio = v.findViewById(R.id.textview_lugar_ocio);
+            textView_descripcion_ocio = v.findViewById(R.id.textView_descripcion_ocio);
         }
+
     }
 }
