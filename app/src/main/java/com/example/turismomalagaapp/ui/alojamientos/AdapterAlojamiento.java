@@ -3,18 +3,27 @@ package com.example.turismomalagaapp.ui.alojamientos;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.bumptech.glide.Glide;
 import com.example.turismomalagaapp.R;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.util.List;
+
 public class AdapterAlojamiento extends RecyclerView.Adapter<AdapterAlojamiento.MyViewHolder>  {
 
-    public AdapterAlojamiento(){
+    List<JSONObject> respuesta;
+
+     public AdapterAlojamiento(List<JSONObject> response){
+         respuesta = response;
     }
 
     @NonNull
@@ -26,11 +35,40 @@ public class AdapterAlojamiento extends RecyclerView.Adapter<AdapterAlojamiento.
 
     @Override
     public void onBindViewHolder(AdapterAlojamiento.MyViewHolder holder, final int position) {
-        holder.estrella1.setVisibility(View.VISIBLE);
-        holder.estrella2.setVisibility(View.VISIBLE);
-        holder.estrella3.setVisibility(View.VISIBLE);
-        holder.estrella4.setVisibility(View.VISIBLE);
-        holder.estrella5.setVisibility(View.VISIBLE);
+         try{
+             holder.textview_nombre_alojamiento.setText(respuesta.get(position).getString("nombre"));
+             holder.textView_descripcion_alojamiento.setText(respuesta.get(position).getString("descripcion"));
+             switch (Integer.parseInt(respuesta.get(position).getString("estrellas"))){
+                 case 1 :
+                     holder.estrella1.setVisibility(View.VISIBLE);
+                     break;
+                 case 2:
+                     holder.estrella1.setVisibility(View.VISIBLE);
+                     holder.estrella2.setVisibility(View.VISIBLE);
+                     break;
+                 case 3:
+                     holder.estrella1.setVisibility(View.VISIBLE);
+                     holder.estrella2.setVisibility(View.VISIBLE);
+                     holder.estrella3.setVisibility(View.VISIBLE);
+                     break;
+                 case 4:
+                     holder.estrella1.setVisibility(View.VISIBLE);
+                     holder.estrella2.setVisibility(View.VISIBLE);
+                     holder.estrella3.setVisibility(View.VISIBLE);
+                     holder.estrella4.setVisibility(View.VISIBLE);
+                     break;
+                 case 5:
+                     holder.estrella1.setVisibility(View.VISIBLE);
+                     holder.estrella2.setVisibility(View.VISIBLE);
+                     holder.estrella3.setVisibility(View.VISIBLE);
+                     holder.estrella4.setVisibility(View.VISIBLE);
+                     holder.estrella5.setVisibility(View.VISIBLE);
+                     break;
+             }
+             Glide.with(holder.itemView).load(respuesta.get(position).getString("url_img")).into(holder.imageView);
+         }catch (JSONException e) {
+             e.printStackTrace();
+         }
     }
 
     @Override
@@ -39,10 +77,13 @@ public class AdapterAlojamiento extends RecyclerView.Adapter<AdapterAlojamiento.
     }
 
     static class MyViewHolder extends RecyclerView.ViewHolder{
-        ImageView imageView, estrella1, estrella2, estrella3, estrella4, estrella5;
-        FloatingActionButton ver_alojamiento;
+        private ImageView imageView, estrella1, estrella2, estrella3, estrella4, estrella5;
+        private TextView textview_nombre_alojamiento, textView_descripcion_alojamiento;
+        private FloatingActionButton ver_alojamiento;
         MyViewHolder(View v) {
             super(v);
+            textview_nombre_alojamiento = v.findViewById(R.id.textview_nombre_alojamiento);
+            textView_descripcion_alojamiento = v.findViewById(R.id.textView_descripcion_alojamiento);
             imageView = v.findViewById(R.id.imageView_alojamiento);
             estrella1 = v.findViewById(R.id.estrella1);
             estrella2 = v.findViewById(R.id.estrella2);
