@@ -14,4 +14,8 @@
         android:id="@+id/action_valorar"
         android:title="@string/action_valorar"
         app:showAsAction="never"/>
+    <item
+        android:id="@+id/action_recomendaciones"
+        android:icon="@drawable/ic_recomendaciones"
+        app:showAsAction="always"/>
 </menu>

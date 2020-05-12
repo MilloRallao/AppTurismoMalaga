@@ -1,10 +1,12 @@
 package com.example.turismomalagaapp;
 
+import android.content.DialogInterface;
 import android.os.Bundle;
 import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.core.view.GravityCompat;
@@ -117,19 +119,26 @@ public class MenuLateralActivity extends AppCompatActivity {
                 fragmentTransaction3.addToBackStack(null);
                 fragmentTransaction3.commit();
                 return true;
+            case R.id.action_recomendaciones: //recomendaciones covi 19
+                recomendaciones();
+                return true;
             default:
                 return super.onOptionsItemSelected(item);
         }
     }
-
-    public void home(View v){// para volver al principal con la casita
-        PrincipalFragment fragment = new PrincipalFragment();
-        FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
-        fragmentTransaction.replace(R.id.nav_host_fragment,fragment);
-        Toolbar toolbar = findViewById(R.id.toolbar);
-        toolbar.setTitle("TurismoMalaga");
-        fragmentTransaction.addToBackStack(null);
-        fragmentTransaction.commit();
+    public void recomendaciones(){
+        AlertDialog.Builder alerta = new AlertDialog.Builder(MenuLateralActivity.this);
+        alerta.setMessage(R.string.info).setCancelable(true).setNegativeButton(R.string.salir, new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                dialog.cancel();
+            }
+        });
+        AlertDialog titulo = alerta.create();
+        titulo.setTitle(R.string.titulo);
+        titulo.show();
     }
+
+
 
 }
