@@ -64,7 +64,7 @@ public class ComprasFragment extends Fragment {
                 for (int i = 0; i < response.length(); i++) {
                     try {
                         respuesta.add(response.getJSONObject(i));
-                        rv.setAdapter(new AdapterCompras(respuesta));
+                        rv.setAdapter(new AdapterCompras(respuesta, getActivity()));
                     } catch (JSONException e) {
                         e.printStackTrace();
                     }

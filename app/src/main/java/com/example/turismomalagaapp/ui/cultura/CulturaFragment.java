@@ -63,7 +63,7 @@ public class CulturaFragment extends Fragment {
                 for (int i = 0; i < response.length(); i++) {
                     try {
                         respuesta.add(response.getJSONObject(i));
-                        rv.setAdapter(new AdapterCultura(respuesta));
+                        rv.setAdapter(new AdapterCultura(respuesta, getActivity()));
                     } catch (JSONException e) {
                         e.printStackTrace();
                     }

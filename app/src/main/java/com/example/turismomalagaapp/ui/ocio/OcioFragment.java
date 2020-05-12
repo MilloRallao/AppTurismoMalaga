@@ -64,7 +64,7 @@ public class OcioFragment extends Fragment {
                 for (int i = 0; i < response.length(); i++) {
                     try {
                         respuesta.add(response.getJSONObject(i));
-                        rv.setAdapter(new AdapterOcio(respuesta));
+                        rv.setAdapter(new AdapterOcio(respuesta, getActivity()));
                     } catch (JSONException e) {
                         e.printStackTrace();
                     }

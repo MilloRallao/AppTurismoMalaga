@@ -56,28 +56,14 @@ public class MapFragment extends Fragment implements OnMapReadyCallback {
 
         MapsInitializer.initialize(getContext());
         map = googleMap;
-        LatLng sydney1 = new LatLng(-33.852, 151.211);
-        LatLng sydney2 = new LatLng(-33.852, 149.211);
-        LatLng sydney3 = new LatLng(-33.852, 147.211);
-        MarkerOptions loc1 = new MarkerOptions().position(sydney1).title("RAMÓN").snippet("Vidal");
-        MarkerOptions loc2 = new MarkerOptions().position(sydney2).title("DAVID").snippet("Curbelo");
-        MarkerOptions loc3 = new MarkerOptions().position(sydney3).title("CARLOS").snippet("Garrido");
-        googleMap.addMarker(loc1);
-        googleMap.addMarker(loc2);
-        googleMap.addMarker(loc3);
         if (ContextCompat.checkSelfPermission(getContext(), Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED) {
             googleMap.setMyLocationEnabled(true);
         }else {
             googleMap.setMyLocationEnabled(false);
         }
-        googleMap.setMinZoomPreference(10);
-        googleMap.moveCamera(CameraUpdateFactory.newLatLng(sydney2));
 
-        LatLng marcador1 = new LatLng(-13.5242178, -71.9754913);
-        map.addMarker(new MarkerOptions()
-                .position(marcador1)
-                .title("Machu Picchu - Perú")
-                .icon(BitmapDescriptorFactory.fromResource(R.drawable.ic_plane)));
+        LatLng marcador1 = new LatLng(36.7201614, -4.4203401);
+        map.addMarker(new MarkerOptions().position(marcador1));
         map.moveCamera(CameraUpdateFactory.newLatLng(marcador1));
 
         LatLngBounds.Builder constructor = new LatLngBounds.Builder();

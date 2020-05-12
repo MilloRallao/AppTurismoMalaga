@@ -34,12 +34,14 @@ public class CostaSolFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_costa_sol, container, false);
-
+        final Bundle bundle = new Bundle();
         nerja = view.findViewById(R.id.Nerja);
         nerja.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                bundle.putString("nombre", "nerja");
                 CostaSolCiudadesFragment ciudadCostaSolFragment = new CostaSolCiudadesFragment();
+                ciudadCostaSolFragment.setArguments(bundle);
                 FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
                 transaction.replace(R.id.nav_host_fragment, ciudadCostaSolFragment);
                 transaction.addToBackStack(String.valueOf(v.getRootView()));
@@ -52,6 +54,8 @@ public class CostaSolFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 CostaSolCiudadesFragment ciudadCostaSolFragment = new CostaSolCiudadesFragment();
+                bundle.putString("nombre", "velezmalaga");
+                ciudadCostaSolFragment.setArguments(bundle);
                 FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
                 transaction.replace(R.id.nav_host_fragment, ciudadCostaSolFragment);
                 transaction.addToBackStack(String.valueOf(v.getRootView()));
@@ -64,6 +68,8 @@ public class CostaSolFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 CostaSolCiudadesFragment ciudadCostaSolFragment = new CostaSolCiudadesFragment();
+                bundle.putString("nombre", "rinconvictoria");
+                ciudadCostaSolFragment.setArguments(bundle);
                 FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
                 transaction.replace(R.id.nav_host_fragment, ciudadCostaSolFragment);
                 transaction.addToBackStack(String.valueOf(v.getRootView()));
@@ -76,6 +82,8 @@ public class CostaSolFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 CostaSolCiudadesFragment ciudadCostaSolFragment = new CostaSolCiudadesFragment();
+                bundle.putString("nombre", "torremolinos");
+                ciudadCostaSolFragment.setArguments(bundle);
                 FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
                 transaction.replace(R.id.nav_host_fragment, ciudadCostaSolFragment);
                 transaction.addToBackStack(String.valueOf(v.getRootView()));
@@ -88,6 +96,8 @@ public class CostaSolFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 CostaSolCiudadesFragment ciudadCostaSolFragment = new CostaSolCiudadesFragment();
+                bundle.putString("nombre", "benalmadena");
+                ciudadCostaSolFragment.setArguments(bundle);
                 FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
                 transaction.replace(R.id.nav_host_fragment, ciudadCostaSolFragment);
                 transaction.addToBackStack(String.valueOf(v.getRootView()));
@@ -100,6 +110,8 @@ public class CostaSolFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 CostaSolCiudadesFragment ciudadCostaSolFragment = new CostaSolCiudadesFragment();
+                bundle.putString("nombre", "nerja");
+                ciudadCostaSolFragment.setArguments(bundle);
                 FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
                 transaction.replace(R.id.nav_host_fragment, ciudadCostaSolFragment);
                 transaction.addToBackStack(String.valueOf(v.getRootView()));
@@ -112,6 +124,8 @@ public class CostaSolFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 CostaSolCiudadesFragment ciudadCostaSolFragment = new CostaSolCiudadesFragment();
+                bundle.putString("nombre", "mijas");
+                ciudadCostaSolFragment.setArguments(bundle);
                 FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
                 transaction.replace(R.id.nav_host_fragment, ciudadCostaSolFragment);
                 transaction.addToBackStack(String.valueOf(v.getRootView()));
@@ -124,6 +138,8 @@ public class CostaSolFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 CostaSolCiudadesFragment ciudadCostaSolFragment = new CostaSolCiudadesFragment();
+                bundle.putString("nombre", "marbella");
+                ciudadCostaSolFragment.setArguments(bundle);
                 FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
                 transaction.replace(R.id.nav_host_fragment, ciudadCostaSolFragment);
                 transaction.addToBackStack(String.valueOf(v.getRootView()));

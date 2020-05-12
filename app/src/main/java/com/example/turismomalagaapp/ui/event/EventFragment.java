@@ -64,7 +64,7 @@ public class EventFragment extends Fragment {
                 for (int i = 0; i < response.length(); i++) {
                     try {
                         respuesta.add(response.getJSONObject(i));
-                        rv.setAdapter(new AdapterEventos(respuesta));
+                        rv.setAdapter(new AdapterEventos(respuesta, getActivity()));
                     } catch (JSONException e) {
                         e.printStackTrace();
                     }

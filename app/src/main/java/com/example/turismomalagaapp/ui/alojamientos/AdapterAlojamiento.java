@@ -1,5 +1,6 @@
 package com.example.turismomalagaapp.ui.alojamientos;
 
+import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -7,10 +8,14 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.cardview.widget.CardView;
+import androidx.fragment.app.FragmentActivity;
+import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
 import com.example.turismomalagaapp.R;
+import com.example.turismomalagaapp.ui.OnClickVerFragment;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import org.json.JSONException;
@@ -19,11 +24,12 @@ import org.json.JSONObject;
 import java.util.List;
 
 public class AdapterAlojamiento extends RecyclerView.Adapter<AdapterAlojamiento.MyViewHolder>  {
+    private List<JSONObject> respuesta;
+    private FragmentActivity actividad;
 
-    List<JSONObject> respuesta;
-
-     public AdapterAlojamiento(List<JSONObject> response){
+     public AdapterAlojamiento(List<JSONObject> response, FragmentActivity activity){
          respuesta = response;
+         actividad = activity;
     }
 
     @NonNull
@@ -76,12 +82,13 @@ public class AdapterAlojamiento extends RecyclerView.Adapter<AdapterAlojamiento.
         return respuesta.size();
     }
 
-    static class MyViewHolder extends RecyclerView.ViewHolder{
+    class MyViewHolder extends RecyclerView.ViewHolder{
+        private CardView cardView;
         private ImageView imageView, estrella1, estrella2, estrella3, estrella4, estrella5;
         private TextView textview_nombre_alojamiento, textView_descripcion_alojamiento;
-        private FloatingActionButton ver_alojamiento;
         MyViewHolder(View v) {
             super(v);
+            cardView = v.findViewById(R.id.cardview_alojamiento);
             textview_nombre_alojamiento = v.findViewById(R.id.textview_nombre_alojamiento);
             textView_descripcion_alojamiento = v.findViewById(R.id.textView_descripcion_alojamiento);
             imageView = v.findViewById(R.id.imageView_alojamiento);
@@ -90,11 +97,24 @@ public class AdapterAlojamiento extends RecyclerView.Adapter<AdapterAlojamiento.
             estrella3 = v.findViewById(R.id.estrella3);
             estrella4= v.findViewById(R.id.estrella4);
             estrella5= v.findViewById(R.id.estrella5);
-            ver_alojamiento = v.findViewById(R.id.floatingActionButton_ver_alojamiento);
-            ver_alojamiento.setOnClickListener(new View.OnClickListener() {
+            cardView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-
+                    Bundle bundle = new Bundle();
+                    OnClickVerFragment onClickVerFragment = new OnClickVerFragment();
+                    try {
+                        bundle.putString("nombre", respuesta.get(getAdapterPosition()).getString("nombre"));
+                        bundle.putString("descripcion", respuesta.get(getAdapterPosition()).getString("descripcion"));
+                        bundle.putString("imagen", respuesta.get(getAdapterPosition()).getString("url_img"));
+                        bundle.putString("telefono", respuesta.get(getAdapterPosition()).getString("telefono"));
+                    } catch (JSONException e) {
+                        e.printStackTrace();
+                    }
+                    onClickVerFragment.setArguments(bundle);
+                    FragmentTransaction transaction = actividad.getSupportFragmentManager().beginTransaction();
+                    transaction.replace(R.id.nav_host_fragment, onClickVerFragment);
+                    transaction.addToBackStack(String.valueOf(v.getRootView()));
+                    transaction.commit();
                 }
             });
         }

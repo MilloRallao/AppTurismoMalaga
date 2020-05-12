@@ -22,7 +22,6 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonArrayRequest;
 import com.android.volley.toolbox.Volley;
 import com.example.turismomalagaapp.R;
-import com.example.turismomalagaapp.ui.compras.AdapterCompras;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -35,10 +34,8 @@ public class CostaSolCiudadesFragment extends Fragment {
     Context context;
     private RecyclerView rv;
     private RecyclerView.LayoutManager layoutManager;
-
-    String BD_URL = "https://projectfctappmalaga.000webhostapp.com/MalagaApp/select_costaDelSol.php?nombre_ciudad=(varaible)https://projectfctappmalaga.000webhostapp.com/MalagaApp/select_costaDelSol.php?nombre_ciudad=(varaible)";
+    String BD_URL = "https://projectfctappmalaga.000webhostapp.com/MalagaApp/select_costaDelSol.php?nombre_ciudad=";
     List<JSONObject> respuesta;
-
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
@@ -58,7 +55,12 @@ public class CostaSolCiudadesFragment extends Fragment {
         ((LinearLayoutManager) layoutManager).setOrientation(LinearLayoutManager.VERTICAL);
         rv.setHasFixedSize(true);
         rv.setLayoutManager(layoutManager);
-        cargarRespuesta();
+        Bundle bundle = this.getArguments();
+        if (bundle != null) {
+            String nombre_ciudad = bundle.getString("nombre");
+            BD_URL += nombre_ciudad;
+            cargarRespuesta();
+        }
         return view;
     }
 

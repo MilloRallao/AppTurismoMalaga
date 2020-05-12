@@ -64,7 +64,7 @@ public class GastronomiaFragment extends Fragment {
                 for (int i = 0; i < response.length(); i++) {
                     try {
                         respuesta.add(response.getJSONObject(i));
-                        rv.setAdapter(new AdapterGastronomia(respuesta));
+                        rv.setAdapter(new AdapterGastronomia(respuesta, getActivity()));
                     } catch (JSONException e) {
                         e.printStackTrace();
                     }

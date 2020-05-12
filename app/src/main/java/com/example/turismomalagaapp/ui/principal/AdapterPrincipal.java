@@ -8,6 +8,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.cardview.widget.CardView;
 import androidx.fragment.app.FragmentActivity;
 import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.RecyclerView;
@@ -23,8 +24,8 @@ import org.json.JSONObject;
 import java.util.List;
 
 public class AdapterPrincipal extends RecyclerView.Adapter<AdapterPrincipal.MyViewHolder> {
-    List<JSONObject> respuesta;
-    FragmentActivity actividad;
+    private List<JSONObject> respuesta;
+    private FragmentActivity actividad;
 
     AdapterPrincipal(List<JSONObject> response, FragmentActivity activity){
         respuesta = response;
@@ -55,17 +56,17 @@ public class AdapterPrincipal extends RecyclerView.Adapter<AdapterPrincipal.MyVi
     }
 
     class MyViewHolder extends RecyclerView.ViewHolder{
+        private CardView cardView;
         private TextView evento;
         private TextView descripcion;
         private ImageView imagen;
-        private FloatingActionButton ver;
         MyViewHolder(View v) {
             super(v);
+            cardView = v.findViewById(R.id.cardview_principal_eventos);
             evento = v.findViewById(R.id.textview_evento_principal);
             descripcion = v.findViewById(R.id.textView_descripcion_evento_principal);
             imagen = v.findViewById(R.id.imageView_evento_principal);
-            ver = v.findViewById(R.id.floatingActionButton5);
-            ver.setOnClickListener(new View.OnClickListener() {
+            cardView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
                     Bundle bundle = new Bundle();

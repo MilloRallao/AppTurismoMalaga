@@ -22,6 +22,7 @@
             android:layout_height="150dp"
             android:layout_marginStart="8dp"
             android:layout_marginTop="16dp"
+            android:contentDescription="@string/app_name"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
@@ -47,19 +48,6 @@
             android:textStyle="bold"
             app:layout_constraintStart_toEndOf="@+id/imageView_tienda"
             app:layout_constraintTop_toBottomOf="@+id/textview_tienda" />
-
-        <com.google.android.material.floatingactionbutton.FloatingActionButton
-            android:id="@+id/floatingActionButton"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginEnd="8dp"
-            android:layout_marginBottom="8dp"
-            android:clickable="true"
-            app:elevation="5dp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:maxImageSize="32dp"
-            app:srcCompat="@drawable/icono_ver_alojamiento" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

@@ -64,7 +64,7 @@ public class AlojamientoFragment extends Fragment {
                 for (int i = 0; i < response.length(); i++) {
                     try {
                         respuesta.add(response.getJSONObject(i));
-                        rv.setAdapter(new AdapterAlojamiento(respuesta));
+                        rv.setAdapter(new AdapterAlojamiento(respuesta, getActivity()));
                     } catch (JSONException e) {
                         e.printStackTrace();
                     }
