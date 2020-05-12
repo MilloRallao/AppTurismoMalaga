@@ -82,7 +82,7 @@ public class ContactoFragment extends Fragment {
         protected String doInBackground(String... params) {
             try {
                 Message message = new MimeMessage(session);
-                message.setFrom(new InternetAddress("testfrom354@gmail.com"));
+                message.setFrom(new InternetAddress("proyectofctmalaga@gmail.com"));
                 message.setRecipients(Message.RecipientType.TO, InternetAddress.parse(rec));
                 message.setSubject(subject);
                 message.setContent(textMessage, "text/html; charset=utf-8");
