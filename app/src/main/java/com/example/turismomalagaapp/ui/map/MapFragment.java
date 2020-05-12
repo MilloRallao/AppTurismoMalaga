@@ -13,12 +13,15 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.example.turismomalagaapp.R;
+import com.google.android.gms.maps.CameraUpdate;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.MapView;
 import com.google.android.gms.maps.MapsInitializer;
 import com.google.android.gms.maps.OnMapReadyCallback;
+import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.LatLng;
+import com.google.android.gms.maps.model.LatLngBounds;
 import com.google.android.gms.maps.model.MarkerOptions;
 
 public class MapFragment extends Fragment implements OnMapReadyCallback {
@@ -69,6 +72,25 @@ public class MapFragment extends Fragment implements OnMapReadyCallback {
         }
         googleMap.setMinZoomPreference(10);
         googleMap.moveCamera(CameraUpdateFactory.newLatLng(sydney2));
+
+        LatLng marcador1 = new LatLng(-13.5242178, -71.9754913);
+        map.addMarker(new MarkerOptions()
+                .position(marcador1)
+                .title("Machu Picchu - Perú")
+                .icon(BitmapDescriptorFactory.fromResource(R.drawable.ic_plane)));
+        map.moveCamera(CameraUpdateFactory.newLatLng(marcador1));
+
+        LatLngBounds.Builder constructor = new LatLngBounds.Builder();
+        constructor.include(marcador1);
+        LatLngBounds limites = constructor.build();
+
+        int ancho = getResources().getDisplayMetrics().widthPixels;
+        int alto = getResources().getDisplayMetrics().heightPixels;
+        int padding = (int) (alto * 0.25); // 25% de espacio (padding) superior e inferior
+
+        CameraUpdate centrarmarcadores = CameraUpdateFactory.newLatLngBounds(limites, ancho, alto, padding);
+
+        map.animateCamera(centrarmarcadores);
     }
 
 }
