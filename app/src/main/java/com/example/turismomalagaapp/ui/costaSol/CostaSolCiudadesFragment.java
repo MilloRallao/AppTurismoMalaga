@@ -16,12 +16,29 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.JsonArrayRequest;
+import com.android.volley.toolbox.Volley;
 import com.example.turismomalagaapp.R;
+import com.example.turismomalagaapp.ui.compras.AdapterCompras;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class CostaSolCiudadesFragment extends Fragment {
     Context context;
     private RecyclerView rv;
     private RecyclerView.LayoutManager layoutManager;
+
+    String BD_URL = "https://projectfctappmalaga.000webhostapp.com/MalagaApp/select_costaDelSol.php?nombre_ciudad=(varaible)https://projectfctappmalaga.000webhostapp.com/MalagaApp/select_costaDelSol.php?nombre_ciudad=(varaible)";
+    List<JSONObject> respuesta;
+
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
@@ -41,9 +58,34 @@ public class CostaSolCiudadesFragment extends Fragment {
         ((LinearLayoutManager) layoutManager).setOrientation(LinearLayoutManager.VERTICAL);
         rv.setHasFixedSize(true);
         rv.setLayoutManager(layoutManager);
-        rv.setAdapter(new CostaSolCiudadesAdapter());
+        cargarRespuesta();
         return view;
     }
+
+    public void cargarRespuesta(){
+        respuesta = new ArrayList<>();
+        RequestQueue requestQueue = Volley.newRequestQueue(context);
+        JsonArrayRequest jsonArrayRequest = new JsonArrayRequest(BD_URL, new Response.Listener<JSONArray>() {
+            @Override
+            public void onResponse(JSONArray response) {
+                for (int i = 0; i < response.length(); i++) {
+                    try {
+                        respuesta.add(response.getJSONObject(i));
+                        rv.setAdapter(new CostaSolCiudadesAdapter(respuesta));
+                    } catch (JSONException e) {
+                        e.printStackTrace();
+                    }
+                }
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                error.printStackTrace();
+            }
+        });
+        requestQueue.add(jsonArrayRequest);
+    }
+
     @Override
     public void onResume() {
         super.onResume();

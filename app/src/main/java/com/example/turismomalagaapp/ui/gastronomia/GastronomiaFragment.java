@@ -35,7 +35,7 @@ public class GastronomiaFragment extends Fragment {
     private RecyclerView rv;
     private RecyclerView.LayoutManager layoutManager;
 
-    String BD_URL = "https://projectfctappmalaga.000webhostapp.com/MalagaApp/select_cultura.php";
+    String BD_URL = "https://projectfctappmalaga.000webhostapp.com/MalagaApp/select_restaurante.php";
     List<JSONObject> respuesta;
 
     @Override
