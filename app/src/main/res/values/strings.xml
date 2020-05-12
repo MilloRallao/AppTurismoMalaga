@@ -45,4 +45,15 @@
     <string name="btn">Enviar</string>
     <string name="gmail">Direccion de correo</string>
     <string name="mensaje">Mensaje</string>
+
+    <!-- recomendaciones -->
+    <string name="info">
+        Lávese las manos frecuentemente.\n
+        Mantenga el distanciamiento social.\n
+        Evite tocarse los ojos, la nariz y la boca.\n
+        Si tiene fiebre, tos y dificultad para respirar, solicite atención médica a tiempo.
+    </string>
+    <string name="salir">Salir</string>
+    <string name="titulo">Recomendaciones Covi-19</string>
+
 </resources>

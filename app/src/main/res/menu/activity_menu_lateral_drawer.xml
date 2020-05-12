@@ -42,5 +42,6 @@
             android:id="@+id/nav_cSol"
             android:title="@string/ml_cSol"
             android:icon="@drawable/ic_costa"/>
+
     </group>
 </menu>

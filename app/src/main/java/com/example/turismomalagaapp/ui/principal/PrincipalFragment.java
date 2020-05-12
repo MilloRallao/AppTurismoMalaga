@@ -112,7 +112,7 @@ public class PrincipalFragment extends Fragment {
         super.onViewCreated(view, savedInstanceState);
     }
 
-    private class JsonTask extends AsyncTask<String, String, JSONObject> {
+    private class JsonTask extends AsyncTask<String, String, JSONObject>{
         protected void onPreExecute() {
             super.onPreExecute();
         }
