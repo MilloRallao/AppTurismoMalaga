@@ -27,12 +27,11 @@
 
         <TextView
             android:id="@+id/textview_lugar_ocio"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="220dp"
+            android:layout_height="40dp"
             android:layout_marginStart="16dp"
             android:layout_marginTop="16dp"
-            android:text="Lugar de ocio"
-            android:textAllCaps="true"
+            android:text="Título"
             android:textStyle="bold"
             app:layout_constraintStart_toEndOf="@+id/imageView_lugar_ocio"
             app:layout_constraintTop_toTopOf="parent" />
@@ -44,6 +43,7 @@
             android:layout_marginStart="16dp"
             android:layout_marginTop="16dp"
             android:text="Descripcion"
+            android:textStyle="bold"
             app:layout_constraintStart_toEndOf="@+id/imageView_lugar_ocio"
             app:layout_constraintTop_toBottomOf="@+id/textview_lugar_ocio" />
 

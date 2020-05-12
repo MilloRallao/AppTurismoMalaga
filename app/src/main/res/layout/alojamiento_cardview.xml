@@ -27,12 +27,11 @@
 
         <TextView
             android:id="@+id/textview_nombre_alojamiento"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="220dp"
+            android:layout_height="40dp"
             android:layout_marginStart="8dp"
             android:layout_marginTop="16dp"
-            android:text="Alojamiento"
-            android:textAllCaps="true"
+            android:text="Título"
             android:textStyle="bold"
             app:layout_constraintStart_toEndOf="@+id/imageView_alojamiento"
             app:layout_constraintTop_toTopOf="parent" />
