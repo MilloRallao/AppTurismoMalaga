@@ -19,7 +19,6 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonArrayRequest;
 import com.android.volley.toolbox.Volley;
 import com.example.turismomalagaapp.R;
-import com.example.turismomalagaapp.ui.compras.AdapterCompras;
 
 import org.json.JSONArray;
 import org.json.JSONException;

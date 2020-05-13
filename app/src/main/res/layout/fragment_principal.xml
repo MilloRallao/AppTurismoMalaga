@@ -33,7 +33,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
-            android:text="Ciudad de Málaga"
+            android:text="@string/nombre_ciudad_malaga"
             android:textStyle="bold"
             app:layout_constraintEnd_toStartOf="@+id/imageView_icono_tiempo"
             app:layout_constraintStart_toEndOf="@+id/textView_temperatura_ciudad"

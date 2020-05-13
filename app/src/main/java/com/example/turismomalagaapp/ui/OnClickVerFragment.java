@@ -12,6 +12,7 @@ import androidx.fragment.app.FragmentManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.util.Log;
 import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -45,17 +46,31 @@ public class OnClickVerFragment extends Fragment {
             ImageView imagen = view.findViewById(R.id.imageView_onclick);
             String aux_imagen = bundle.getString("imagen");
             Glide.with(view).load(aux_imagen).into(imagen);
-            ImageButton llamada = view.findViewById(R.id.imageButton_llamada_onclick);
-            final String aux_telefono = bundle.getString("telefono");
-            llamada.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    Intent intent = new Intent(Intent.ACTION_DIAL).setData(Uri.parse("tel:" + aux_telefono));
-                    startActivity(intent);
-                }
-            });
         }
         return view;
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        Bundle bundle = this.getArguments();
+        final String id = bundle.getString("id");
+        if(getView() == null){
+            return;
+        }
+        getView().setFocusableInTouchMode(true);
+        getView().requestFocus();
+        getView().setOnKeyListener(new View.OnKeyListener() {
+            @Override
+            public boolean onKey(View v, int keyCode, KeyEvent event) {
+                if (event.getAction() == KeyEvent.ACTION_UP && keyCode == KeyEvent.KEYCODE_BACK){
+                    // Volver hacia la vista anterior
+                    getFragmentManager().popBackStack(id, FragmentManager.POP_BACK_STACK_INCLUSIVE);
+                    return true;
+                }
+                return false;
+            }
+        });
     }
 
     @Override

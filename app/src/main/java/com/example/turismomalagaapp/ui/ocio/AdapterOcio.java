@@ -44,7 +44,7 @@ public class AdapterOcio extends RecyclerView.Adapter<AdapterOcio.MyViewHolder>{
         try {
             holder.textview_lugar_ocio.setText(respuesta.get(position).getString("nombre"));
             holder.textView_descripcion_ocio.setText(respuesta.get(position).getString("descripcion"));
-            Glide.with(holder.itemView).load(respuesta.get(position).getString("url_img")).into(holder.imageView_lugar_ocio);
+            //Glide.with(holder.itemView).load(respuesta.get(position).getString("url_img")).into(holder.imageView_lugar_ocio);
         }catch (JSONException e) {
             e.printStackTrace();
         }
@@ -65,6 +65,7 @@ public class AdapterOcio extends RecyclerView.Adapter<AdapterOcio.MyViewHolder>{
             imageView_lugar_ocio = v.findViewById(R.id.imageView_lugar_ocio);
             textview_lugar_ocio = v.findViewById(R.id.textview_lugar_ocio);
             textView_descripcion_ocio = v.findViewById(R.id.textView_descripcion_ocio);
+            final String id = String.valueOf(v.getId());
             cardView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
@@ -74,14 +75,15 @@ public class AdapterOcio extends RecyclerView.Adapter<AdapterOcio.MyViewHolder>{
                         bundle.putString("nombre", respuesta.get(getAdapterPosition()).getString("nombre"));
                         bundle.putString("descripcion", respuesta.get(getAdapterPosition()).getString("descripcion"));
                         bundle.putString("imagen", respuesta.get(getAdapterPosition()).getString("url_img"));
-                        bundle.putString("telefono", respuesta.get(getAdapterPosition()).getString("telefono"));
+                        //bundle.putString("telefono", respuesta.get(getAdapterPosition()).getString("telefono"));
+                        bundle.putString("id", id);
                     } catch (JSONException e) {
                         e.printStackTrace();
                     }
                     onClickVerFragment.setArguments(bundle);
                     FragmentTransaction transaction = actividad.getSupportFragmentManager().beginTransaction();
                     transaction.replace(R.id.nav_host_fragment, onClickVerFragment);
-                    transaction.addToBackStack(String.valueOf(v.getRootView()));
+                    transaction.addToBackStack(id);
                     transaction.commit();
                 }
             });

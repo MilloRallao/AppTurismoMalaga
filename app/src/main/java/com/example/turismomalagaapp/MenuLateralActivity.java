@@ -13,7 +13,6 @@ import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.fragment.app.FragmentTransaction;
 import com.example.turismomalagaapp.ui.map.MapFragment;
-import com.example.turismomalagaapp.ui.principal.PrincipalFragment;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.navigation.NavigationView;
 import androidx.navigation.NavController;
@@ -23,8 +22,6 @@ import androidx.navigation.ui.NavigationUI;
 import com.example.turismomalagaapp.ui.Submenu.AjustesFragment;
 import com.example.turismomalagaapp.ui.Submenu.ContactoFragment;
 import com.example.turismomalagaapp.ui.Submenu.ValorarFragment;
-
-import java.util.Locale;
 
 
 public class MenuLateralActivity extends AppCompatActivity {

@@ -64,6 +64,7 @@ public class AdapterCultura extends RecyclerView.Adapter<AdapterCultura.MyViewHo
             imageView_lugar_cultural = v.findViewById(R.id.imageView_lugar_cultural);
             textview_lugar_cultural = v.findViewById(R.id.textview_lugar_cultural);
             textView_descripcion_lugar_cultural = v.findViewById(R.id.textView_descripcion_lugar_cultural);
+            final String id = String.valueOf(v.getId());
             cardView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
@@ -73,14 +74,15 @@ public class AdapterCultura extends RecyclerView.Adapter<AdapterCultura.MyViewHo
                         bundle.putString("nombre", respuesta.get(getAdapterPosition()).getString("nombre"));
                         bundle.putString("descripcion", respuesta.get(getAdapterPosition()).getString("descripcion"));
                         bundle.putString("imagen", respuesta.get(getAdapterPosition()).getString("url_img"));
-                        bundle.putString("telefono", respuesta.get(getAdapterPosition()).getString("telefono"));
+                        //bundle.putString("telefono", respuesta.get(getAdapterPosition()).getString("telefono"));
+                        bundle.putString("id", id);
                     } catch (JSONException e) {
                         e.printStackTrace();
                     }
                     onClickVerFragment.setArguments(bundle);
                     FragmentTransaction transaction = actividad.getSupportFragmentManager().beginTransaction();
                     transaction.replace(R.id.nav_host_fragment, onClickVerFragment);
-                    transaction.addToBackStack(String.valueOf(v.getRootView()));
+                    transaction.addToBackStack(id);
                     transaction.commit();
                 }
             });

@@ -91,6 +91,8 @@ public class CostaSolCiudadesFragment extends Fragment {
     @Override
     public void onResume() {
         super.onResume();
+        Bundle bundle = this.getArguments();
+        final String id = bundle.getString("id");
         if(getView() == null){
             return;
         }
@@ -101,7 +103,7 @@ public class CostaSolCiudadesFragment extends Fragment {
             public boolean onKey(View v, int keyCode, KeyEvent event) {
                 if (event.getAction() == KeyEvent.ACTION_UP && keyCode == KeyEvent.KEYCODE_BACK){
                     // Volver hacia la vista anterior
-                    getFragmentManager().popBackStack(String.valueOf(v.getRootView()), FragmentManager.POP_BACK_STACK_INCLUSIVE);
+                    getFragmentManager().popBackStack(id, FragmentManager.POP_BACK_STACK_INCLUSIVE);
                     return true;
                 }
                 return false;

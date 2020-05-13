@@ -65,6 +65,7 @@ public class AdapterGastronomia extends RecyclerView.Adapter<AdapterGastronomia.
             imageView_restaurante = v.findViewById(R.id.imageView_restaurante);
             textview_restaurante = v.findViewById(R.id.textview_restaurante);
             textView_descripcion_restaurante = v.findViewById(R.id.textView_descripcion_restaurante);
+            final String id = String.valueOf(v.getId());
             cardView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
@@ -75,13 +76,14 @@ public class AdapterGastronomia extends RecyclerView.Adapter<AdapterGastronomia.
                         bundle.putString("descripcion", respuesta.get(getAdapterPosition()).getString("descripcion"));
                         bundle.putString("imagen", respuesta.get(getAdapterPosition()).getString("url_img"));
                         bundle.putString("telefono", respuesta.get(getAdapterPosition()).getString("telefono"));
+                        bundle.putString("id", id);
                     } catch (JSONException e) {
                         e.printStackTrace();
                     }
                     onClickVerFragment.setArguments(bundle);
                     FragmentTransaction transaction = actividad.getSupportFragmentManager().beginTransaction();
                     transaction.replace(R.id.nav_host_fragment, onClickVerFragment);
-                    transaction.addToBackStack(String.valueOf(v.getRootView()));
+                    transaction.addToBackStack(id);
                     transaction.commit();
                 }
             });

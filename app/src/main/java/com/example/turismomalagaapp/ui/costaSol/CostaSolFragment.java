@@ -9,6 +9,7 @@ import androidx.cardview.widget.CardView;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -40,11 +41,12 @@ public class CostaSolFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 bundle.putString("nombre", "nerja");
+                bundle.putString("id", String.valueOf(v.getId()));
                 CostaSolCiudadesFragment ciudadCostaSolFragment = new CostaSolCiudadesFragment();
                 ciudadCostaSolFragment.setArguments(bundle);
                 FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
                 transaction.replace(R.id.nav_host_fragment, ciudadCostaSolFragment);
-                transaction.addToBackStack(String.valueOf(v.getRootView()));
+                transaction.addToBackStack(String.valueOf(v.getId()));
                 transaction.commit();
             }
         });

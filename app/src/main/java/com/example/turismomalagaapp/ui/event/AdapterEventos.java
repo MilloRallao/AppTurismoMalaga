@@ -1,6 +1,7 @@
 package com.example.turismomalagaapp.ui.event;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -43,7 +44,7 @@ public class AdapterEventos extends RecyclerView.Adapter<AdapterEventos.MyViewHo
         try {
             holder.textview_lugar_evento.setText(respuesta.get(position).getString("nombre"));
             holder.textView_descripcion_evento.setText(respuesta.get(position).getString("descripcion"));
-            Glide.with(holder.itemView).load(respuesta.get(position).getString("url_img")).into(holder.imageView_evento);
+            //Glide.with(holder.itemView).load(respuesta.get(position).getString("url_img")).into(holder.imageView_evento);
         }catch (JSONException e) {
             e.printStackTrace();
         }
@@ -64,6 +65,7 @@ public class AdapterEventos extends RecyclerView.Adapter<AdapterEventos.MyViewHo
             imageView_evento = v.findViewById(R.id.imageView_evento);
             textview_lugar_evento = v.findViewById(R.id.textview_lugar_evento);
             textView_descripcion_evento = v.findViewById(R.id.textView_descripcion_evento);
+            final String id = String.valueOf(v.getId());
             cardView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
@@ -73,14 +75,14 @@ public class AdapterEventos extends RecyclerView.Adapter<AdapterEventos.MyViewHo
                         bundle.putString("nombre", respuesta.get(getAdapterPosition()).getString("nombre"));
                         bundle.putString("descripcion", respuesta.get(getAdapterPosition()).getString("descripcion"));
                         bundle.putString("imagen", respuesta.get(getAdapterPosition()).getString("url_img"));
-                        bundle.putString("telefono", respuesta.get(getAdapterPosition()).getString("telefono"));
+                        bundle.putString("id", id);
                     } catch (JSONException e) {
                         e.printStackTrace();
                     }
                     onClickVerFragment.setArguments(bundle);
                     FragmentTransaction transaction = actividad.getSupportFragmentManager().beginTransaction();
                     transaction.replace(R.id.nav_host_fragment, onClickVerFragment);
-                    transaction.addToBackStack(String.valueOf(v.getRootView()));
+                    transaction.addToBackStack(id);
                     transaction.commit();
                 }
             });
