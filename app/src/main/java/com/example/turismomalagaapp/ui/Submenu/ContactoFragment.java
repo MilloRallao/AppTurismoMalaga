@@ -4,10 +4,14 @@ import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
 
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import java.util.Properties;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 import android.app.ProgressDialog;
 import android.content.Context;
@@ -35,6 +39,7 @@ public class ContactoFragment extends Fragment {
     Context context = null;
     EditText reciep, sub, msg;
     String rec, subject, textMessage;
+    Button login;
     private View view;
 
     @Override
@@ -42,11 +47,13 @@ public class ContactoFragment extends Fragment {
         view = inflater.inflate(R.layout.fragment_contacto, container, false);
         context = getContext();
 
-        Button login = view.findViewById(R.id.btn_submit);
+        login = view.findViewById(R.id.btn_submit);
         reciep = view.findViewById(R.id.et_to);
         sub = view.findViewById(R.id.et_sub);
         msg = view.findViewById(R.id.et_text);
-
+        reciep.addTextChangedListener(loginTextWatcher);
+        sub.addTextChangedListener(loginTextWatcher);
+        msg.addTextChangedListener(loginTextWatcher);
         login.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -77,15 +84,58 @@ public class ContactoFragment extends Fragment {
         return view;
     }
 
+    private TextWatcher loginTextWatcher = new TextWatcher() {
+        @Override
+        public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+        }
+
+        @Override
+        public void onTextChanged(CharSequence s, int start, int before, int count) {
+            String correoelectronicoPuesto = reciep.getText().toString().trim();
+            String asuntoPuesto = sub.getText().toString().trim();
+            String descripcionPuesta = msg.getText().toString().trim();
+
+            login.setEnabled(!correoelectronicoPuesto.isEmpty() && !asuntoPuesto.isEmpty() && !descripcionPuesta.isEmpty() && comprobarCorreo());
+        }
+
+        @Override
+        public void afterTextChanged(Editable s) {
+
+        }
+    };
+
+    public boolean comprobarCorreo() {
+        // Patrón para validar el email
+        Pattern pattern = Pattern
+                .compile("^[_A-Za-z0-9-\\+]+(\\.[_A-Za-z0-9-]+)*@"
+                        + "[A-Za-z0-9-]+(\\.[A-Za-z0-9]+)*(\\.[A-Za-z]{2,})$");
+        // Se obtiene el texto introducido en EditText del correo
+        String correo = reciep.getText().toString();
+        // Se comprueba si el correo coincide con la expresión regular
+        Matcher mather = pattern.matcher(correo);
+
+        // Condional que informa si el correo es válido o no
+        if (mather.find()) {
+            return true;
+        }
+        else {
+            return false;
+        }
+    }
+
+
+
     class RetreiveFeedTask extends AsyncTask<String, Void, String> {
         @Override
         protected String doInBackground(String... params) {
             try {
                 Message message = new MimeMessage(session);
-                message.setFrom(new InternetAddress("proyectofctmalaga@gmail.com"));
-                message.setRecipients(Message.RecipientType.TO, InternetAddress.parse(rec));
+                message.setFrom(new InternetAddress(rec));
+                message.setRecipients(Message.RecipientType.TO, InternetAddress.parse("proyectofctmalaga@gmail.com"));
                 message.setSubject(subject);
-                message.setContent(textMessage, "text/html; charset=utf-8");
+                String texto1 = "Correo Electrónico: " +rec +" Contexto: " +textMessage;
+                message.setContent(texto1, "text/html; charset=utf-8");
                 Transport.send(message);
             } catch (MessagingException e) {
                 e.printStackTrace();
