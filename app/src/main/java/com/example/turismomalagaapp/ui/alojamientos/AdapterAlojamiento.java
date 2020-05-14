@@ -1,6 +1,7 @@
 package com.example.turismomalagaapp.ui.alojamientos;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -16,7 +17,6 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.bumptech.glide.Glide;
 import com.example.turismomalagaapp.R;
 import com.example.turismomalagaapp.ui.OnClickVerFragment;
-import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -42,8 +42,10 @@ public class AdapterAlojamiento extends RecyclerView.Adapter<AdapterAlojamiento.
     @Override
     public void onBindViewHolder(AdapterAlojamiento.MyViewHolder holder, final int position) {
          try{
-             holder.textview_nombre_alojamiento.setText(respuesta.get(position).getString("nombre"));
-             holder.textView_descripcion_alojamiento.setText(respuesta.get(position).getString("descripcion"));
+             holder.nombre_alojamiento.setText(respuesta.get(position).getString("nombre"));
+             Log.d("TATA", "onBindViewHolder: "+respuesta.get(position).getString("nombre"));
+             Log.d("TETE", "onBindViewHolder: "+respuesta.get(position).getString("estrellas"));
+             holder.descripcion_alojamiento.setText(respuesta.get(position).getString("descripcion"));
              switch (Integer.parseInt(respuesta.get(position).getString("estrellas"))){
                  case 1 :
                      holder.estrella1.setVisibility(View.VISIBLE);
@@ -71,7 +73,7 @@ public class AdapterAlojamiento extends RecyclerView.Adapter<AdapterAlojamiento.
                      holder.estrella5.setVisibility(View.VISIBLE);
                      break;
              }
-             Glide.with(holder.itemView).load(respuesta.get(position).getString("url_img")).into(holder.imageView);
+             Glide.with(holder.itemView).load(respuesta.get(position).getString("url_img")).into(holder.imagen);
          }catch (JSONException e) {
              e.printStackTrace();
          }
@@ -84,14 +86,14 @@ public class AdapterAlojamiento extends RecyclerView.Adapter<AdapterAlojamiento.
 
     class MyViewHolder extends RecyclerView.ViewHolder{
         private CardView cardView;
-        private ImageView imageView, estrella1, estrella2, estrella3, estrella4, estrella5;
-        private TextView textview_nombre_alojamiento, textView_descripcion_alojamiento;
+        private ImageView imagen, estrella1, estrella2, estrella3, estrella4, estrella5;
+        private TextView nombre_alojamiento, descripcion_alojamiento;
         MyViewHolder(View v) {
             super(v);
             cardView = v.findViewById(R.id.cardview_alojamiento);
-            textview_nombre_alojamiento = v.findViewById(R.id.textview_nombre_alojamiento);
-            textView_descripcion_alojamiento = v.findViewById(R.id.textView_descripcion_alojamiento);
-            imageView = v.findViewById(R.id.imageView_alojamiento);
+            nombre_alojamiento = v.findViewById(R.id.textview_nombre_alojamiento);
+            descripcion_alojamiento = v.findViewById(R.id.textView_descripcion_alojamiento);
+            imagen = v.findViewById(R.id.imageView_alojamiento);
             estrella1 = v.findViewById(R.id.estrella1);
             estrella2 = v.findViewById(R.id.estrella2);
             estrella3 = v.findViewById(R.id.estrella3);

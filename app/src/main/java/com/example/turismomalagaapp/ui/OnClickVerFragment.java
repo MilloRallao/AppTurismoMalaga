@@ -37,15 +37,28 @@ public class OnClickVerFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_on_click_ver, container, false);
         Bundle bundle = this.getArguments();
         if (bundle != null) {
+            ImageView imagen = view.findViewById(R.id.imageView_onclick);
+            String aux_imagen = bundle.getString("imagen");
+            Glide.with(view).load(aux_imagen).into(imagen);
             String aux_nombre = bundle.getString("nombre");
             TextView nombre = view.findViewById(R.id.textView_nombre_onclick);
             nombre.setText(aux_nombre);
             TextView descripcion = view.findViewById(R.id.textView_descripcion_onclick);
             String aux_descripcion = bundle.getString("descripcion");
             descripcion.setText(aux_descripcion);
-            ImageView imagen = view.findViewById(R.id.imageView_onclick);
-            String aux_imagen = bundle.getString("imagen");
-            Glide.with(view).load(aux_imagen).into(imagen);
+            ImageButton llamada = view.findViewById(R.id.imageButton_llamada_onclick);
+            final String aux_telefono = bundle.getString("telefono");
+            if(!aux_telefono.isEmpty()){
+                llamada.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        startActivity(new Intent(Intent.ACTION_DIAL).setData(Uri.parse("tel:" + aux_telefono)));
+                    }
+                });
+            }else{
+                llamada.setVisibility(View.INVISIBLE);
+            }
+
         }
         return view;
     }

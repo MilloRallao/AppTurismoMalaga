@@ -44,7 +44,7 @@ public class AdapterEventos extends RecyclerView.Adapter<AdapterEventos.MyViewHo
         try {
             holder.textview_lugar_evento.setText(respuesta.get(position).getString("nombre"));
             holder.textView_descripcion_evento.setText(respuesta.get(position).getString("descripcion"));
-            //Glide.with(holder.itemView).load(respuesta.get(position).getString("url_img")).into(holder.imageView_evento);
+            Glide.with(holder.itemView).load(respuesta.get(position).getString("url_img")).into(holder.imageView_evento);
         }catch (JSONException e) {
             e.printStackTrace();
         }
@@ -75,6 +75,7 @@ public class AdapterEventos extends RecyclerView.Adapter<AdapterEventos.MyViewHo
                         bundle.putString("nombre", respuesta.get(getAdapterPosition()).getString("nombre"));
                         bundle.putString("descripcion", respuesta.get(getAdapterPosition()).getString("descripcion"));
                         bundle.putString("imagen", respuesta.get(getAdapterPosition()).getString("url_img"));
+                        bundle.putString("telefono", "");
                         bundle.putString("id", id);
                     } catch (JSONException e) {
                         e.printStackTrace();
