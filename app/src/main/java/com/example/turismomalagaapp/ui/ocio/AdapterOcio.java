@@ -15,12 +15,16 @@ import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
+import com.bumptech.glide.load.engine.DiskCacheStrategy;
+import com.bumptech.glide.load.resource.bitmap.RoundedCorners;
+import com.bumptech.glide.request.RequestOptions;
 import com.example.turismomalagaapp.R;
 import com.example.turismomalagaapp.ui.OnClickVerFragment;
 
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.text.BreakIterator;
 import java.util.List;
 
 public class AdapterOcio extends RecyclerView.Adapter<AdapterOcio.MyViewHolder>{
@@ -44,7 +48,7 @@ public class AdapterOcio extends RecyclerView.Adapter<AdapterOcio.MyViewHolder>{
         try {
             holder.textview_lugar_ocio.setText(respuesta.get(position).getString("nombre"));
             holder.textView_descripcion_ocio.setText(respuesta.get(position).getString("descripcion"));
-            Glide.with(holder.itemView).load(respuesta.get(position).getString("url_img")).into(holder.imageView_lugar_ocio);
+            Glide.with(holder.itemView).load(respuesta.get(position).getString("url_img")).load(respuesta.get(position).getString("url_img")).apply(new RequestOptions().transform(new RoundedCorners(50)).skipMemoryCache(true).diskCacheStrategy(DiskCacheStrategy.NONE)).into(holder.imageView_lugar_ocio);
         }catch (JSONException e) {
             e.printStackTrace();
         }

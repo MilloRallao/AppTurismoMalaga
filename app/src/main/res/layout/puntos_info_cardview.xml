@@ -21,16 +21,19 @@
             android:layout_height="150dp"
             android:layout_marginStart="8dp"
             android:layout_marginTop="16dp"
+            android:adjustViewBounds="true"
             android:contentDescription="@string/app_name"
+            android:scaleType="fitXY"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
             android:id="@+id/textview_titulo_puntos_info"
             android:layout_width="200dp"
-            android:layout_height="40dp"
+            android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
             android:layout_marginTop="16dp"
+            android:maxLines="2"
             android:text="Título"
             android:textStyle="bold"
             app:layout_constraintStart_toEndOf="@+id/imageView_puntos_info"

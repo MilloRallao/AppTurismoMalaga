@@ -19,7 +19,6 @@ import java.util.Locale;
 
 
 public class AjustesFragment extends Fragment {
-
     View view;
     public Locale local;
     public ImageButton botonEsp, botonIng;

@@ -15,6 +15,9 @@ import androidx.fragment.app.FragmentActivity;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
+import com.bumptech.glide.load.engine.DiskCacheStrategy;
+import com.bumptech.glide.load.resource.bitmap.RoundedCorners;
+import com.bumptech.glide.request.RequestOptions;
 import com.example.turismomalagaapp.R;
 
 import org.json.JSONException;
@@ -41,7 +44,7 @@ public class AdapterPuntosInfo extends RecyclerView.Adapter<AdapterPuntosInfo.My
     @Override
     public void onBindViewHolder(MyViewHolder holder, final int position) {
         try{
-            Glide.with(holder.itemView).load(respuesta.get(position).getString("url_img")).into(holder.imageView_puntos_info);
+            Glide.with(holder.itemView).load(respuesta.get(position).getString("url_img")).load(respuesta.get(position).getString("url_img")).apply(new RequestOptions().transform(new RoundedCorners(50)).skipMemoryCache(true).diskCacheStrategy(DiskCacheStrategy.NONE)).into(holder.imageView_puntos_info);
             holder.textview_titulo_puntos_info.setText(respuesta.get(position).getString("nombre"));
             holder.horario_puntos_info.setText(respuesta.get(position).getString("horario"));
         }catch (JSONException e) {

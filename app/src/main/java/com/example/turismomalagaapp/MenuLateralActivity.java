@@ -1,6 +1,8 @@
 package com.example.turismomalagaapp;
 
 import android.content.DialogInterface;
+import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
 import android.view.Menu;
@@ -81,14 +83,14 @@ public class MenuLateralActivity extends AppCompatActivity {
         }
     }
 
-    // para el funcionamiento del submenu
+    // Creación del submenu
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.menu_lateral, menu);
         return true;
     }
-    // opciones dependiendo del item selecionado del submenu
+    // Opciones dependiendo del item selecionado del submenu
     @Override
     public boolean onOptionsItemSelected( MenuItem item) { // opciones del submenu --> cambios de fragment
 
@@ -110,20 +112,23 @@ public class MenuLateralActivity extends AppCompatActivity {
                 fragmentTransaction2.commit();
                 return true;
             case R.id.action_valorar:
-                ValorarFragment fragment3 = new ValorarFragment();
-                FragmentTransaction fragmentTransaction3 = getSupportFragmentManager().beginTransaction();
-                fragmentTransaction3.replace(R.id.nav_host_fragment, fragment3);
-                toolbar.setTitle(R.string.action_valorar);
-                fragmentTransaction3.addToBackStack(null);
-                fragmentTransaction3.commit();
+//                ValorarFragment fragment3 = new ValorarFragment();
+//                FragmentTransaction fragmentTransaction3 = getSupportFragmentManager().beginTransaction();
+//                fragmentTransaction3.replace(R.id.nav_host_fragment, fragment3);
+//                toolbar.setTitle(R.string.action_valorar);
+//                fragmentTransaction3.addToBackStack(null);
+//                fragmentTransaction3.commit();
+                valorar();
                 return true;
-            case R.id.action_recomendaciones: //recomendaciones covi 19
+            case R.id.action_recomendaciones: //recomendaciones covid-19
                 recomendaciones();
                 return true;
             default:
                 return super.onOptionsItemSelected(item);
         }
     }
+
+    // Popup de recomendaciones
     public void recomendaciones(){
         AlertDialog.Builder alerta = new AlertDialog.Builder(MenuLateralActivity.this);
         alerta.setMessage(R.string.info).setCancelable(true).setNegativeButton(R.string.salir, new DialogInterface.OnClickListener() {
@@ -137,6 +142,27 @@ public class MenuLateralActivity extends AppCompatActivity {
         titulo.show();
     }
 
-
-
+    // Popup de valorar
+    public void valorar(){
+        AlertDialog.Builder alerta = new AlertDialog.Builder(MenuLateralActivity.this);
+        alerta.setMessage("¿Te gusta la aplicación? \n Entra en la Play Store y valóranos").setCancelable(true).setPositiveButton("Valorar", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                final String appPackageName = getPackageName(); // getPackageName() from Context or Activity object
+                try {
+                    startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("market://details?id=" + appPackageName)));
+                } catch (android.content.ActivityNotFoundException anfe) {
+                    startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("https://play.google.com/store/apps/details?id=" + appPackageName)));
+                }
+            }
+        }).setNegativeButton("Ahora no", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                dialog.cancel();
+            }
+        });
+        AlertDialog titulo = alerta.create();
+        titulo.setTitle("Valora "+R.string.app_name);
+        titulo.show();
+    }
 }

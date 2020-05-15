@@ -54,7 +54,7 @@
         Si tiene fiebre, tos y dificultad para respirar, solicite atención médica a tiempo.
     </string>
     <string name="salir">Salir</string>
-    <string name="titulo">Recomendaciones Covi-19</string>
-    <string name="nombre_ciudad_malaga">Ciudad de Málaga</string>
+    <string name="titulo">Recomendaciones Covid-19</string>
+    <string name="nombre_ciudad_malaga" translatable="false">Ciudad de Málaga</string>
 
 </resources>

@@ -40,12 +40,15 @@ public class OnClickVerFragment extends Fragment {
             ImageView imagen = view.findViewById(R.id.imageView_onclick);
             String aux_imagen = bundle.getString("imagen");
             Glide.with(view).load(aux_imagen).into(imagen);
+
             String aux_nombre = bundle.getString("nombre");
             TextView nombre = view.findViewById(R.id.textView_nombre_onclick);
             nombre.setText(aux_nombre);
+
             TextView descripcion = view.findViewById(R.id.textView_descripcion_onclick);
             String aux_descripcion = bundle.getString("descripcion");
             descripcion.setText(aux_descripcion);
+
             ImageButton llamada = view.findViewById(R.id.imageButton_llamada_onclick);
             final String aux_telefono = bundle.getString("telefono");
             if(!aux_telefono.isEmpty()){
@@ -57,6 +60,50 @@ public class OnClickVerFragment extends Fragment {
                 });
             }else{
                 llamada.setVisibility(View.INVISIBLE);
+            }
+
+            ImageView estrella1 = view.findViewById(R.id.imageView_estrella1);
+            ImageView estrella2 = view.findViewById(R.id.imageView_estrella2);
+            ImageView estrella3 = view.findViewById(R.id.imageView_estrella3);
+            ImageView estrella4 = view.findViewById(R.id.imageView_estrella4);
+            ImageView estrella5 = view.findViewById(R.id.imageView_estrella5);
+            String num_estrellas = bundle.getString("estrellas");
+            if(!(num_estrellas == null)){
+                switch (num_estrellas){
+                    case "1" :
+                        estrella3.setVisibility(View.VISIBLE);
+                        break;
+                    case "2":
+                        estrella2.setVisibility(View.VISIBLE);
+                        estrella3.setVisibility(View.VISIBLE);
+                        break;
+                    case "3":
+                        estrella2.setVisibility(View.VISIBLE);
+                        estrella3.setVisibility(View.VISIBLE);
+                        estrella4.setVisibility(View.VISIBLE);
+                        break;
+                    case "4":
+                        estrella1.setVisibility(View.VISIBLE);
+                        estrella2.setVisibility(View.VISIBLE);
+                        estrella3.setVisibility(View.VISIBLE);
+                        estrella4.setVisibility(View.VISIBLE);
+                        break;
+                    case "5":
+                        estrella1.setVisibility(View.VISIBLE);
+                        estrella2.setVisibility(View.VISIBLE);
+                        estrella3.setVisibility(View.VISIBLE);
+                        estrella4.setVisibility(View.VISIBLE);
+                        estrella5.setVisibility(View.VISIBLE);
+                        break;
+                    default:
+                        break;
+                }
+            }else{
+                estrella1.setVisibility(View.GONE);
+                estrella2.setVisibility(View.GONE);
+                estrella3.setVisibility(View.GONE);
+                estrella4.setVisibility(View.GONE);
+                estrella5.setVisibility(View.GONE);
             }
 
         }

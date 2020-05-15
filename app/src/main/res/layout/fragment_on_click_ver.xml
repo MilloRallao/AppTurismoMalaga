@@ -12,7 +12,9 @@
         android:layout_width="0dp"
         android:layout_height="250dp"
         android:layout_marginTop="8dp"
+        android:adjustViewBounds="true"
         android:contentDescription="@string/app_name"
+        android:scaleType="fitXY"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -22,6 +24,9 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="24dp"
+        android:text="Título"
+        android:textSize="18sp"
+        android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imageView_onclick" />
@@ -30,10 +35,12 @@
         android:id="@+id/textView_descripcion_onclick"
         android:layout_width="350dp"
         android:layout_height="200dp"
-        android:layout_marginTop="24dp"
+        android:layout_marginTop="8dp"
+        android:text="Descripcion"
+        android:textAlignment="center"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView_nombre_onclick" />
+        app:layout_constraintTop_toBottomOf="@+id/imageView_estrella3" />
 
     <ImageButton
         android:id="@+id/imageButton_llamada_onclick"
@@ -48,4 +55,66 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView_descripcion_onclick" />
+
+    <ImageView
+        android:id="@+id/imageView_estrella1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="128dp"
+        android:layout_marginTop="8dp"
+        android:contentDescription="@string/app_name"
+        android:visibility="invisible"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView_nombre_onclick"
+        app:srcCompat="@drawable/ic_star" />
+
+    <ImageView
+        android:id="@+id/imageView_estrella2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:contentDescription="@string/action_valorar"
+        android:visibility="invisible"
+        app:layout_constraintStart_toEndOf="@+id/imageView_estrella1"
+        app:layout_constraintTop_toBottomOf="@+id/textView_nombre_onclick"
+        app:srcCompat="@drawable/ic_star" />
+
+    <ImageView
+        android:id="@+id/imageView_estrella3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:contentDescription="@string/app_name"
+        android:visibility="invisible"
+        app:layout_constraintStart_toEndOf="@+id/imageView_estrella2"
+        app:layout_constraintTop_toBottomOf="@+id/textView_nombre_onclick"
+        app:srcCompat="@drawable/ic_star" />
+
+    <ImageView
+        android:id="@+id/imageView_estrella4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:contentDescription="@string/app_name"
+        android:visibility="invisible"
+        app:layout_constraintStart_toEndOf="@+id/imageView_estrella3"
+        app:layout_constraintTop_toBottomOf="@+id/textView_nombre_onclick"
+        app:srcCompat="@drawable/ic_star" />
+
+    <ImageView
+        android:id="@+id/imageView_estrella5"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="128dp"
+        android:contentDescription="@string/app_name"
+        android:visibility="invisible"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/imageView_estrella4"
+        app:layout_constraintTop_toBottomOf="@+id/textView_nombre_onclick"
+        app:srcCompat="@drawable/ic_star" />
 </androidx.constraintlayout.widget.ConstraintLayout>

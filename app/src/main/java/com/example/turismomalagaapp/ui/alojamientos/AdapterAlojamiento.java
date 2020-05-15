@@ -15,12 +15,16 @@ import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
+import com.bumptech.glide.load.engine.DiskCacheStrategy;
+import com.bumptech.glide.load.resource.bitmap.RoundedCorners;
+import com.bumptech.glide.request.RequestOptions;
 import com.example.turismomalagaapp.R;
 import com.example.turismomalagaapp.ui.OnClickVerFragment;
 
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.text.BreakIterator;
 import java.util.List;
 
 public class AdapterAlojamiento extends RecyclerView.Adapter<AdapterAlojamiento.MyViewHolder>  {
@@ -41,39 +45,44 @@ public class AdapterAlojamiento extends RecyclerView.Adapter<AdapterAlojamiento.
 
     @Override
     public void onBindViewHolder(AdapterAlojamiento.MyViewHolder holder, final int position) {
+        holder.estrella1.setVisibility(View.INVISIBLE);
+        holder.estrella2.setVisibility(View.INVISIBLE);
+        holder.estrella3.setVisibility(View.INVISIBLE);
+        holder.estrella4.setVisibility(View.INVISIBLE);
+        holder.estrella5.setVisibility(View.INVISIBLE);
          try{
              holder.nombre_alojamiento.setText(respuesta.get(position).getString("nombre"));
-             Log.d("TATA", "onBindViewHolder: "+respuesta.get(position).getString("nombre"));
-             Log.d("TETE", "onBindViewHolder: "+respuesta.get(position).getString("estrellas"));
              holder.descripcion_alojamiento.setText(respuesta.get(position).getString("descripcion"));
-             switch (Integer.parseInt(respuesta.get(position).getString("estrellas"))){
-                 case 1 :
+             switch (respuesta.get(position).getString("estrellas")){
+                 case "1" :
                      holder.estrella1.setVisibility(View.VISIBLE);
                      break;
-                 case 2:
+                 case "2":
                      holder.estrella1.setVisibility(View.VISIBLE);
                      holder.estrella2.setVisibility(View.VISIBLE);
                      break;
-                 case 3:
+                 case "3":
                      holder.estrella1.setVisibility(View.VISIBLE);
                      holder.estrella2.setVisibility(View.VISIBLE);
                      holder.estrella3.setVisibility(View.VISIBLE);
                      break;
-                 case 4:
+                 case "4":
                      holder.estrella1.setVisibility(View.VISIBLE);
                      holder.estrella2.setVisibility(View.VISIBLE);
                      holder.estrella3.setVisibility(View.VISIBLE);
                      holder.estrella4.setVisibility(View.VISIBLE);
                      break;
-                 case 5:
+                 case "5":
                      holder.estrella1.setVisibility(View.VISIBLE);
                      holder.estrella2.setVisibility(View.VISIBLE);
                      holder.estrella3.setVisibility(View.VISIBLE);
                      holder.estrella4.setVisibility(View.VISIBLE);
                      holder.estrella5.setVisibility(View.VISIBLE);
                      break;
+                 default:
+                     break;
              }
-             Glide.with(holder.itemView).load(respuesta.get(position).getString("url_img")).into(holder.imagen);
+             Glide.with(holder.itemView).load(respuesta.get(position).getString("url_img")).apply(new RequestOptions().transform(new RoundedCorners(50)).skipMemoryCache(true).diskCacheStrategy(DiskCacheStrategy.NONE)).into(holder.imagen);
          }catch (JSONException e) {
              e.printStackTrace();
          }
@@ -110,6 +119,7 @@ public class AdapterAlojamiento extends RecyclerView.Adapter<AdapterAlojamiento.
                         bundle.putString("descripcion", respuesta.get(getAdapterPosition()).getString("descripcion"));
                         bundle.putString("imagen", respuesta.get(getAdapterPosition()).getString("url_img"));
                         bundle.putString("telefono", respuesta.get(getAdapterPosition()).getString("telefono"));
+                        bundle.putString("estrellas", respuesta.get(getAdapterPosition()).getString("estrellas"));
                         bundle.putString("id", id);
                     } catch (JSONException e) {
                         e.printStackTrace();

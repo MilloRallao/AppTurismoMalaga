@@ -6,6 +6,7 @@ import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.appcompat.widget.Toolbar;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -39,7 +40,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class PrincipalFragment extends Fragment {
-
     private Context context;
     private RecyclerView rv;
     private RecyclerView.LayoutManager layoutManager;
@@ -57,6 +57,8 @@ public class PrincipalFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_principal, container, false);
+        Toolbar toolbar = container.getRootView().findViewById(R.id.toolbar);
+        toolbar.setTitle(R.string.app_name);
         temperatura = view.findViewById(R.id.textView_temperatura_ciudad);
         icono_tiempo = view.findViewById(R.id.imageView_icono_tiempo);
         rv = view.findViewById(R.id.recyclerview_principal);
@@ -105,11 +107,6 @@ public class PrincipalFragment extends Fragment {
         String weatherCityID = "2514256";
         String weatherURL = "https://api.openweathermap.org/data/2.5/weather?id="+weatherCityID+"&appid="+weatherApiKey;
         new JsonTask().execute(weatherURL);
-    }
-
-    @Override
-    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
-        super.onViewCreated(view, savedInstanceState);
     }
 
     private class JsonTask extends AsyncTask<String, String, JSONObject>{
