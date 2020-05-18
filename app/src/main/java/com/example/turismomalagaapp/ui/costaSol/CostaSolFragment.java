@@ -116,7 +116,7 @@ public class CostaSolFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 CostaSolCiudadesFragment ciudadCostaSolFragment = new CostaSolCiudadesFragment();
-                bundle.putString("nombre", "nerja");
+                bundle.putString("nombre", "fuengirola");
                 bundle.putString("id", String.valueOf(v.getId()));
                 ciudadCostaSolFragment.setArguments(bundle);
                 FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
