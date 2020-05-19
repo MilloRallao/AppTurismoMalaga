@@ -23,11 +23,9 @@ import androidx.navigation.ui.AppBarConfiguration;
 import androidx.navigation.ui.NavigationUI;
 import com.example.turismomalagaapp.ui.Submenu.AjustesFragment;
 import com.example.turismomalagaapp.ui.Submenu.ContactoFragment;
-import com.example.turismomalagaapp.ui.Submenu.ValorarFragment;
 
 
 public class MenuLateralActivity extends AppCompatActivity {
-
     private AppBarConfiguration mAppBarConfiguration;
     private Toolbar toolbar;
     private DrawerLayout drawer;
@@ -41,19 +39,19 @@ public class MenuLateralActivity extends AppCompatActivity {
         toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        FloatingActionButton map = findViewById(R.id.map);
-        map.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                MapFragment mapFragment = new MapFragment();
-                FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
-                transaction.replace(R.id.nav_host_fragment, mapFragment);
-                Toolbar toolbar = findViewById(R.id.toolbar);
-                toolbar.setTitle(R.string.ml_map);
-                transaction.addToBackStack(null);
-                transaction.commit();
-            }
-        });
+//        FloatingActionButton map = findViewById(R.id.map);
+//        map.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                MapFragment mapFragment = new MapFragment();
+//                FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
+//                transaction.replace(R.id.nav_host_fragment, mapFragment);
+//                Toolbar toolbar = findViewById(R.id.toolbar);
+//                toolbar.setTitle(R.string.ml_map);
+//                transaction.addToBackStack(null);
+//                transaction.commit();
+//            }
+//        });
 
         drawer = findViewById(R.id.drawer_layout);
         NavigationView navigationView = findViewById(R.id.nav_view);

@@ -64,7 +64,7 @@ public class CostaSolCiudadesFragment extends Fragment {
         return view;
     }
 
-    public void cargarRespuesta(){
+    private void cargarRespuesta(){
         respuesta = new ArrayList<>();
         RequestQueue requestQueue = Volley.newRequestQueue(context);
         JsonArrayRequest jsonArrayRequest = new JsonArrayRequest(BD_URL, new Response.Listener<JSONArray>() {

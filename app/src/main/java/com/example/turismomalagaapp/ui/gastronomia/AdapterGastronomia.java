@@ -46,6 +46,7 @@ public class AdapterGastronomia extends RecyclerView.Adapter<AdapterGastronomia.
     @Override
     public void onBindViewHolder(AdapterGastronomia.MyViewHolder holder, final int position) {
         try{
+            holder.textview_restaurante.setText(respuesta.get(position).getString("nombre"));
             holder.textView_descripcion_restaurante.setText(respuesta.get(position).getString("descripcion"));
             Glide.with(holder.itemView).load(respuesta.get(position).getString("url_img")).load(respuesta.get(position).getString("url_img")).apply(new RequestOptions().transform(new RoundedCorners(50)).skipMemoryCache(true).diskCacheStrategy(DiskCacheStrategy.NONE)).into(holder.imageView_restaurante);
         }catch (JSONException e) {

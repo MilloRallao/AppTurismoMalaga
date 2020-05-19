@@ -8,6 +8,7 @@ import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -19,10 +20,11 @@ import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.MapView;
 import com.google.android.gms.maps.MapsInitializer;
 import com.google.android.gms.maps.OnMapReadyCallback;
-import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.LatLngBounds;
 import com.google.android.gms.maps.model.MarkerOptions;
+
+import java.util.ArrayList;
 
 public class MapFragment extends Fragment implements OnMapReadyCallback {
 
@@ -53,6 +55,15 @@ public class MapFragment extends Fragment implements OnMapReadyCallback {
 
     @Override
     public void onMapReady(GoogleMap googleMap) {
+        Bundle bundle = this.getArguments();
+        ArrayList<String> latitudes = new ArrayList<>();
+        ArrayList<String> longitudes = new ArrayList<>();
+        ArrayList<String> nombres = new ArrayList<>();
+        if (bundle != null) {
+            latitudes = bundle.getStringArrayList("latitudes");
+            longitudes = bundle.getStringArrayList("longitudes");
+            nombres = bundle.getStringArrayList("nombres");
+        }
 
         MapsInitializer.initialize(getContext());
         map = googleMap;
@@ -62,21 +73,31 @@ public class MapFragment extends Fragment implements OnMapReadyCallback {
             googleMap.setMyLocationEnabled(false);
         }
 
-        LatLng marcador1 = new LatLng(36.7201614, -4.4203401);
-        map.addMarker(new MarkerOptions().position(marcador1));
-        map.moveCamera(CameraUpdateFactory.newLatLng(marcador1));
+        for (int i = 0; i < latitudes.size(); i++) {
+            if(i==0){
+                LatLng marcador = new LatLng(Double.parseDouble(latitudes.get(i)), Double.parseDouble(longitudes.get(i)));
+                map.addMarker(new MarkerOptions().position(marcador)).setTitle(nombres.get(i));
+                map.moveCamera(CameraUpdateFactory.newLatLng(marcador));
 
-        LatLngBounds.Builder constructor = new LatLngBounds.Builder();
-        constructor.include(marcador1);
-        LatLngBounds limites = constructor.build();
+                LatLngBounds.Builder constructor = new LatLngBounds.Builder();
+                constructor.include(marcador);
+                LatLngBounds limites = constructor.build();
+                int ancho = getResources().getDisplayMetrics().widthPixels;
+                int alto = getResources().getDisplayMetrics().heightPixels;
+                int padding = (int) (alto * 0.25); // 25% de espacio (padding) superior e inferior
 
-        int ancho = getResources().getDisplayMetrics().widthPixels;
-        int alto = getResources().getDisplayMetrics().heightPixels;
-        int padding = (int) (alto * 0.25); // 25% de espacio (padding) superior e inferior
+                CameraUpdate centrarmarcadores = CameraUpdateFactory.newLatLngBounds(limites, ancho, alto, padding);
+                map.animateCamera(centrarmarcadores);
+            }else{
+                LatLng marcador = new LatLng(Double.parseDouble(latitudes.get(i)), Double.parseDouble(longitudes.get(i)));
+                map.addMarker(new MarkerOptions().position(marcador)).setTitle(nombres.get(i));
 
-        CameraUpdate centrarmarcadores = CameraUpdateFactory.newLatLngBounds(limites, ancho, alto, padding);
-
-        map.animateCamera(centrarmarcadores);
+                LatLngBounds.Builder constructor = new LatLngBounds.Builder();
+                constructor.include(marcador);
+            }
+            CameraUpdate zoomMapa = CameraUpdateFactory.zoomTo(15.0f);
+            map.animateCamera(zoomMapa);
+        }
     }
 
 }

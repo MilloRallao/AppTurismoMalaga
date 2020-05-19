@@ -29,11 +29,12 @@
         <TextView
             android:id="@+id/textview_lugar_interes_ciudad_costa_sol"
             android:layout_width="200dp"
-            android:layout_height="40dp"
+            android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
             android:layout_marginTop="16dp"
+            android:maxLines="2"
             android:text="Título"
-            android:textAllCaps="false"
+            android:textSize="16sp"
             android:textStyle="bold"
             app:layout_constraintStart_toEndOf="@+id/imageView_lugar_interes_costa_sol"
             app:layout_constraintTop_toTopOf="parent" />
@@ -44,6 +45,8 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
             android:layout_marginTop="16dp"
+            android:ellipsize="end"
+            android:maxLines="6"
             android:text="Descripción"
             android:textStyle="bold"
             app:layout_constraintStart_toEndOf="@+id/imageView_lugar_interes_costa_sol"
