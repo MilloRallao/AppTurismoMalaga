@@ -80,6 +80,7 @@ public class AdapterGastronomia extends RecyclerView.Adapter<AdapterGastronomia.
                         bundle.putString("descripcion", respuesta.get(getAdapterPosition()).getString("descripcion"));
                         bundle.putString("imagen", respuesta.get(getAdapterPosition()).getString("url_img"));
                         bundle.putString("telefono", respuesta.get(getAdapterPosition()).getString("telefono"));
+                        bundle.putString("horario", respuesta.get(getAdapterPosition()).getString("horario"));
                         bundle.putString("id", id);
                     } catch (JSONException e) {
                         e.printStackTrace();

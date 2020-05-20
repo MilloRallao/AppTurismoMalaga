@@ -4,7 +4,6 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
-import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
 
@@ -14,8 +13,6 @@ import androidx.appcompat.widget.Toolbar;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.fragment.app.FragmentTransaction;
-import com.example.turismomalagaapp.ui.map.MapFragment;
-import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.navigation.NavigationView;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
@@ -23,7 +20,6 @@ import androidx.navigation.ui.AppBarConfiguration;
 import androidx.navigation.ui.NavigationUI;
 import com.example.turismomalagaapp.ui.Submenu.AjustesFragment;
 import com.example.turismomalagaapp.ui.Submenu.ContactoFragment;
-
 
 public class MenuLateralActivity extends AppCompatActivity {
     private AppBarConfiguration mAppBarConfiguration;
@@ -38,20 +34,6 @@ public class MenuLateralActivity extends AppCompatActivity {
         setContentView(R.layout.activity_menu_lateral);
         toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-
-//        FloatingActionButton map = findViewById(R.id.map);
-//        map.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                MapFragment mapFragment = new MapFragment();
-//                FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
-//                transaction.replace(R.id.nav_host_fragment, mapFragment);
-//                Toolbar toolbar = findViewById(R.id.toolbar);
-//                toolbar.setTitle(R.string.ml_map);
-//                transaction.addToBackStack(null);
-//                transaction.commit();
-//            }
-//        });
 
         drawer = findViewById(R.id.drawer_layout);
         NavigationView navigationView = findViewById(R.id.nav_view);

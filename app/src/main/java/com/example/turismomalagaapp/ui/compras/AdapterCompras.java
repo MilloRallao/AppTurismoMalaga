@@ -79,7 +79,6 @@ public class AdapterCompras extends RecyclerView.Adapter<AdapterCompras.MyViewHo
                         bundle.putString("nombre", respuesta.get(getAdapterPosition()).getString("nombre"));
                         bundle.putString("descripcion", respuesta.get(getAdapterPosition()).getString("descripcion"));
                         bundle.putString("imagen", respuesta.get(getAdapterPosition()).getString("url_img"));
-                        bundle.putString("telefono", "");
                         bundle.putString("id", id);
                     } catch (JSONException e) {
                         e.printStackTrace();

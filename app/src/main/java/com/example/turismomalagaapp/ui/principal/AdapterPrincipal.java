@@ -1,6 +1,7 @@
 package com.example.turismomalagaapp.ui.principal;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -82,6 +83,7 @@ public class AdapterPrincipal extends RecyclerView.Adapter<AdapterPrincipal.MyVi
                         bundle.putString("imagen", respuesta.get(getAdapterPosition()).getString("url_img"));
                         bundle.putString("telefono", respuesta.get(getAdapterPosition()).getString("telefono"));
                         bundle.putString("id", id);
+                        Log.d("TATATATA", "onClick: "+id);
                     } catch (JSONException e) {
                         e.printStackTrace();
                     }

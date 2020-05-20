@@ -37,7 +37,6 @@
         android:layout_height="200dp"
         android:layout_marginTop="8dp"
         android:text="Descripcion"
-        android:textAlignment="center"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imageView_estrella3" />
@@ -46,7 +45,7 @@
         android:id="@+id/imageButton_llamada_onclick"
         android:layout_width="57dp"
         android:layout_height="59dp"
-        android:layout_marginTop="24dp"
+        android:layout_marginTop="8dp"
         android:adjustViewBounds="true"
         android:background="#00FFFFFF"
         android:contentDescription="@string/app_name"
@@ -54,7 +53,7 @@
         android:src="@drawable/llamada_principal_button_selector"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView_descripcion_onclick" />
+        app:layout_constraintTop_toBottomOf="@+id/textView_horario_onclick" />
 
     <ImageView
         android:id="@+id/imageView_estrella1"
@@ -117,4 +116,16 @@
         app:layout_constraintStart_toEndOf="@+id/imageView_estrella4"
         app:layout_constraintTop_toBottomOf="@+id/textView_nombre_onclick"
         app:srcCompat="@drawable/ic_star" />
+
+    <TextView
+        android:id="@+id/textView_horario_onclick"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="Horario"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView_descripcion_onclick" />
 </androidx.constraintlayout.widget.ConstraintLayout>

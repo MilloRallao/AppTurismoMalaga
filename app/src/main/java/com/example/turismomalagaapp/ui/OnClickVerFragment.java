@@ -50,15 +50,15 @@ public class OnClickVerFragment extends Fragment {
             descripcion.setText(aux_descripcion);
 
             ImageButton llamada = view.findViewById(R.id.imageButton_llamada_onclick);
-            final String aux_telefono = bundle.getString("telefono");
-            if(!aux_telefono.isEmpty()){
+            try{
+                final String aux_telefono = bundle.getString("telefono");
                 llamada.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
                         startActivity(new Intent(Intent.ACTION_DIAL).setData(Uri.parse("tel:" + aux_telefono)));
                     }
                 });
-            }else{
+            }catch (Error error){
                 llamada.setVisibility(View.INVISIBLE);
             }
 
@@ -106,6 +106,15 @@ public class OnClickVerFragment extends Fragment {
                 estrella5.setVisibility(View.GONE);
             }
 
+            TextView horario = view.findViewById(R.id.textView_horario_onclick);
+            try {
+                String aux_horario = bundle.getString("horario");
+                horario.setText(aux_horario);
+            }catch (Error error){
+                Log.d("ERROR", "onCreateView: "+error);
+                horario.setVisibility(View.GONE);
+            }
+
         }
         return view;
     }
@@ -118,6 +127,7 @@ public class OnClickVerFragment extends Fragment {
         if(getView() == null){
             return;
         }
+        Log.d("TETETETE", "onResume: "+id);
         getView().setFocusableInTouchMode(true);
         getView().requestFocus();
         getView().setOnKeyListener(new View.OnKeyListener() {
