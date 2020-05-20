@@ -25,6 +25,7 @@
             android:layout_marginRight="16dp"
             android:layout_marginBottom="10dp"
             android:foreground="?selectableItemBackground"
+            app:cardBackgroundColor="#FFFFFF"
             app:cardCornerRadius="8dp"
             app:cardElevation="6dp">
 
@@ -35,10 +36,11 @@
                 android:orientation="vertical">
 
                 <ImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_width="141dp"
+                    android:layout_height="93dp"
                     android:layout_gravity="center_horizontal"
-                    android:background="@mipmap/malaga"/>
+                    android:background="@drawable/nerja"
+                    android:scaleType="fitXY" />
 
                 <TextView
                     android:layout_width="match_parent"
@@ -46,10 +48,11 @@
                     android:layout_gravity="center_horizontal"
                     android:text="Nerja"
                     android:textAlignment="center"
-                    android:textColor="#ffcc00"
+                    android:textColor="#2196F3"
                     android:textSize="16sp"
                     android:textStyle="bold" />
             </LinearLayout>
+
         </androidx.cardview.widget.CardView>
 
         <androidx.cardview.widget.CardView
@@ -72,18 +75,18 @@
                 android:orientation="vertical">
 
                 <ImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_width="141dp"
+                    android:layout_height="93dp"
                     android:layout_gravity="center_horizontal"
-                    android:background="@mipmap/malaga"/>
+                    android:background="@drawable/velezmalaga" />
 
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_gravity="center_horizontal"
-                    android:text="VelezMalaga"
+                    android:text="Velez Malaga"
                     android:textAlignment="center"
-                    android:textColor="#ffcc00"
+                    android:textColor="#2196F3"
                     android:textSize="16sp"
                     android:textStyle="bold" />
             </LinearLayout>
@@ -109,18 +112,18 @@
                 android:orientation="vertical">
 
                 <ImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_width="141dp"
+                    android:layout_height="93dp"
                     android:layout_gravity="center_horizontal"
-                    android:background="@mipmap/malaga"/>
+                    android:background="@drawable/rincon" />
 
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_gravity="center_horizontal"
-                    android:text="RinconDeLaVictoria"
+                    android:text="Rincon De La Victoria"
                     android:textAlignment="center"
-                    android:textColor="#ffcc00"
+                    android:textColor="#2196F3"
                     android:textSize="16sp"
                     android:textStyle="bold" />
             </LinearLayout>
@@ -146,18 +149,18 @@
                 android:orientation="vertical">
 
                 <ImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_width="141dp"
+                    android:layout_height="93dp"
                     android:layout_gravity="center_horizontal"
-                    android:background="@mipmap/malaga"/>
+                    android:background="@drawable/torremolinos" />
 
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_gravity="center_horizontal"
-                    android:text="TorreMolinos"
+                    android:text="Torremolinos"
                     android:textAlignment="center"
-                    android:textColor="#ffcc00"
+                    android:textColor="#2196F3"
                     android:textSize="16sp"
                     android:textStyle="bold" />
             </LinearLayout>
@@ -183,10 +186,10 @@
                 android:orientation="vertical">
 
                 <ImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_width="141dp"
+                    android:layout_height="93dp"
                     android:layout_gravity="center_horizontal"
-                    android:background="@mipmap/malaga"/>
+                    android:background="@drawable/benalmeda" />
 
                 <TextView
                     android:layout_width="match_parent"
@@ -194,7 +197,7 @@
                     android:layout_gravity="center_horizontal"
                     android:text="Benalmádena"
                     android:textAlignment="center"
-                    android:textColor="#ffcc00"
+                    android:textColor="#2196F3"
                     android:textSize="16sp"
                     android:textStyle="bold" />
             </LinearLayout>
@@ -220,10 +223,10 @@
                 android:orientation="vertical">
 
                 <ImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_width="141dp"
+                    android:layout_height="93dp"
                     android:layout_gravity="center_horizontal"
-                    android:background="@mipmap/malaga"/>
+                    android:background="@drawable/fuengirola" />
 
                 <TextView
                     android:layout_width="match_parent"
@@ -231,7 +234,7 @@
                     android:layout_gravity="center_horizontal"
                     android:text="Fuengirola"
                     android:textAlignment="center"
-                    android:textColor="#ffcc00"
+                    android:textColor="#2196F3"
                     android:textSize="16sp"
                     android:textStyle="bold" />
             </LinearLayout>
@@ -257,10 +260,10 @@
                 android:orientation="vertical">
 
                 <ImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_width="141dp"
+                    android:layout_height="93dp"
                     android:layout_gravity="center_horizontal"
-                    android:background="@mipmap/malaga"/>
+                    android:background="@drawable/mijas" />
 
                 <TextView
                     android:layout_width="match_parent"
@@ -268,7 +271,7 @@
                     android:layout_gravity="center_horizontal"
                     android:text="Mijas"
                     android:textAlignment="center"
-                    android:textColor="#ffcc00"
+                    android:textColor="#2196F3"
                     android:textSize="16sp"
                     android:textStyle="bold" />
             </LinearLayout>
@@ -294,10 +297,10 @@
                 android:orientation="vertical">
 
                 <ImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_width="141dp"
+                    android:layout_height="93dp"
                     android:layout_gravity="center_horizontal"
-                    android:background="@mipmap/malaga"/>
+                    android:background="@drawable/marbella" />
 
                 <TextView
                     android:layout_width="match_parent"
@@ -305,7 +308,7 @@
                     android:layout_gravity="center_horizontal"
                     android:text="Marbella"
                     android:textAlignment="center"
-                    android:textColor="#ffcc00"
+                    android:textColor="#2196F3"
                     android:textSize="16sp"
                     android:textStyle="bold" />
             </LinearLayout>

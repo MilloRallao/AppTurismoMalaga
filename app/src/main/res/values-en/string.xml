@@ -49,10 +49,10 @@
 
     <!-- recomendaciones -->
     <string name="info">
-        Lávese las manos frecuentemente.\n
-        Mantenga el distanciamiento social.\n
-        Evite tocarse los ojos, la nariz y la boca.\n
-        Si tiene fiebre, tos y dificultad para respirar, solicite atención médica a tiempo.
+        Wash your hands frequently.\n
+        Keep the distance between people.\n
+        Avoid touching your nose, mouth and eyes.\n
+        If you have fever, cough difficulty breathing should call medical attention immediately
     </string>
     <string name="salir">Exit</string>
     <string name="titulo">Recommendations Covid-19</string>
