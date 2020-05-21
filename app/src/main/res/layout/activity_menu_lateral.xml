@@ -18,7 +18,7 @@
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
         android:layout_gravity="start"
-        android:background="@color/colorAccent"
+        android:background="@drawable/benalmeda"
         android:fitsSystemWindows="true"
         app:headerLayout="@layout/nav_header_menu_lateral"
         app:menu="@menu/activity_menu_lateral_drawer" />

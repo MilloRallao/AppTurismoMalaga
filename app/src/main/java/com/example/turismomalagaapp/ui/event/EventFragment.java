@@ -58,6 +58,7 @@ public class EventFragment extends Fragment {
         rv.setLayoutManager(layoutManager);
         cargarRespuesta();
         final FragmentActivity fragmentActivity = getActivity();
+        final String id = String.valueOf(view.getId());
         mapa = view.findViewById(R.id.floatingActionButton_mapa_evento);
         mapa.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -67,10 +68,11 @@ public class EventFragment extends Fragment {
                 bundle.putStringArrayList("latitudes", latitudes);
                 bundle.putStringArrayList("longitudes", longitudes);
                 bundle.putStringArrayList("nombres", nombres);
+                bundle.putString("id", id);
                 mapFragment.setArguments(bundle);
                 FragmentTransaction transaction = fragmentActivity.getSupportFragmentManager().beginTransaction();
                 transaction.replace(R.id.nav_host_fragment, mapFragment);
-                transaction.addToBackStack(null);
+                transaction.addToBackStack(id);
                 transaction.commit();
             }
         });
