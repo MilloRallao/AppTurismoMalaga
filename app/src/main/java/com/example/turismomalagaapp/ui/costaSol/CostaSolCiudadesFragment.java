@@ -15,12 +15,15 @@ import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
+import android.widget.TextView;
 
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonArrayRequest;
 import com.android.volley.toolbox.Volley;
+import com.bumptech.glide.Glide;
 import com.example.turismomalagaapp.R;
 
 import org.json.JSONArray;
@@ -32,6 +35,8 @@ import java.util.List;
 
 public class CostaSolCiudadesFragment extends Fragment {
     Context context;
+    private TextView nombreCiudad;
+    private ImageView foto;
     private RecyclerView rv;
     private RecyclerView.LayoutManager layoutManager;
     String BD_URL = "https://projectfctappmalaga.000webhostapp.com/MalagaApp/select_costaDelSol.php?nombre_ciudad=";
@@ -45,6 +50,8 @@ public class CostaSolCiudadesFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_costa_sol_ciudades, container, false);
+        nombreCiudad = view.findViewById(R.id.textView_nombre_ciudad_costa_sol);
+        foto = view.findViewById(R.id.imageView_ciudad_costa_sol);
         rv = view.findViewById(R.id.recyclerview_costa_sol_ciudad);
         layoutManager = new LinearLayoutManager(getActivity()) {
             @Override
@@ -58,7 +65,11 @@ public class CostaSolCiudadesFragment extends Fragment {
         Bundle bundle = this.getArguments();
         if (bundle != null) {
             String nombre_ciudad = bundle.getString("nombre");
-            BD_URL += nombre_ciudad;
+            String nombre_ciudad_BD = bundle.getString("nombreBD");
+            nombreCiudad.setText(nombre_ciudad);
+            String foto_ciudad = bundle.getString("foto");
+            Glide.with(context).load(foto_ciudad).into(foto);
+            BD_URL += nombre_ciudad_BD;
             cargarRespuesta();
         }
         return view;

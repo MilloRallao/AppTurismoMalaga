@@ -1,6 +1,8 @@
 package com.example.turismomalagaapp.ui.costaSol;
 
 import android.content.Context;
+import android.graphics.BitmapFactory;
+import android.net.Uri;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -32,6 +34,12 @@ public class CostaSolFragment extends Fragment {
         super.onCreate(savedInstanceState);
     }
 
+    // Obtener el path de un Drawable para pasarlo como String
+    public String getURLForResource (int resourceId) {
+        //use BuildConfig.APPLICATION_ID instead of R.class.getPackage().getName() if both are not same
+        return Uri.parse("android.resource://"+R.class.getPackage().getName()+"/" +resourceId).toString();
+    }
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_costa_sol, container, false);
@@ -40,8 +48,10 @@ public class CostaSolFragment extends Fragment {
         nerja.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                bundle.putString("nombre", "nerja");
+                bundle.putString("nombreBD", "nerja");
+                bundle.putString("nombre", "Nerja");
                 bundle.putString("id", String.valueOf(v.getId()));
+                bundle.putString("foto", getURLForResource(R.drawable.nerja));
                 CostaSolCiudadesFragment ciudadCostaSolFragment = new CostaSolCiudadesFragment();
                 ciudadCostaSolFragment.setArguments(bundle);
                 FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
@@ -56,8 +66,10 @@ public class CostaSolFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 CostaSolCiudadesFragment ciudadCostaSolFragment = new CostaSolCiudadesFragment();
-                bundle.putString("nombre", "velezmalaga");
+                bundle.putString("nombreBD", "velezmalaga");
+                bundle.putString("nombre", "Vélez Málaga");
                 bundle.putString("id", String.valueOf(v.getId()));
+                bundle.putString("foto", getURLForResource(R.drawable.velezmalaga));
                 ciudadCostaSolFragment.setArguments(bundle);
                 FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
                 transaction.replace(R.id.nav_host_fragment, ciudadCostaSolFragment);
@@ -71,8 +83,10 @@ public class CostaSolFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 CostaSolCiudadesFragment ciudadCostaSolFragment = new CostaSolCiudadesFragment();
-                bundle.putString("nombre", "rinconvictoria");
+                bundle.putString("nombreBD", "rinconvictoria");
+                bundle.putString("nombre", "Rincón de la Victoria");
                 bundle.putString("id", String.valueOf(v.getId()));
+                bundle.putString("foto", getURLForResource(R.drawable.rincon));
                 ciudadCostaSolFragment.setArguments(bundle);
                 FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
                 transaction.replace(R.id.nav_host_fragment, ciudadCostaSolFragment);
@@ -86,8 +100,10 @@ public class CostaSolFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 CostaSolCiudadesFragment ciudadCostaSolFragment = new CostaSolCiudadesFragment();
-                bundle.putString("nombre", "torremolinos");
+                bundle.putString("nombreBD", "torremolinos");
+                bundle.putString("nombre", "Torremolinos");
                 bundle.putString("id", String.valueOf(v.getId()));
+                bundle.putString("foto", getURLForResource(R.drawable.torremolinos));
                 ciudadCostaSolFragment.setArguments(bundle);
                 FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
                 transaction.replace(R.id.nav_host_fragment, ciudadCostaSolFragment);
@@ -101,8 +117,10 @@ public class CostaSolFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 CostaSolCiudadesFragment ciudadCostaSolFragment = new CostaSolCiudadesFragment();
-                bundle.putString("nombre", "benalmadena");
+                bundle.putString("nombreBD", "benalmadena");
+                bundle.putString("nombre", "Benalmádena");
                 bundle.putString("id", String.valueOf(v.getId()));
+                bundle.putString("foto", getURLForResource(R.drawable.benalmeda));
                 ciudadCostaSolFragment.setArguments(bundle);
                 FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
                 transaction.replace(R.id.nav_host_fragment, ciudadCostaSolFragment);
@@ -116,8 +134,10 @@ public class CostaSolFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 CostaSolCiudadesFragment ciudadCostaSolFragment = new CostaSolCiudadesFragment();
-                bundle.putString("nombre", "fuengirola");
+                bundle.putString("nombreBD", "fuengirola");
+                bundle.putString("nombre", "Fuengirola");
                 bundle.putString("id", String.valueOf(v.getId()));
+                bundle.putString("foto", getURLForResource(R.drawable.fuengirola));
                 ciudadCostaSolFragment.setArguments(bundle);
                 FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
                 transaction.replace(R.id.nav_host_fragment, ciudadCostaSolFragment);
@@ -131,8 +151,10 @@ public class CostaSolFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 CostaSolCiudadesFragment ciudadCostaSolFragment = new CostaSolCiudadesFragment();
-                bundle.putString("nombre", "mijas");
+                bundle.putString("nombreBD", "mijas");
+                bundle.putString("nombre", "Mijas");
                 bundle.putString("id", String.valueOf(v.getId()));
+                bundle.putString("foto", getURLForResource(R.drawable.mijas));
                 ciudadCostaSolFragment.setArguments(bundle);
                 FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
                 transaction.replace(R.id.nav_host_fragment, ciudadCostaSolFragment);
@@ -146,8 +168,10 @@ public class CostaSolFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 CostaSolCiudadesFragment ciudadCostaSolFragment = new CostaSolCiudadesFragment();
-                bundle.putString("nombre", "marbella");
+                bundle.putString("nombreBD", "marbella");
+                bundle.putString("nombre", "Marbella");
                 bundle.putString("id", String.valueOf(v.getId()));
+                bundle.putString("foto", getURLForResource(R.drawable.marbella));
                 ciudadCostaSolFragment.setArguments(bundle);
                 FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
                 transaction.replace(R.id.nav_host_fragment, ciudadCostaSolFragment);

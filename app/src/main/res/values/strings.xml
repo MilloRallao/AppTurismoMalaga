@@ -56,5 +56,13 @@
     <string name="salir">Salir</string>
     <string name="titulo">Recomendaciones Covid-19</string>
     <string name="nombre_ciudad_malaga" translatable="false">Ciudad de Málaga</string>
+    <string name="texto_velezmalaga">Vélez Málaga</string>
+    <string name="texto_nerja">Nerja</string>
+    <string name="texto_rinconVictoria">Rincón De La Victoria</string>
+    <string name="texto_torremolinos">Torremolinos</string>
+    <string name="texto_benalmadena">Benalmádena</string>
+    <string name="texto_fuengirola">Fuengirola</string>
+    <string name="texto_mijas">Mijas</string>
+    <string name="texto_marbella">Marbella</string>
 
 </resources>

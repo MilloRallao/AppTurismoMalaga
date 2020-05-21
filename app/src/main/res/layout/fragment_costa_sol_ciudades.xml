@@ -23,6 +23,7 @@
                 android:layout_marginTop="24dp"
                 android:text="Ciudad de Costa del Sol"
                 android:textAlignment="center"
+                android:textAllCaps="false"
                 android:textColor="#FFFFFF"
                 android:textSize="36sp"
                 android:textStyle="bold" />
@@ -34,8 +35,7 @@
                 android:layout_marginTop="24dp"
                 android:background="#00FFFFFF"
                 android:contentDescription="@string/app_name"
-                android:scaleType="fitXY"
-                app:srcCompat="@mipmap/malaga" />
+                android:scaleType="fitXY" />
 
             <TextView
                 android:id="@+id/textView_lugares_interes_ciudad_costa_sol"

@@ -36,17 +36,19 @@
                 android:orientation="vertical">
 
                 <ImageView
+                    android:id="@+id/imagen_nerja"
                     android:layout_width="141dp"
                     android:layout_height="93dp"
                     android:layout_gravity="center_horizontal"
                     android:background="@drawable/nerja"
+                    android:contentDescription="@string/app_name"
                     android:scaleType="fitXY" />
 
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_gravity="center_horizontal"
-                    android:text="Nerja"
+                    android:text="@string/texto_nerja"
                     android:textAlignment="center"
                     android:textColor="#2196F3"
                     android:textSize="16sp"
@@ -75,16 +77,18 @@
                 android:orientation="vertical">
 
                 <ImageView
+                    android:id="@+id/imagen_velezmalaga"
                     android:layout_width="141dp"
                     android:layout_height="93dp"
                     android:layout_gravity="center_horizontal"
-                    android:background="@drawable/velezmalaga" />
+                    android:background="@drawable/velezmalaga"
+                    android:contentDescription="@string/app_name" />
 
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_gravity="center_horizontal"
-                    android:text="Velez Malaga"
+                    android:text="@string/texto_velezmalaga"
                     android:textAlignment="center"
                     android:textColor="#2196F3"
                     android:textSize="16sp"
@@ -112,16 +116,18 @@
                 android:orientation="vertical">
 
                 <ImageView
+                    android:id="@+id/imagen_rinconvictoria"
                     android:layout_width="141dp"
                     android:layout_height="93dp"
                     android:layout_gravity="center_horizontal"
-                    android:background="@drawable/rincon" />
+                    android:background="@drawable/rincon"
+                    android:contentDescription="@string/app_name" />
 
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_gravity="center_horizontal"
-                    android:text="Rincon De La Victoria"
+                    android:text="@string/texto_rinconVictoria"
                     android:textAlignment="center"
                     android:textColor="#2196F3"
                     android:textSize="16sp"
@@ -149,16 +155,18 @@
                 android:orientation="vertical">
 
                 <ImageView
+                    android:id="@+id/imagen_torremolinos"
                     android:layout_width="141dp"
                     android:layout_height="93dp"
                     android:layout_gravity="center_horizontal"
-                    android:background="@drawable/torremolinos" />
+                    android:background="@drawable/torremolinos"
+                    android:contentDescription="@string/app_name" />
 
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_gravity="center_horizontal"
-                    android:text="Torremolinos"
+                    android:text="@string/texto_torremolinos"
                     android:textAlignment="center"
                     android:textColor="#2196F3"
                     android:textSize="16sp"
@@ -186,16 +194,18 @@
                 android:orientation="vertical">
 
                 <ImageView
+                    android:id="@+id/imagen_benalmadena"
                     android:layout_width="141dp"
                     android:layout_height="93dp"
                     android:layout_gravity="center_horizontal"
-                    android:background="@drawable/benalmeda" />
+                    android:background="@drawable/benalmeda"
+                    android:contentDescription="@string/app_name" />
 
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_gravity="center_horizontal"
-                    android:text="Benalmádena"
+                    android:text="@string/texto_benalmadena"
                     android:textAlignment="center"
                     android:textColor="#2196F3"
                     android:textSize="16sp"
@@ -223,16 +233,18 @@
                 android:orientation="vertical">
 
                 <ImageView
+                    android:id="@+id/imagen_fuengirola"
                     android:layout_width="141dp"
                     android:layout_height="93dp"
                     android:layout_gravity="center_horizontal"
-                    android:background="@drawable/fuengirola" />
+                    android:background="@drawable/fuengirola"
+                    android:contentDescription="@string/app_name" />
 
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_gravity="center_horizontal"
-                    android:text="Fuengirola"
+                    android:text="@string/texto_fuengirola"
                     android:textAlignment="center"
                     android:textColor="#2196F3"
                     android:textSize="16sp"
@@ -260,16 +272,18 @@
                 android:orientation="vertical">
 
                 <ImageView
+                    android:id="@+id/imagen_mijas"
                     android:layout_width="141dp"
                     android:layout_height="93dp"
                     android:layout_gravity="center_horizontal"
-                    android:background="@drawable/mijas" />
+                    android:background="@drawable/mijas"
+                    android:contentDescription="@string/app_name" />
 
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_gravity="center_horizontal"
-                    android:text="Mijas"
+                    android:text="@string/texto_mijas"
                     android:textAlignment="center"
                     android:textColor="#2196F3"
                     android:textSize="16sp"
@@ -297,16 +311,18 @@
                 android:orientation="vertical">
 
                 <ImageView
+                    android:id="@+id/imagen_marbella"
                     android:layout_width="141dp"
                     android:layout_height="93dp"
                     android:layout_gravity="center_horizontal"
-                    android:background="@drawable/marbella" />
+                    android:background="@drawable/marbella"
+                    android:contentDescription="@string/app_name" />
 
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_gravity="center_horizontal"
-                    android:text="Marbella"
+                    android:text="@string/texto_marbella"
                     android:textAlignment="center"
                     android:textColor="#2196F3"
                     android:textSize="16sp"
