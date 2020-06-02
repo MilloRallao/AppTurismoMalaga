@@ -66,6 +66,7 @@ public class AlojamientoFragment extends Fragment {
         mapa.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
                 Bundle bundle = new Bundle();
                 MapFragment mapFragment = new MapFragment();
                 bundle.putStringArrayList("latitudes", latitudes);
