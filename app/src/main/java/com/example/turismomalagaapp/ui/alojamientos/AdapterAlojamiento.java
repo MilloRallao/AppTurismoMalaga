@@ -20,6 +20,14 @@ import com.bumptech.glide.load.resource.bitmap.RoundedCorners;
 import com.bumptech.glide.request.RequestOptions;
 import com.example.turismomalagaapp.R;
 import com.example.turismomalagaapp.ui.OnClickVerFragment;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.firebase.FirebaseApp;
+import com.google.firebase.ml.common.modeldownload.FirebaseModelDownloadConditions;
+import com.google.firebase.ml.naturallanguage.FirebaseNaturalLanguage;
+import com.google.firebase.ml.naturallanguage.translate.FirebaseTranslateLanguage;
+import com.google.firebase.ml.naturallanguage.translate.FirebaseTranslator;
+import com.google.firebase.ml.naturallanguage.translate.FirebaseTranslatorOptions;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -44,7 +52,7 @@ public class AdapterAlojamiento extends RecyclerView.Adapter<AdapterAlojamiento.
     }
 
     @Override
-    public void onBindViewHolder(AdapterAlojamiento.MyViewHolder holder, final int position) {
+    public void onBindViewHolder(final AdapterAlojamiento.MyViewHolder holder, final int position) {
         holder.estrella1.setVisibility(View.INVISIBLE);
         holder.estrella2.setVisibility(View.INVISIBLE);
         holder.estrella3.setVisibility(View.INVISIBLE);
@@ -52,7 +60,44 @@ public class AdapterAlojamiento extends RecyclerView.Adapter<AdapterAlojamiento.
         holder.estrella5.setVisibility(View.INVISIBLE);
          try{
              holder.nombre_alojamiento.setText(respuesta.get(position).getString("nombre"));
-             holder.descripcion_alojamiento.setText(respuesta.get(position).getString("descripcion"));
+
+             // Create an Spanish-English translator:
+             FirebaseApp.initializeApp(actividad);
+             FirebaseTranslatorOptions options = new FirebaseTranslatorOptions.Builder()
+                     .setSourceLanguage(FirebaseTranslateLanguage.ES)
+                     .setTargetLanguage(FirebaseTranslateLanguage.EN)
+                     .build();
+             final FirebaseTranslator spanishEnglisTranslator = FirebaseNaturalLanguage.getInstance().getTranslator(options);
+             FirebaseModelDownloadConditions conditions = new FirebaseModelDownloadConditions.Builder().requireWifi().build();
+             spanishEnglisTranslator.downloadModelIfNeeded(conditions).addOnSuccessListener( new OnSuccessListener<Void>() {
+                 @Override
+                 public void onSuccess(Void v) {
+                     for (int i = 0; i < respuesta.get(position).length(); i++) {
+                         try {
+                             spanishEnglisTranslator.translate(respuesta.get(position).getString("descripcion")).addOnSuccessListener(new OnSuccessListener<String>() {
+                                 @Override
+                                 public void onSuccess(@NonNull String translatedText) {
+                                     holder.descripcion_alojamiento.setText(translatedText);
+                                 }
+                             }).addOnFailureListener(new OnFailureListener() {
+                                 @Override
+                                 public void onFailure(@NonNull Exception e) {
+                                     Log.d("ERROR0", "onFailure: "+e);
+                                 }
+                             });
+                         } catch (JSONException e) {
+                             e.printStackTrace();
+                         }
+                     }
+                 }
+             }).addOnFailureListener(
+                     new OnFailureListener() {
+                         @Override
+                         public void onFailure(@NonNull Exception e) {
+                             Log.d("ERROR1", "onFailure: "+e);
+                         }
+                     });
+
              switch (respuesta.get(position).getString("estrellas")){
                  case "1" :
                      holder.estrella1.setVisibility(View.VISIBLE);
@@ -116,7 +161,7 @@ public class AdapterAlojamiento extends RecyclerView.Adapter<AdapterAlojamiento.
                     OnClickVerFragment onClickVerFragment = new OnClickVerFragment();
                     try {
                         bundle.putString("nombre", respuesta.get(getAdapterPosition()).getString("nombre"));
-                        bundle.putString("descripcion", respuesta.get(getAdapterPosition()).getString("descripcion"));
+                        bundle.putString("descripcion", descripcion_alojamiento.getText().toString());
                         bundle.putString("imagen", respuesta.get(getAdapterPosition()).getString("url_img"));
                         bundle.putString("telefono", respuesta.get(getAdapterPosition()).getString("telefono"));
                         bundle.putString("estrellas", respuesta.get(getAdapterPosition()).getString("estrellas"));

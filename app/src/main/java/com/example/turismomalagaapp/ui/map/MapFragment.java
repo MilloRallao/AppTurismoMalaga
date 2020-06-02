@@ -29,7 +29,6 @@ import com.google.android.gms.maps.model.MarkerOptions;
 import java.util.ArrayList;
 
 public class MapFragment extends Fragment implements OnMapReadyCallback {
-
     GoogleMap map;
     MapView mapView;
     View view;
@@ -43,6 +42,7 @@ public class MapFragment extends Fragment implements OnMapReadyCallback {
         view = inflater.inflate(R.layout.fragment_map, container, false);
         return view;
     }
+
     @Override
     public void onViewCreated(View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);

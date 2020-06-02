@@ -92,12 +92,6 @@ public class MenuLateralActivity extends AppCompatActivity {
                 fragmentTransaction2.commit();
                 return true;
             case R.id.action_valorar:
-//                ValorarFragment fragment3 = new ValorarFragment();
-//                FragmentTransaction fragmentTransaction3 = getSupportFragmentManager().beginTransaction();
-//                fragmentTransaction3.replace(R.id.nav_host_fragment, fragment3);
-//                toolbar.setTitle(R.string.action_valorar);
-//                fragmentTransaction3.addToBackStack(null);
-//                fragmentTransaction3.commit();
                 valorar();
                 return true;
             case R.id.action_recomendaciones: //recomendaciones covid-19
@@ -142,7 +136,7 @@ public class MenuLateralActivity extends AppCompatActivity {
             }
         });
         AlertDialog titulo = alerta.create();
-        titulo.setTitle("Valora "+R.string.app_name);
+        titulo.setTitle("Valorar " + getString(R.string.app_name));
         titulo.show();
     }
 }

@@ -23,7 +23,14 @@ import com.android.volley.toolbox.JsonArrayRequest;
 import com.android.volley.toolbox.Volley;
 import com.example.turismomalagaapp.R;
 import com.example.turismomalagaapp.ui.map.MapFragment;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import com.google.firebase.ml.common.modeldownload.FirebaseModelDownloadConditions;
+import com.google.firebase.ml.naturallanguage.FirebaseNaturalLanguage;
+import com.google.firebase.ml.naturallanguage.translate.FirebaseTranslateLanguage;
+import com.google.firebase.ml.naturallanguage.translate.FirebaseTranslator;
+import com.google.firebase.ml.naturallanguage.translate.FirebaseTranslatorOptions;
 
 
 import org.json.JSONArray;
@@ -41,6 +48,7 @@ public class AlojamientoFragment extends Fragment {
     private ArrayList<String> latitudes;
     private ArrayList<String> longitudes;
     private ArrayList<String> nombres;
+    private ArrayList<String> descripciones;
 
     String BD_URL = "https://projectfctappmalaga.000webhostapp.com/MalagaApp/select_alojamiento.php";
     List<JSONObject> respuesta;
