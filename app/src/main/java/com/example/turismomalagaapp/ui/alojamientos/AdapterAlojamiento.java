@@ -20,25 +20,19 @@ import com.bumptech.glide.load.resource.bitmap.RoundedCorners;
 import com.bumptech.glide.request.RequestOptions;
 import com.example.turismomalagaapp.R;
 import com.example.turismomalagaapp.ui.OnClickVerFragment;
-import com.google.android.gms.tasks.OnFailureListener;
-import com.google.android.gms.tasks.OnSuccessListener;
-import com.google.firebase.FirebaseApp;
-import com.google.firebase.ml.common.modeldownload.FirebaseModelDownloadConditions;
-import com.google.firebase.ml.naturallanguage.FirebaseNaturalLanguage;
-import com.google.firebase.ml.naturallanguage.translate.FirebaseTranslateLanguage;
-import com.google.firebase.ml.naturallanguage.translate.FirebaseTranslator;
-import com.google.firebase.ml.naturallanguage.translate.FirebaseTranslatorOptions;
+import com.ibm.cloud.sdk.core.security.IamAuthenticator;
+import com.ibm.watson.language_translator.v3.LanguageTranslator;
+import com.ibm.watson.language_translator.v3.model.TranslateOptions;
+import com.ibm.watson.language_translator.v3.model.TranslationResult;
 
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import java.text.BreakIterator;
 import java.util.List;
 
 public class AdapterAlojamiento extends RecyclerView.Adapter<AdapterAlojamiento.MyViewHolder>  {
     private List<JSONObject> respuesta;
     private FragmentActivity actividad;
-
 
      public AdapterAlojamiento(List<JSONObject> response, FragmentActivity activity){
          respuesta = response;
@@ -62,42 +56,27 @@ public class AdapterAlojamiento extends RecyclerView.Adapter<AdapterAlojamiento.
          try{
              holder.nombre_alojamiento.setText(respuesta.get(position).getString("nombre"));
 
-             // Create an Spanish-English translator:
-             FirebaseApp.initializeApp(actividad);
-             FirebaseTranslatorOptions options = new FirebaseTranslatorOptions.Builder()
-                     .setSourceLanguage(FirebaseTranslateLanguage.ES)
-                     .setTargetLanguage(FirebaseTranslateLanguage.EN)
+             IamAuthenticator authenticator = new IamAuthenticator("d4E5Z0llGfeB-qL57GJmVopY0dmYHqNlUA--l5UM2RP1");
+             final LanguageTranslator languageTranslator = new LanguageTranslator("2020-06-02", authenticator);
+             languageTranslator.setServiceUrl("https://api.eu-gb.language-translator.watson.cloud.ibm.com/instances/0645a0c9-8847-483b-949c-f960da0dfb01");
+
+             final TranslateOptions translateOptions = new TranslateOptions.Builder()
+                     .addText(respuesta.get(position).getString("descripcion"))
+                     .modelId("es-en")
                      .build();
-             final FirebaseTranslator spanishEnglisTranslator = FirebaseNaturalLanguage.getInstance().getTranslator(options);
-             FirebaseModelDownloadConditions conditions = new FirebaseModelDownloadConditions.Builder().requireWifi().build();
-             spanishEnglisTranslator.downloadModelIfNeeded(conditions).addOnSuccessListener( new OnSuccessListener<Void>() {
+
+             Thread thread = new Thread(new Runnable() {
                  @Override
-                 public void onSuccess(Void v) {
-                     for (int i = 0; i < respuesta.get(position).length(); i++) {
-                         try {
-                             spanishEnglisTranslator.translate(respuesta.get(position).getString("descripcion")).addOnSuccessListener(new OnSuccessListener<String>() {
-                                 @Override
-                                 public void onSuccess(@NonNull String translatedText) {
-                                     holder.descripcion_alojamiento.setText(translatedText);
-                                 }
-                             }).addOnFailureListener(new OnFailureListener() {
-                                 @Override
-                                 public void onFailure(@NonNull Exception e) {
-                                     Log.d("ERROR0", "onFailure: "+e);
-                                 }
-                             });
-                         } catch (JSONException e) {
-                             e.printStackTrace();
-                         }
+                 public void run() {
+                     try  {
+                         TranslationResult result = languageTranslator.translate(translateOptions).execute().getResult();
+                         holder.descripcion_alojamiento.setText(result.getTranslations().get(0).getTranslation());
+                     } catch (Exception e) {
+                         Log.d("ERROR0", "run: "+e);
                      }
                  }
-             }).addOnFailureListener(
-                     new OnFailureListener() {
-                         @Override
-                         public void onFailure(@NonNull Exception e) {
-                             Log.d("ERROR1", "onFailure: "+e);
-                         }
-                     });
+             });
+             thread.start();
 
              switch (respuesta.get(position).getString("estrellas")){
                  case "1" :
