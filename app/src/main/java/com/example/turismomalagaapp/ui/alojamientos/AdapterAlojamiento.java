@@ -39,6 +39,7 @@ public class AdapterAlojamiento extends RecyclerView.Adapter<AdapterAlojamiento.
     private List<JSONObject> respuesta;
     private FragmentActivity actividad;
 
+
      public AdapterAlojamiento(List<JSONObject> response, FragmentActivity activity){
          respuesta = response;
          actividad = activity;

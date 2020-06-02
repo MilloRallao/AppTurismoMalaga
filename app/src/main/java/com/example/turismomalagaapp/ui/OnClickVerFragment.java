@@ -118,7 +118,7 @@ public class OnClickVerFragment extends Fragment {
         }
         return view;
     }
-
+//para ir para atras poner en el fragment
     @Override
     public void onResume() {
         super.onResume();

@@ -1,5 +1,6 @@
 package com.example.turismomalagaapp.ui.alojamientos;
 
+import android.app.ProgressDialog;
 import android.content.Context;
 import android.os.Bundle;
 
@@ -73,6 +74,7 @@ public class AlojamientoFragment extends Fragment {
         mapa.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
                 Bundle bundle = new Bundle();
                 MapFragment mapFragment = new MapFragment();
                 bundle.putStringArrayList("latitudes", latitudes);
@@ -90,6 +92,7 @@ public class AlojamientoFragment extends Fragment {
     }
 
     public void cargarRespuesta(){
+        final ProgressDialog login = ProgressDialog.show(context,"por favorespere ...","aztualizando",false,false);
         respuesta = new ArrayList<>();
         latitudes = new ArrayList<>();
         longitudes = new ArrayList<>();
@@ -109,11 +112,13 @@ public class AlojamientoFragment extends Fragment {
                         e.printStackTrace();
                     }
                 }
+                login.dismiss();
             }
         }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
                 error.printStackTrace();
+                login.dismiss();
             }
         });
         requestQueue.add(jsonArrayRequest);
