@@ -1,5 +1,6 @@
 package com.example.turismomalagaapp.ui.event;
 
+import android.app.ProgressDialog;
 import android.content.Context;
 import android.os.Bundle;
 
@@ -80,6 +81,7 @@ public class EventFragment extends Fragment {
     }
 
     public void cargarRespuesta(){
+        final ProgressDialog login = ProgressDialog.show(context,"por favorespere ...","aztualizando",false,false);
         respuesta = new ArrayList<>();
         latitudes = new ArrayList<>();
         longitudes = new ArrayList<>();
@@ -99,11 +101,13 @@ public class EventFragment extends Fragment {
                         e.printStackTrace();
                     }
                 }
+                login.dismiss();
             }
         }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
                 error.printStackTrace();
+                login.dismiss();
             }
         });
         requestQueue.add(jsonArrayRequest);

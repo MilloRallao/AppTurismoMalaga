@@ -1,5 +1,6 @@
 package com.example.turismomalagaapp.ui.puntosInformacion;
 
+import android.app.ProgressDialog;
 import android.content.Context;
 import android.os.Bundle;
 
@@ -49,6 +50,7 @@ public class PuntosInfoFragment extends Fragment {
     }
 
     public void cargarRespuesta(){
+        final ProgressDialog login = ProgressDialog.show(context,"por favorespere ...","aztualizando",false,false);
         respuesta = new ArrayList<>();
         RequestQueue requestQueue = Volley.newRequestQueue(context);
         JsonArrayRequest jsonArrayRequest = new JsonArrayRequest(BD_URL, new Response.Listener<JSONArray>() {
@@ -62,11 +64,13 @@ public class PuntosInfoFragment extends Fragment {
                         e.printStackTrace();
                     }
                 }
+                login.dismiss();
             }
         }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
                 error.printStackTrace();
+                login.dismiss();
             }
         });
         requestQueue.add(jsonArrayRequest);

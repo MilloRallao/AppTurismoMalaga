@@ -1,5 +1,6 @@
 package com.example.turismomalagaapp.ui.cultura;
 
+import android.app.ProgressDialog;
 import android.content.Context;
 import android.os.Bundle;
 
@@ -81,6 +82,7 @@ public class CulturaFragment extends Fragment {
     }
 
     private void cargarRespuesta(){
+        final ProgressDialog login = ProgressDialog.show(context,"por favorespere ...","aztualizando",false,false);
         respuesta = new ArrayList<>();
         latitudes = new ArrayList<>();
         longitudes = new ArrayList<>();
@@ -100,6 +102,7 @@ public class CulturaFragment extends Fragment {
                         e.printStackTrace();
                     }
                 }
+                login.dismiss();
             }
         }, new Response.ErrorListener() {
             @Override
@@ -108,6 +111,7 @@ public class CulturaFragment extends Fragment {
             }
         });
         requestQueue.add(jsonArrayRequest);
+        login.dismiss();
     }
 
     @Override
