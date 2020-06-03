@@ -1,6 +1,5 @@
 package com.example.turismomalagaapp.ui.costaSol;
 
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -15,10 +14,6 @@ import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.bumptech.glide.load.resource.bitmap.RoundedCorners;
 import com.bumptech.glide.request.RequestOptions;
 import com.example.turismomalagaapp.R;
-import com.ibm.cloud.sdk.core.security.IamAuthenticator;
-import com.ibm.watson.language_translator.v3.LanguageTranslator;
-import com.ibm.watson.language_translator.v3.model.TranslateOptions;
-import com.ibm.watson.language_translator.v3.model.TranslationResult;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -48,27 +43,7 @@ public class CostaSolCiudadesAdapter extends RecyclerView.Adapter<CostaSolCiudad
             holder.textview_lugar_interes_ciudad_costa_sol.setText(respuesta.get(position).getString("nombre"));
 
             if(isLang){
-                IamAuthenticator authenticator = new IamAuthenticator("d4E5Z0llGfeB-qL57GJmVopY0dmYHqNlUA--l5UM2RP1");
-                final LanguageTranslator languageTranslator = new LanguageTranslator("2020-06-02", authenticator);
-                languageTranslator.setServiceUrl("https://api.eu-gb.language-translator.watson.cloud.ibm.com/instances/0645a0c9-8847-483b-949c-f960da0dfb01");
-
-                final TranslateOptions translateOptions = new TranslateOptions.Builder()
-                        .addText(respuesta.get(position).getString("descripcion"))
-                        .modelId("es-en")
-                        .build();
-
-                Thread thread = new Thread(new Runnable() {
-                    @Override
-                    public void run() {
-                        try  {
-                            TranslationResult result = languageTranslator.translate(translateOptions).execute().getResult();
-                            holder.textView_descripcion_lugar_interes_ciudad_costa_sol.setText(result.getTranslations().get(0).getTranslation());
-                        } catch (Exception e) {
-                            Log.d("ERROR0", "run: "+e);
-                        }
-                    }
-                });
-                thread.start();
+                holder.textView_descripcion_lugar_interes_ciudad_costa_sol.setText(respuesta.get(position).getString("descripcion_ing"));
             } else {
                 holder.textView_descripcion_lugar_interes_ciudad_costa_sol.setText(respuesta.get(position).getString("descripcion"));
             }

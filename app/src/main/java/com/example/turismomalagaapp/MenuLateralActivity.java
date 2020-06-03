@@ -2,8 +2,12 @@ package com.example.turismomalagaapp;
 
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.res.Configuration;
+import android.content.res.Resources;
 import android.net.Uri;
 import android.os.Bundle;
+import android.util.DisplayMetrics;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 
@@ -21,16 +25,30 @@ import androidx.navigation.ui.NavigationUI;
 import com.example.turismomalagaapp.ui.Submenu.AjustesFragment;
 import com.example.turismomalagaapp.ui.Submenu.ContactoFragment;
 
+import java.util.Locale;
+
 public class MenuLateralActivity extends AppCompatActivity {
     private AppBarConfiguration mAppBarConfiguration;
     private Toolbar toolbar;
     private DrawerLayout drawer;
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         setTheme(R.style.Theme_AppCompat_Light_NoActionBar);
         super.onCreate(savedInstanceState);
+
+        if(getIntent().hasExtra("idioma")){
+            String idioma = getIntent().getExtras().getString("idioma");
+            Resources resources = getResources();
+            Locale local = new Locale(idioma);
+            Locale.setDefault(local);
+            Configuration configuration = resources.getConfiguration();
+            configuration.setLocale(local);
+            getResources().updateConfiguration(configuration, null);
+            DisplayMetrics metrics = resources.getDisplayMetrics();
+            resources.updateConfiguration(configuration, metrics);
+        }
+
         setContentView(R.layout.activity_menu_lateral);
         toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);

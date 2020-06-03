@@ -77,7 +77,7 @@ public class CostaSolCiudadesFragment extends Fragment {
     }
 
     private void cargarRespuesta(){
-        final ProgressDialog login = ProgressDialog.show(context,"por favorespere ...","aztualizando",false,false);
+        final ProgressDialog login = ProgressDialog.show(context,"Por favor espere ...","Actualizando",false,false);
         respuesta = new ArrayList<>();
         RequestQueue requestQueue = Volley.newRequestQueue(context);
         JsonArrayRequest jsonArrayRequest = new JsonArrayRequest(BD_URL, new Response.Listener<JSONArray>() {

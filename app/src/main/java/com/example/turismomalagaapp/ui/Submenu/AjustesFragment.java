@@ -2,10 +2,13 @@ package com.example.turismomalagaapp.ui.Submenu;
 
 import android.content.Intent;
 import android.content.res.Configuration;
+import android.content.res.Resources;
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 
+import android.util.DisplayMetrics;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -37,7 +40,6 @@ public class AjustesFragment extends Fragment {
                 local = new Locale("es");
                 config.locale = local;
                 getResources().updateConfiguration(config, null);
-                getResources().updateConfiguration(config, null);
                 // Cambiar tamaño de bandera
                 botonEsp.setScaleX(1.5f);
                 botonEsp.setScaleY(1.5f);
@@ -51,24 +53,24 @@ public class AjustesFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 // Establecer lenguaje de los Strings
+                Resources resources = getContext().getResources();
                 local = new Locale("en");
-                config.locale = local;
-                getResources().updateConfiguration(config, null);
+                Locale.setDefault(local);
+                Configuration configuration = resources.getConfiguration();
+                configuration.setLocale(local);
+                getResources().updateConfiguration(configuration, null);
+                DisplayMetrics metrics = resources.getDisplayMetrics();
+                resources.updateConfiguration(configuration, metrics);
                 // Cambiar tamaño de bandera
                 botonIng.setScaleX(1.5f);
                 botonIng.setScaleY(1.5f);
                 // Actualizar la app
                 Intent i = new Intent(v.getContext(), MenuLateralActivity.class);
+                i.putExtra("idioma", local.getLanguage());
                 getContext().startActivity(i);
             }
         });
 
         return view;
     }
-
-    @Override
-    public void onDestroy() {
-        super.onDestroy();
-    }
-
 }

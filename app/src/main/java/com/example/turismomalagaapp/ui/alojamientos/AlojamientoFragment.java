@@ -2,6 +2,9 @@ package com.example.turismomalagaapp.ui.alojamientos;
 
 import android.app.ProgressDialog;
 import android.content.Context;
+import android.content.res.Configuration;
+import android.content.res.Resources;
+import android.os.Build;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -12,6 +15,7 @@ import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.util.DisplayMetrics;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -31,6 +35,7 @@ import org.json.JSONObject;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Locale;
 
 public class AlojamientoFragment extends Fragment {
     Context context;
@@ -43,7 +48,6 @@ public class AlojamientoFragment extends Fragment {
 
     String BD_URL = "https://projectfctappmalaga.000webhostapp.com/MalagaApp/select_alojamiento.php";
     List<JSONObject> respuesta;
-
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
@@ -82,7 +86,7 @@ public class AlojamientoFragment extends Fragment {
     }
 
     public void cargarRespuesta(){
-        final ProgressDialog login = ProgressDialog.show(context,"por favorespere ...","aztualizando",false,false);
+        final ProgressDialog login = ProgressDialog.show(context,"Por favor espere ...","Actualizando",false,false);
         respuesta = new ArrayList<>();
         latitudes = new ArrayList<>();
         longitudes = new ArrayList<>();

@@ -82,7 +82,7 @@ public class CulturaFragment extends Fragment {
     }
 
     private void cargarRespuesta(){
-        final ProgressDialog login = ProgressDialog.show(context,"por favorespere ...","aztualizando",false,false);
+        final ProgressDialog login = ProgressDialog.show(context,"Por favor espere ...","Actualizando",false,false);
         respuesta = new ArrayList<>();
         latitudes = new ArrayList<>();
         longitudes = new ArrayList<>();

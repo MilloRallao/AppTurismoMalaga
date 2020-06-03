@@ -20,27 +20,24 @@ import com.bumptech.glide.load.resource.bitmap.RoundedCorners;
 import com.bumptech.glide.request.RequestOptions;
 import com.example.turismomalagaapp.R;
 import com.example.turismomalagaapp.ui.OnClickVerFragment;
-import com.google.android.material.floatingactionbutton.FloatingActionButton;
-import com.ibm.cloud.sdk.core.security.IamAuthenticator;
-import com.ibm.watson.language_translator.v3.LanguageTranslator;
-import com.ibm.watson.language_translator.v3.model.TranslateOptions;
-import com.ibm.watson.language_translator.v3.model.TranslationResult;
 
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import java.text.BreakIterator;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
 
 public class AdapterPrincipal extends RecyclerView.Adapter<AdapterPrincipal.MyViewHolder> {
     private List<JSONObject> respuesta;
     private FragmentActivity actividad;
+    private List<String> descripciones;
     boolean isLang = Locale.getDefault().getLanguage().equals("en");
 
     AdapterPrincipal(List<JSONObject> response, FragmentActivity activity){
         respuesta = response;
         actividad = activity;
+        descripciones = new ArrayList<>();
     }
 
     @NonNull
@@ -56,27 +53,7 @@ public class AdapterPrincipal extends RecyclerView.Adapter<AdapterPrincipal.MyVi
             holder.evento.setText(respuesta.get(position).getString("nombre"));
 
             if(isLang){
-                IamAuthenticator authenticator = new IamAuthenticator("d4E5Z0llGfeB-qL57GJmVopY0dmYHqNlUA--l5UM2RP1");
-                final LanguageTranslator languageTranslator = new LanguageTranslator("2020-06-02", authenticator);
-                languageTranslator.setServiceUrl("https://api.eu-gb.language-translator.watson.cloud.ibm.com/instances/0645a0c9-8847-483b-949c-f960da0dfb01");
-
-                final TranslateOptions translateOptions = new TranslateOptions.Builder()
-                        .addText(respuesta.get(position).getString("descripcion"))
-                        .modelId("es-en")
-                        .build();
-
-                Thread thread = new Thread(new Runnable() {
-                    @Override
-                    public void run() {
-                        try  {
-                            TranslationResult result = languageTranslator.translate(translateOptions).execute().getResult();
-                            holder.descripcion.setText(result.getTranslations().get(0).getTranslation());
-                        } catch (Exception e) {
-                            Log.d("ERROR0", "run: "+e);
-                        }
-                    }
-                });
-                thread.start();
+                holder.descripcion.setText(respuesta.get(position).getString("descripcion_ing"));
             } else {
                 holder.descripcion.setText(respuesta.get(position).getString("descripcion"));
             }
