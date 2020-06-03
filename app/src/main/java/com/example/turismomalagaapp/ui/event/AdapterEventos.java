@@ -20,15 +20,22 @@ import com.bumptech.glide.load.resource.bitmap.RoundedCorners;
 import com.bumptech.glide.request.RequestOptions;
 import com.example.turismomalagaapp.R;
 import com.example.turismomalagaapp.ui.OnClickVerFragment;
+import com.ibm.cloud.sdk.core.security.IamAuthenticator;
+import com.ibm.watson.language_translator.v3.LanguageTranslator;
+import com.ibm.watson.language_translator.v3.model.TranslateOptions;
+import com.ibm.watson.language_translator.v3.model.TranslationResult;
 
 import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.List;
+import java.util.Locale;
 
 public class AdapterEventos extends RecyclerView.Adapter<AdapterEventos.MyViewHolder> {
     private List<JSONObject> respuesta;
     private FragmentActivity actividad;
+    boolean isLang = Locale.getDefault().getLanguage().equals("en");
+
 
     public AdapterEventos(List<JSONObject> response, FragmentActivity activity) {
         respuesta = response;
@@ -43,10 +50,36 @@ public class AdapterEventos extends RecyclerView.Adapter<AdapterEventos.MyViewHo
     }
 
     @Override
-    public void onBindViewHolder(MyViewHolder holder, final int position) { // como un oncreatte normal de un activity
+    public void onBindViewHolder(final MyViewHolder holder, final int position) { // como un oncreatte normal de un activity
         try {
             holder.textview_lugar_evento.setText(respuesta.get(position).getString("nombre"));
-            holder.textView_descripcion_evento.setText(respuesta.get(position).getString("descripcion"));
+
+            if(isLang){
+                IamAuthenticator authenticator = new IamAuthenticator("d4E5Z0llGfeB-qL57GJmVopY0dmYHqNlUA--l5UM2RP1");
+                final LanguageTranslator languageTranslator = new LanguageTranslator("2020-06-02", authenticator);
+                languageTranslator.setServiceUrl("https://api.eu-gb.language-translator.watson.cloud.ibm.com/instances/0645a0c9-8847-483b-949c-f960da0dfb01");
+
+                final TranslateOptions translateOptions = new TranslateOptions.Builder()
+                        .addText(respuesta.get(position).getString("descripcion"))
+                        .modelId("es-en")
+                        .build();
+
+                Thread thread = new Thread(new Runnable() {
+                    @Override
+                    public void run() {
+                        try  {
+                            TranslationResult result = languageTranslator.translate(translateOptions).execute().getResult();
+                            holder.textView_descripcion_evento.setText(result.getTranslations().get(0).getTranslation());
+                        } catch (Exception e) {
+                            Log.d("ERROR0", "run: "+e);
+                        }
+                    }
+                });
+                thread.start();
+            } else {
+                holder.textView_descripcion_evento.setText(respuesta.get(position).getString("descripcion"));
+            }
+
             Glide.with(holder.itemView).load(respuesta.get(position).getString("url_img")).load(respuesta.get(position).getString("url_img")).apply(new RequestOptions().transform(new RoundedCorners(50)).skipMemoryCache(true).diskCacheStrategy(DiskCacheStrategy.NONE)).into(holder.imageView_evento);
         }catch (JSONException e) {
             e.printStackTrace();
