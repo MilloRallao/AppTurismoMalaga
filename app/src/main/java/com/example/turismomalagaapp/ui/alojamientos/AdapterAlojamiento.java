@@ -29,12 +29,14 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.List;
+import java.util.Locale;
 
 public class AdapterAlojamiento extends RecyclerView.Adapter<AdapterAlojamiento.MyViewHolder>  {
     private List<JSONObject> respuesta;
     private FragmentActivity actividad;
+    boolean isLang = Locale.getDefault().getLanguage().equals("en");
 
-     public AdapterAlojamiento(List<JSONObject> response, FragmentActivity activity){
+    public AdapterAlojamiento(List<JSONObject> response, FragmentActivity activity){
          respuesta = response;
          actividad = activity;
     }
@@ -56,27 +58,31 @@ public class AdapterAlojamiento extends RecyclerView.Adapter<AdapterAlojamiento.
          try{
              holder.nombre_alojamiento.setText(respuesta.get(position).getString("nombre"));
 
-             IamAuthenticator authenticator = new IamAuthenticator("d4E5Z0llGfeB-qL57GJmVopY0dmYHqNlUA--l5UM2RP1");
-             final LanguageTranslator languageTranslator = new LanguageTranslator("2020-06-02", authenticator);
-             languageTranslator.setServiceUrl("https://api.eu-gb.language-translator.watson.cloud.ibm.com/instances/0645a0c9-8847-483b-949c-f960da0dfb01");
+             if(isLang){
+                 IamAuthenticator authenticator = new IamAuthenticator("d4E5Z0llGfeB-qL57GJmVopY0dmYHqNlUA--l5UM2RP1");
+                 final LanguageTranslator languageTranslator = new LanguageTranslator("2020-06-02", authenticator);
+                 languageTranslator.setServiceUrl("https://api.eu-gb.language-translator.watson.cloud.ibm.com/instances/0645a0c9-8847-483b-949c-f960da0dfb01");
 
-             final TranslateOptions translateOptions = new TranslateOptions.Builder()
-                     .addText(respuesta.get(position).getString("descripcion"))
-                     .modelId("es-en")
-                     .build();
+                 final TranslateOptions translateOptions = new TranslateOptions.Builder()
+                         .addText(respuesta.get(position).getString("descripcion"))
+                         .modelId("es-en")
+                         .build();
 
-             Thread thread = new Thread(new Runnable() {
-                 @Override
-                 public void run() {
-                     try  {
-                         TranslationResult result = languageTranslator.translate(translateOptions).execute().getResult();
-                         holder.descripcion_alojamiento.setText(result.getTranslations().get(0).getTranslation());
-                     } catch (Exception e) {
-                         Log.d("ERROR0", "run: "+e);
+                 Thread thread = new Thread(new Runnable() {
+                     @Override
+                     public void run() {
+                         try  {
+                             TranslationResult result = languageTranslator.translate(translateOptions).execute().getResult();
+                             holder.descripcion_alojamiento.setText(result.getTranslations().get(0).getTranslation());
+                         } catch (Exception e) {
+                             Log.d("ERROR0", "run: "+e);
+                         }
                      }
-                 }
-             });
-             thread.start();
+                 });
+                 thread.start();
+             } else {
+                 holder.descripcion_alojamiento.setText(respuesta.get(position).getString("descripcion"));
+             }
 
              switch (respuesta.get(position).getString("estrellas")){
                  case "1" :
