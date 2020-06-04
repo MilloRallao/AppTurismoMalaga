@@ -7,7 +7,6 @@ import android.content.res.Resources;
 import android.net.Uri;
 import android.os.Bundle;
 import android.util.DisplayMetrics;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 
@@ -17,6 +16,7 @@ import androidx.appcompat.widget.Toolbar;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.fragment.app.FragmentTransaction;
+
 import com.google.android.material.navigation.NavigationView;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
@@ -94,19 +94,27 @@ public class MenuLateralActivity extends AppCompatActivity {
 
         switch (item.getItemId()) {
             case R.id.action_ajustes:
-                AjustesFragment fragment = new AjustesFragment();
-                FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
-                fragmentTransaction.replace(R.id.nav_host_fragment, fragment);
                 toolbar.setTitle(R.string.action_ajustes);
-                fragmentTransaction.addToBackStack(null);
-                fragmentTransaction.commit();
+                final String id1 = String.valueOf(item.getItemId());
+                Bundle bundle1 = new Bundle();
+                AjustesFragment fragment1 = new AjustesFragment();
+                FragmentTransaction fragmentTransaction1 = getSupportFragmentManager().beginTransaction();
+                fragmentTransaction1.replace(R.id.nav_host_fragment, fragment1);
+                bundle1.putString("id", id1);
+                fragment1.setArguments(bundle1);
+                fragmentTransaction1.addToBackStack(id1);
+                fragmentTransaction1.commit();
                 return true;
             case R.id.action_contacto:
+                toolbar.setTitle(R.string.action_contacto);
+                final String id2 = String.valueOf(item.getItemId());
+                Bundle bundle2 = new Bundle();
                 ContactoFragment fragment2 = new ContactoFragment();
                 FragmentTransaction fragmentTransaction2 = getSupportFragmentManager().beginTransaction();
                 fragmentTransaction2.replace(R.id.nav_host_fragment, fragment2);
-                toolbar.setTitle(R.string.action_contacto);
-                fragmentTransaction2.addToBackStack(null);
+                bundle2.putString("id", id2);
+                fragment2.setArguments(bundle2);
+                fragmentTransaction2.addToBackStack(id2);
                 fragmentTransaction2.commit();
                 return true;
             case R.id.action_valorar:

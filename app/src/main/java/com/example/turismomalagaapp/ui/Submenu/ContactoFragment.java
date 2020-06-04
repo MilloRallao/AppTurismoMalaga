@@ -3,9 +3,12 @@ package com.example.turismomalagaapp.ui.Submenu;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
 
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.util.Log;
+import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -33,7 +36,6 @@ import javax.mail.internet.MimeMessage;
 
 
 public class ContactoFragment extends Fragment {
-
     Session session = null;
     ProgressDialog pdialog = null;
     Context context = null;
@@ -124,8 +126,6 @@ public class ContactoFragment extends Fragment {
         }
     }
 
-
-
     class RetreiveFeedTask extends AsyncTask<String, Void, String> {
         @Override
         protected String doInBackground(String... params) {
@@ -153,6 +153,31 @@ public class ContactoFragment extends Fragment {
             sub.setText("");
             Toast.makeText(context.getApplicationContext(), "Message sent", Toast.LENGTH_LONG).show();
         }
+    }
+
+    //para ir para atras poner en el fragment
+    @Override
+    public void onResume() {
+        super.onResume();
+        Bundle bundle = this.getArguments();
+        final String id = bundle.getString("id");
+        if(getView() == null){
+            return;
+        }
+        Log.d("ContactoFragment", "onResume: "+id);
+        getView().setFocusableInTouchMode(true);
+        getView().requestFocus();
+        getView().setOnKeyListener(new View.OnKeyListener() {
+            @Override
+            public boolean onKey(View v, int keyCode, KeyEvent event) {
+                if (event.getAction() == KeyEvent.ACTION_UP && keyCode == KeyEvent.KEYCODE_BACK){
+                    // Volver hacia la vista anterior
+                    getFragmentManager().popBackStack(id, FragmentManager.POP_BACK_STACK_INCLUSIVE);
+                    return true;
+                }
+                return false;
+            }
+        });
     }
 }
 

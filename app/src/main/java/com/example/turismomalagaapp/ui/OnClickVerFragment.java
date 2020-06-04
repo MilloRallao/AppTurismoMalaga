@@ -9,6 +9,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -23,6 +24,9 @@ import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 import com.example.turismomalagaapp.R;
+import com.example.turismomalagaapp.ui.costaSol.CostaSolCiudadesFragment;
+
+import static android.app.Activity.RESULT_OK;
 
 public class OnClickVerFragment extends Fragment {
     Context context;
@@ -118,25 +122,40 @@ public class OnClickVerFragment extends Fragment {
         }
         return view;
     }
+
 //para ir para atras poner en el fragment
     @Override
     public void onResume() {
         super.onResume();
-        Bundle bundle = this.getArguments();
-        final String id = bundle.getString("id");
+        final Bundle bundle0 = this.getArguments();
+        final String id = bundle0.getString("id");
         if(getView() == null){
             return;
         }
-        Log.d("TETETETE", "onResume: "+id);
         getView().setFocusableInTouchMode(true);
         getView().requestFocus();
         getView().setOnKeyListener(new View.OnKeyListener() {
             @Override
             public boolean onKey(View v, int keyCode, KeyEvent event) {
                 if (event.getAction() == KeyEvent.ACTION_UP && keyCode == KeyEvent.KEYCODE_BACK){
-                    // Volver hacia la vista anterior
-                    getFragmentManager().popBackStack(id, FragmentManager.POP_BACK_STACK_INCLUSIVE);
-                    return true;
+                    if(!(bundle0.getString("ciudad") == null)){
+                        Bundle bundle1 = new Bundle();
+                        CostaSolCiudadesFragment ciudadCostaSolFragment = new CostaSolCiudadesFragment();
+                        bundle1.putString("nombreBD", bundle0.getString("ciudadBD"));
+                        bundle1.putString("foto", bundle0.getString("foto"));
+                        bundle1.putString("nombre", bundle0.getString("ciudad"));
+                        bundle1.putString("getback", "getback");
+                        ciudadCostaSolFragment.setArguments(bundle1);
+                        FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
+                        transaction.replace(R.id.nav_host_fragment, ciudadCostaSolFragment);
+                        transaction.addToBackStack(null);
+                        transaction.commit();
+                        return true;
+                    }else{
+                        // Volver hacia la vista anterior
+                        getFragmentManager().popBackStack(id, FragmentManager.POP_BACK_STACK_INCLUSIVE);
+                        return true;
+                    }
                 }
                 return false;
             }

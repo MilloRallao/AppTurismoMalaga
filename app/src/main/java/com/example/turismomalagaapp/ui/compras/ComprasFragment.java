@@ -12,7 +12,6 @@ import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -23,7 +22,6 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonArrayRequest;
 import com.android.volley.toolbox.Volley;
 import com.example.turismomalagaapp.R;
-import com.example.turismomalagaapp.ui.alojamientos.AdapterAlojamiento;
 import com.example.turismomalagaapp.ui.map.MapFragment;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 

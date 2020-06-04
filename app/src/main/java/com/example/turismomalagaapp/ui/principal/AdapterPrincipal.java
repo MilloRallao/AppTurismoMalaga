@@ -31,13 +31,11 @@ import java.util.Locale;
 public class AdapterPrincipal extends RecyclerView.Adapter<AdapterPrincipal.MyViewHolder> {
     private List<JSONObject> respuesta;
     private FragmentActivity actividad;
-    private List<String> descripciones;
     boolean isLang = Locale.getDefault().getLanguage().equals("en");
 
     AdapterPrincipal(List<JSONObject> response, FragmentActivity activity){
         respuesta = response;
         actividad = activity;
-        descripciones = new ArrayList<>();
     }
 
     @NonNull
@@ -88,11 +86,10 @@ public class AdapterPrincipal extends RecyclerView.Adapter<AdapterPrincipal.MyVi
                     OnClickVerFragment onClickVerFragment = new OnClickVerFragment();
                     try {
                         bundle.putString("nombre", respuesta.get(getAdapterPosition()).getString("nombre"));
-                        bundle.putString("descripcion", respuesta.get(getAdapterPosition()).getString("descripcion"));
+                        bundle.putString("descripcion", descripcion.getText().toString());
                         bundle.putString("imagen", respuesta.get(getAdapterPosition()).getString("url_img"));
                         bundle.putString("telefono", respuesta.get(getAdapterPosition()).getString("telefono"));
                         bundle.putString("id", id);
-                        Log.d("TATATATA", "onClick: "+id);
                     } catch (JSONException e) {
                         e.printStackTrace();
                     }

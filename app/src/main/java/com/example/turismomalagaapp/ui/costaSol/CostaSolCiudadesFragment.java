@@ -8,6 +8,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -40,6 +41,9 @@ public class CostaSolCiudadesFragment extends Fragment {
     private ImageView foto;
     private RecyclerView rv;
     private RecyclerView.LayoutManager layoutManager;
+    private String nombre_ciudad;
+    private String nombre_ciudad_BD;
+    private String foto_ciudad;
     String BD_URL = "https://projectfctappmalaga.000webhostapp.com/MalagaApp/select_costaDelSol.php?nombre_ciudad=";
     List<JSONObject> respuesta;
 
@@ -65,10 +69,10 @@ public class CostaSolCiudadesFragment extends Fragment {
         rv.setLayoutManager(layoutManager);
         Bundle bundle = this.getArguments();
         if (bundle != null) {
-            String nombre_ciudad = bundle.getString("nombre");
-            String nombre_ciudad_BD = bundle.getString("nombreBD");
+            nombre_ciudad = bundle.getString("nombre");
+            nombre_ciudad_BD = bundle.getString("nombreBD");
             nombreCiudad.setText(nombre_ciudad);
-            String foto_ciudad = bundle.getString("foto");
+            foto_ciudad = bundle.getString("foto");
             Glide.with(context).load(foto_ciudad).into(foto);
             BD_URL += nombre_ciudad_BD;
             cargarRespuesta();
@@ -86,7 +90,7 @@ public class CostaSolCiudadesFragment extends Fragment {
                 for (int i = 0; i < response.length(); i++) {
                     try {
                         respuesta.add(response.getJSONObject(i));
-                        rv.setAdapter(new CostaSolCiudadesAdapter(respuesta));
+                        rv.setAdapter(new CostaSolCiudadesAdapter(respuesta, getActivity(), nombre_ciudad, nombre_ciudad_BD, foto_ciudad));
                     } catch (JSONException e) {
                         e.printStackTrace();
                     }
@@ -106,7 +110,7 @@ public class CostaSolCiudadesFragment extends Fragment {
     @Override
     public void onResume() {
         super.onResume();
-        Bundle bundle = this.getArguments();
+        final Bundle bundle = this.getArguments();
         final String id = bundle.getString("id");
         if(getView() == null){
             return;
@@ -117,6 +121,15 @@ public class CostaSolCiudadesFragment extends Fragment {
             @Override
             public boolean onKey(View v, int keyCode, KeyEvent event) {
                 if (event.getAction() == KeyEvent.ACTION_UP && keyCode == KeyEvent.KEYCODE_BACK){
+                    Log.d("PAQUITOOOOO", "onKey: "+bundle.get("getback"));
+                    if(!(bundle.getString("getbback") == null)){
+                        CostaSolFragment costaSolFragment= new CostaSolFragment();
+                        FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
+                        transaction.replace(R.id.nav_host_fragment, costaSolFragment);
+                        transaction.addToBackStack(null);
+                        transaction.commit();
+                        return true;
+                    }
                     // Volver hacia la vista anterior
                     getFragmentManager().popBackStack(id, FragmentManager.POP_BACK_STACK_INCLUSIVE);
                     return true;
@@ -130,10 +143,5 @@ public class CostaSolCiudadesFragment extends Fragment {
     public void onAttach(@NonNull Context context) {
         super.onAttach(context);
         this.context = context;
-    }
-
-    @Override
-    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
-        super.onViewCreated(view, savedInstanceState);
     }
 }

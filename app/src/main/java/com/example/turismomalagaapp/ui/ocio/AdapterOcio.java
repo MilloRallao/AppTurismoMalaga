@@ -84,9 +84,13 @@ public class AdapterOcio extends RecyclerView.Adapter<AdapterOcio.MyViewHolder>{
                     OnClickVerFragment onClickVerFragment = new OnClickVerFragment();
                     try {
                         bundle.putString("nombre", respuesta.get(getAdapterPosition()).getString("nombre"));
-                        bundle.putString("descripcion", respuesta.get(getAdapterPosition()).getString("descripcion"));
+                        bundle.putString("descripcion", textView_descripcion_ocio.getText().toString());
                         bundle.putString("imagen", respuesta.get(getAdapterPosition()).getString("url_img"));
-                        bundle.putString("horario", respuesta.get(getAdapterPosition()).getString("horario"));
+                        if(isLang){
+                            bundle.putString("horario", respuesta.get(getAdapterPosition()).getString("horario_ing"));
+                        } else {
+                            bundle.putString("horario", respuesta.get(getAdapterPosition()).getString("horario"));
+                        }
                         bundle.putString("id", id);
                     } catch (JSONException e) {
                         e.printStackTrace();
