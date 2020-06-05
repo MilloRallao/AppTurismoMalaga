@@ -121,7 +121,6 @@ public class CostaSolCiudadesFragment extends Fragment {
             @Override
             public boolean onKey(View v, int keyCode, KeyEvent event) {
                 if (event.getAction() == KeyEvent.ACTION_UP && keyCode == KeyEvent.KEYCODE_BACK){
-                    Log.d("PAQUITOOOOO", "onKey: "+bundle.get("getback"));
                     if(!(bundle.getString("getbback") == null)){
                         CostaSolFragment costaSolFragment= new CostaSolFragment();
                         FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
