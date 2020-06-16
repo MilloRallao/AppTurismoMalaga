@@ -14,18 +14,19 @@
 
 
     <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="32dp"
+        android:layout_width="172dp"
+        android:layout_height="112dp"
+        android:layout_marginTop="48dp"
+        android:background="@drawable/text"
+
         android:paddingTop="@dimen/nav_header_vertical_spacing"
-        android:text="@string/ml_cabezera"
         android:textAppearance="@style/TextAppearance.AppCompat.Body1"
         android:textColor="#000000"
         android:textSize="36sp"
         android:textStyle="normal|bold|italic"
         android:typeface="monospace"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.488"
+        app:layout_constraintHorizontal_bias="0.066"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 

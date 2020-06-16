@@ -22,8 +22,8 @@
 
     <EditText
         android:id="@+id/et_sub"
-        android:layout_width="404dp"
-        android:layout_height="36dp"
+        android:layout_width="405dp"
+        android:layout_height="123dp"
         android:layout_marginTop="24dp"
         android:autofillHints=""
         android:ems="10"
