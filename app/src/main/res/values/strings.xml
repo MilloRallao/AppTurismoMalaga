@@ -64,5 +64,6 @@
     <string name="texto_fuengirola" translatable="false">Fuengirola</string>
     <string name="texto_mijas" translatable="false">Mijas</string>
     <string name="texto_marbella" translatable="false">Marbella</string>
+    <string name="texto_lugar_interes_costa_sol_ciudad" translatable="true">Lugares de Interés</string>
 
 </resources>
