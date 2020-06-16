@@ -56,4 +56,5 @@
     </string>
     <string name="salir">Exit</string>
     <string name="titulo">Recommendations Covid-19</string>
+    <string name="texto_lugar_interes_costa_sol_ciudad" translatable="true">Places of Interest</string>
 </resources>
