@@ -86,7 +86,7 @@ public class AdapterEventos extends RecyclerView.Adapter<AdapterEventos.MyViewHo
                         bundle.putString("nombre", respuesta.get(getAdapterPosition()).getString("nombre"));
                         bundle.putString("descripcion", textView_descripcion_evento.getText().toString());
                         bundle.putString("imagen", respuesta.get(getAdapterPosition()).getString("url_img"));
-
+                        bundle.putString("horario", respuesta.get(getAdapterPosition()).getString("fecha"));
                         bundle.putString("id", id);
                     } catch (JSONException e) {
                         e.printStackTrace();

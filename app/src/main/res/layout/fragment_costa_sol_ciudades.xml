@@ -24,7 +24,6 @@
                 android:text="Ciudad de Costa del Sol"
                 android:textAlignment="center"
                 android:textAllCaps="false"
-                android:textColor="#FFFFFF"
                 android:textSize="36sp"
                 android:textStyle="bold" />
 
@@ -44,8 +43,6 @@
                 android:layout_marginTop="16dp"
                 android:text="@string/texto_lugar_interes_costa_sol_ciudad"
                 android:textAlignment="center"
-                android:textColor="#FFFFFF"
-                android:textColorLink="#FFFFFF"
                 android:textSize="24sp" />
 
             <androidx.recyclerview.widget.RecyclerView
