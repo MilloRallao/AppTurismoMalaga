@@ -24,7 +24,6 @@ import com.example.turismomalagaapp.ui.OnClickVerFragment;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
 
@@ -88,7 +87,7 @@ public class AdapterPrincipal extends RecyclerView.Adapter<AdapterPrincipal.MyVi
                         bundle.putString("nombre", respuesta.get(getAdapterPosition()).getString("nombre"));
                         bundle.putString("descripcion", descripcion.getText().toString());
                         bundle.putString("imagen", respuesta.get(getAdapterPosition()).getString("url_img"));
-                        bundle.putString("telefono", respuesta.get(getAdapterPosition()).getString("telefono"));
+                        bundle.putString("horario", respuesta.get(getAdapterPosition()).getString("fecha"));
                         bundle.putString("id", id);
                     } catch (JSONException e) {
                         e.printStackTrace();

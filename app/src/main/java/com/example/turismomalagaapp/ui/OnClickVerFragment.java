@@ -56,12 +56,16 @@ public class OnClickVerFragment extends Fragment {
             ImageButton llamada = view.findViewById(R.id.imageButton_llamada_onclick);
             try{
                 final String aux_telefono = bundle.getString("telefono");
-                llamada.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        startActivity(new Intent(Intent.ACTION_DIAL).setData(Uri.parse("tel:" + aux_telefono)));
-                    }
-                });
+                if(aux_telefono != null){
+                    llamada.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                            startActivity(new Intent(Intent.ACTION_DIAL).setData(Uri.parse("tel:" + aux_telefono)));
+                        }
+                    });
+                }else {
+                    llamada.setVisibility(View.INVISIBLE);
+                }
             }catch (Error error){
                 llamada.setVisibility(View.INVISIBLE);
             }
